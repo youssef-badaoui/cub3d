@@ -11,14 +11,28 @@ int store(int fd, t_map *map)
 	}
 }
 
-int	inspect(int fd, t_map *map)
+void get_meta_data(int fd, t_map *map)
 {
 	char *line;
 
 	while(1)
 	{
-		line = gnl(fd);
+		line = gnl(fd);	
+	}
+}
 
+int	inspect(int fd, t_map *map)
+{
+	char *line;
+
+	get_meta_data(fd, map);
+	while(1)
+	{
+		line = gnl(fd);
+		if(!line)
+			break;
+
+		map->map_h++;
 	}
 }
 
@@ -38,6 +52,7 @@ int check_and_stor(int ac, char **av, t_map *map)
 int main(int ac, char **av)
 {
 	t_map *map;
+
 	if(!check_and_stor(ac, av, map))
 		return (0);
 }

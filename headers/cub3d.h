@@ -8,12 +8,15 @@
 # include <stdlib.h>
 
 typedef struct s_map{
-	int		map_h;
-	int		map_w;
-	int		px;
-	int		py;
-	int		error;
 	char	**map_tab;
+	int		map_h;//map high
+	int		map_w; //map width 
+	int		px; //player x;
+	int		py; //player y;
+	int		error; //this will be changed to 1 if an error occured in the parsing to check it after;
+	char	*meta_data[6];
+	int		F[3];
+	int		C[3];
 }	t_map;
 #endif
 	
