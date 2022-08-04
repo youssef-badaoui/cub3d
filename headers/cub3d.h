@@ -15,5 +15,10 @@ typedef struct s_map{
 	int		error;
 	char	**map_tab;
 }	t_map;
+
+char	*ft_strdup(char *s);
+int		ft_strlen(char *s);
+char	*get_next_line(int fd);
+
 #endif
 	
