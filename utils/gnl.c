@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/04 18:30:27 by Ma3ert            #+#    #+#             */
+/*   Updated: 2022/08/04 18:41:27 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub3d.h"
 
 int	ft_strlen(char *s)
@@ -43,9 +55,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	while ((nbyte = read(fd, &buf, 1)) && nbyte > 0)
 	{
-		buffer[i++] = buf[0];
+		buffer[i++] = buf;
 		buffer[i] = '\0';
-		if (buf[0] == '\n')
+		if (buf == '\n')
 			return (ft_strdup(buffer));
 	}
 	if (buffer[0] == 0)

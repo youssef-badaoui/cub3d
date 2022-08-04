@@ -18,5 +18,10 @@ typedef struct s_map{
 	int		F[3];
 	int		C[3];
 }	t_map;
+
+char	*ft_strdup(char *s);
+int		ft_strlen(char *s);
+char	*get_next_line(int fd);
+
 #endif
 	
