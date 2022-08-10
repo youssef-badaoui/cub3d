@@ -6,7 +6,11 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/10 16:37:58 by ybadaoui         ###   ########.fr       */
+=======
+/*   Updated: 2022/08/10 14:50:32 by ybadaoui         ###   ########.fr       */
+>>>>>>> 1ac9d7a2987667fdb09ea4ccef579a60a5e882a1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +37,8 @@ static int	get_meta_data(int fd, t_map *map)
 	while(i < 6)
 	{
 		line = gnl(fd);
+
+
 		if (ft_is_meta(line))
 		{
 			from = ft_is_meta(line);
@@ -44,6 +50,10 @@ static int	get_meta_data(int fd, t_map *map)
 			map->meta_data[meta_type] = ft_substr(line, from, NULL);
 		}
 		i++;
+=======
+		if(str)
+		
+>>>>>>> 1ac9d7a2987667fdb09ea4ccef579a60a5e882a1
 	}
 }
 
