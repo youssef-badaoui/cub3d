@@ -7,6 +7,16 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
+enum meta_type
+{
+	NO = 0,
+	SO = 1,
+	WE = 2,
+	EA = 3,
+	F = 4,
+	C = 5
+};
+
 typedef struct s_map{
 	char	**map_tab;
 	int		map_h;//map high
@@ -15,13 +25,18 @@ typedef struct s_map{
 	int		py; //player y;
 	int		error; //this will be changed to 1 if an error occured in the parsing to check it after;
 	char	*meta_data[6];
-	int		F[3];
-	int		C[3];
+	// int		F[3];
+	// int		C[3];
 }	t_map;
 
 char	*ft_strdup(char *s);
 int		ft_strlen(char *s);
 char	*gnl(int fd);
-
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_is_alpha(const char c);
+int		ft_is_meta(const char *line);
+int		ft_is_empty(const char *line);
+int		ft_is_whitespace(char c);
+char	*ft_substr(char *line, int from, size_t len);
 #endif
 	
