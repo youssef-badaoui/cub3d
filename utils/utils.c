@@ -1,16 +1,16 @@
 #include "../headers/cub3d.h"
 
-int	ft_is_whitespace(char c)
+int	ft_is_whitespace(int c)
 {
 	if(c == ' ' || c == '\t' || c == '\v' ||
-		c == '\v' || c == '\f' || c == '\r')
+		c == '\n' || c == '\f' || c == '\r')
 		return (1);
 	return (0);
 }
 
 int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while(i < n)
@@ -41,7 +41,7 @@ int ft_strlen(char *str)
 
 char *ft_substr(char *line, int from, size_t len)
 {
-	int i;
+	size_t i;
 	char *res;
 
 	i = 0;
@@ -50,7 +50,7 @@ char *ft_substr(char *line, int from, size_t len)
 	res = malloc(sizeof(char) * len + 1);
 	while(i < len)
 	{
-		res[i] = line[i];
+		res[i] = line[from + i];
 		i++;
 	}
 	return (res);

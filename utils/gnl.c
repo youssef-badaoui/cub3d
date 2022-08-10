@@ -6,21 +6,12 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:27 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/06 12:02:42 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:52:16 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strdup(char *s)
 {

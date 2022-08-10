@@ -36,7 +36,9 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_is_alpha(const char c);
 int		ft_is_meta(const char *line);
 int		ft_is_empty(const char *line);
-int		ft_is_whitespace(char c);
+int		ft_is_whitespace(int c);
 char	*ft_substr(char *line, int from, size_t len);
+int		ft_get_meta_type(char *line, int from);
+int		init_map(t_map *map);
 #endif
 	

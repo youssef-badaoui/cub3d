@@ -50,7 +50,7 @@ int ft_is_meta(const char *line)
 		}
 		i++;
 	}
-
+	return (-1);
 }
 
 int init_map(t_map *map)
@@ -66,4 +66,5 @@ int init_map(t_map *map)
 	map->meta_data[3] = NULL;
 	map->meta_data[4] = NULL;
 	map->meta_data[5] = NULL;
+	return (1);
 } 
