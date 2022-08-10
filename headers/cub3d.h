@@ -21,7 +21,7 @@ typedef struct s_map{
 
 char	*ft_strdup(char *s);
 int		ft_strlen(char *s);
-char	*get_next_line(int fd);
+char	*gnl(int fd);
 
 #endif
 	

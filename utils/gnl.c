@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:27 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/04 18:41:27 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/06 12:02:42 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strdup(char *s)
 	return (str);
 }
 
-char	*get_next_line(int fd)
+char	*gnl(int fd)
 {
 	int 	i;
 	int		nbyte;

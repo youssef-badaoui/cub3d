@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/04 18:32:58 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/10 14:48:45 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ int store(int fd, t_map *map)
 
 void get_meta_data(int fd, t_map *map)
 {
-	char *line;
+	char	*line;
+	int		i;
 
-	while(1)
+	while(i < 6)
 	{
-		line = gnl(fd);	
+		line = gnl(fd);
+		if())
+		
 	}
 }
 
