@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/10 14:48:45 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:50:32 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void get_meta_data(int fd, t_map *map)
 	while(i < 6)
 	{
 		line = gnl(fd);
-		if())
+		if(str)
 		
 	}
 }
