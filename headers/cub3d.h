@@ -21,7 +21,6 @@ typedef struct s_map{
 	char	**map_tab;
 	int		map_h;//map high
 	int		map_w; //map width 
-	// int		map_fl; // the first line of the map
 	int		pn; //player number;
 	int		px; //player x;
 	int		py; //player y;

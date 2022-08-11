@@ -6,21 +6,14 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/11 09:46:32 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:10:35 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/cub3d.h"
 
-static int store(int fd, t_map *map)
+static int inspect(int fd, t_map *map)
 {
-	int	i;
-
-	i = 0;
-	while(i < map->map_h)
-	{
-		
-	}
 }
 
 static int	get_meta_data(int fd, t_map *map)
@@ -54,13 +47,11 @@ static int	get_meta_data(int fd, t_map *map)
 	return (1);
 }
 
-static int	inspect(int fd, t_map *map)
+static int	store(int fd, t_map *map)
 {
-	char *line;
-	char map_string;
-	int we_start;
+	char	*line;
+	char	*map_string;
 
-	we_start = 0;
 	if(!get_meta_data(fd, map))
 		return (0);
 	while(1)
@@ -68,18 +59,11 @@ static int	inspect(int fd, t_map *map)
 		line = gnl(fd);
 		if(!line)
 			break;
-		if(!ft_is_empty(line) && !we_start)
-			we_start = 1;
-		if(ft_is_empty(line) && we_start)
-			return (free(line),1);
-		ft_strjoin()
-		ft_find_player(line, map);
-		if (map->map_w < ft_strlen(line))
-			map->map_w = ft_strlen(line);
-		map->map_h++;
+		map_string  = ft_strjoin(map_string, line);
+		free(line);
 	}
-	printf("map_h = %d map_w = %d map_fl = %d pn = %d px = %d py = %d \n", 
-	map->map_h, map->map_w, map->map_fl, map->pn, map->px, map->py);
+	ft_map_clean();
+	map->map_tab = ft_split(map_string);
 	return (1);
 }
 
@@ -93,9 +77,8 @@ static int check_and_stor(int ac, char **av, t_map *map)
 	printf("fd = %d\n", fd);
 	if (fd == -1)
 		return (0);
-	if(!inspect(fd, map))
-		return(ft_print("map error!\n"), 0);
-	store(fd, map);
+	store(fd, map));
+	inspect(fd, map);
 	return (1);
 }
 
