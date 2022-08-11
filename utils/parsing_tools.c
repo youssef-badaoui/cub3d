@@ -89,3 +89,29 @@ void	ft_find_player(char *line, t_map *map)
 	}
 	y++;
 }
+
+void	ft_map_clean(char *map_string)
+{
+	int		start;
+	int		end;
+	int		i;
+	char 	*new_map_string;
+
+	i = 0;
+	while (map_string[i] && !ft_is_alpha(map_string[i]))
+	{
+		if (map_string[i] == 10)
+			start = i + 1;
+		i++;
+	}
+	i = ft_strlen(map_string);
+	while (i >= 0 && !ft_is_alpha(map_string[i]))
+	{
+		if (map_string[i] == 10)
+			end = i + 1;
+		i--;
+	}
+	new_map_string = ft_substr(map_string, start, end);
+	free(map_string);
+	map_string = new_map_string;
+}

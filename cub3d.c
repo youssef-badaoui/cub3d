@@ -6,15 +6,15 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/11 12:10:35 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/11 15:05:38 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/cub3d.h"
 
-static int inspect(int fd, t_map *map)
-{
-}
+// static int inspect(int fd, t_map *map)
+// {
+// }
 
 static int	get_meta_data(int fd, t_map *map)
 {
@@ -51,6 +51,7 @@ static int	store(int fd, t_map *map)
 {
 	char	*line;
 	char	*map_string;
+	int i = 0;
 
 	if(!get_meta_data(fd, map))
 		return (0);
@@ -62,8 +63,12 @@ static int	store(int fd, t_map *map)
 		map_string  = ft_strjoin(map_string, line);
 		free(line);
 	}
-	ft_map_clean();
-	map->map_tab = ft_split(map_string);
+	ft_map_clean(map_string);
+	map->map_tab = ft_split(map_string, '\n');
+	while(map->map_tab[i])
+	{
+		ft_print(map->map_tab[i++]);
+	}
 	return (1);
 }
 
@@ -77,8 +82,8 @@ static int check_and_stor(int ac, char **av, t_map *map)
 	printf("fd = %d\n", fd);
 	if (fd == -1)
 		return (0);
-	store(fd, map));
-	inspect(fd, map);
+	store(fd, map);
+	// inspect(fd, map);     
 	return (1);
 }
 

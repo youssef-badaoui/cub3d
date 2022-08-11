@@ -53,6 +53,7 @@ char *ft_substr(char *line, int from, size_t len)
 		res[i] = line[from + i];
 		i++;
 	}
+	res[i] = '\0';
 	return (res);
 }
 
@@ -64,7 +65,7 @@ int	ft_strchr(char c, char *s)
 	while(s[i])
 	{
 		if(s[i] == c)
-			return (1);
+			return (0);
 		i++;
 	}
 	return (0);
@@ -73,4 +74,68 @@ int	ft_strchr(char c, char *s)
 void	ft_print(char *s)
 {
 	write(1,&s[0],ft_strlen(s));
+}
+
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	int		i;
+	char	*p;
+	int		size1;
+	int		size2;
+	int		sizep;
+
+	i = 0;
+	size1 = ft_strlen((char *)s1);
+	size2 = ft_strlen((char *)s2);
+	sizep = size1 + size2;
+	p = malloc(sizep + 1);
+	if (!p)
+		return (0);
+	while (i < sizep)
+	{
+		if (i < size1)
+			p[i] = s1[i];
+		if (i < size2)
+			p[i + size1] = s2[i];
+		i++;
+	}
+	p[i] = 0;
+	return (p);
+}
+
+char	**ft_split(char *s, char c)
+{
+	char	**splited;
+	int		row;
+	int		i;
+
+	i = 0;
+	row = 0;
+	while(s[i])
+		if(s[i++] == c)
+			row++;
+	if(s[ft_strlen(s) - 1] != c)
+		row++;
+	splited = malloc(sizeof(char) * row);
+	i = 0;
+	while(i < row)
+	{
+		if(ft_first_occ(s + i, c) != -1)
+			splited[i] = ft_substr(s, i, ft_first_occ(s + i, c));
+		else
+			splited[i] = ft_substr(s, i, ft_first_occ(s + i, 0));
+		i++;
+	}
+	return (splited);
+}
+
+int ft_first_occ(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while(s[i])
+		if(s[i++] == c)
+			return (i--);
+	return (-1);
 }
