@@ -21,12 +21,12 @@ typedef struct s_map{
 	char	**map_tab;
 	int		map_h;//map high
 	int		map_w; //map width 
+	int		map_fl; // the first line of the map
+	int		pn; //player number;
 	int		px; //player x;
 	int		py; //player y;
 	int		error; //this will be changed to 1 if an error occured in the parsing to check it after;
 	char	*meta_data[6];
-	// int		F[3];
-	// int		C[3];
 }	t_map;
 
 char	*ft_strdup(char *s);
@@ -40,5 +40,7 @@ int		ft_is_whitespace(int c);
 char	*ft_substr(char *line, int from, size_t len);
 int		ft_get_meta_type(char *line, int from);
 int		init_map(t_map *map);
+void	ft_find_player(char *line, t_map *map);
+int		ft_strchr(char c, char *s);
 #endif
 	

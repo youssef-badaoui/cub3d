@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/10 19:57:55 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:15:07 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ static int	get_meta_data(int fd, t_map *map)
 		line = gnl(fd);
 		if(!line)
 			return (0);
-		printf(" is meta = %d\n",ft_is_meta(line));
 		if (ft_is_meta(line) >= 0)
 		{
-			printf("line = %s\n", line);
 			from = ft_is_meta(line);
 			meta_type = ft_get_meta_type(line, from);
 			if (meta_type >= NO && meta_type <= EA)
@@ -49,25 +47,40 @@ static int	get_meta_data(int fd, t_map *map)
 			map->meta_data[meta_type] = ft_substr(line, from, 0);
 			i--;
 		}
-		else if(!ft_is_empty(line))
-			return (0);
+		else if (!ft_is_empty(line))
+			return (free(line), 0);
+		free (line);
 	}
 	return (1);
 }
 
 static int	inspect(int fd, t_map *map)
 {
-	// char *line;
+	char *line;
+	int we_start;
 
-	get_meta_data(fd, map);
-	// while(1)
-	// {
-	// 	line = gnl(fd);
-	// 	if(!line)
-	// 		break;
-
-	// 	map->map_h++;
-	// }
+	we_start = 0;
+	if(!get_meta_data(fd, map))
+		return (0);
+	printf("meta done\n");
+	while(1)
+	{
+		line = gnl(fd);
+		if(!line)
+			break;
+		if(!ft_is_empty(line) && !we_start)
+			we_start = 1;
+		if(ft_is_empty(line) && we_start)
+			return (free(line),0);
+		ft_find_player(line, map);
+		if(!line)
+			break;
+		if (map->map_w < ft_strlen(line))
+			map->map_w = ft_strlen(line);
+		map->map_h++;
+	}
+	printf("map_h = %d map_w = %d map_fl = %d pn = %d px = %d py = %d \n", 
+	map->map_h, map->map_w, map->map_fl, map->pn, map->px, map->py);
 	return (1);
 }
 

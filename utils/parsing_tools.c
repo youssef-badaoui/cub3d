@@ -47,6 +47,8 @@ int ft_is_meta(const char *line)
 				!ft_strncmp(line+i, "EA", 2) || 
 				line[i] == 'F' || line[i] == 'C')
 					return (i);
+			else
+				return (-1);
 		}
 		i++;
 	}
@@ -68,3 +70,22 @@ int init_map(t_map *map)
 	map->meta_data[5] = NULL;
 	return (1);
 } 
+
+void	ft_find_player(char *line, t_map *map)
+{
+	int			x;
+	static int	y;
+
+	x = 0;
+	while(line[x])
+	{
+		if(ft_strchr(line[x], "NSEW"))
+		{
+			map->px = x;
+			map->py = y;
+			map->pn++;
+		}
+		x++;
+	}
+	y++;
+}

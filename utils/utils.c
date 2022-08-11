@@ -55,3 +55,17 @@ char *ft_substr(char *line, int from, size_t len)
 	}
 	return (res);
 }
+
+int	ft_strchr(char c, char *s)
+{
+	int	i;
+
+	i = 0;
+	while(s[i])
+	{
+		if(s[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
