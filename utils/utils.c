@@ -69,3 +69,8 @@ int	ft_strchr(char c, char *s)
 	}
 	return (0);
 }
+
+void	ft_print(char *s)
+{
+	write(1,&s[0],ft_strlen(s));
+}

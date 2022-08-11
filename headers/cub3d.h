@@ -21,7 +21,7 @@ typedef struct s_map{
 	char	**map_tab;
 	int		map_h;//map high
 	int		map_w; //map width 
-	int		map_fl; // the first line of the map
+	// int		map_fl; // the first line of the map
 	int		pn; //player number;
 	int		px; //player x;
 	int		py; //player y;
@@ -42,5 +42,6 @@ int		ft_get_meta_type(char *line, int from);
 int		init_map(t_map *map);
 void	ft_find_player(char *line, t_map *map);
 int		ft_strchr(char c, char *s);
+void	ft_print(char *s);
 #endif
 	

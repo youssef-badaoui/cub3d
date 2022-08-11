@@ -6,22 +6,22 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/11 09:15:07 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:46:32 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/cub3d.h"
 
-// static int store(int fd, t_map *map)
-// {
-// 	int	i;
+static int store(int fd, t_map *map)
+{
+	int	i;
 
-// 	i = 0;
-// 	while(i < map->map_h)
-// 	{
+	i = 0;
+	while(i < map->map_h)
+	{
 		
-// 	}
-// }
+	}
+}
 
 static int	get_meta_data(int fd, t_map *map)
 {
@@ -57,12 +57,12 @@ static int	get_meta_data(int fd, t_map *map)
 static int	inspect(int fd, t_map *map)
 {
 	char *line;
+	char map_string;
 	int we_start;
 
 	we_start = 0;
 	if(!get_meta_data(fd, map))
 		return (0);
-	printf("meta done\n");
 	while(1)
 	{
 		line = gnl(fd);
@@ -71,10 +71,9 @@ static int	inspect(int fd, t_map *map)
 		if(!ft_is_empty(line) && !we_start)
 			we_start = 1;
 		if(ft_is_empty(line) && we_start)
-			return (free(line),0);
+			return (free(line),1);
+		ft_strjoin()
 		ft_find_player(line, map);
-		if(!line)
-			break;
 		if (map->map_w < ft_strlen(line))
 			map->map_w = ft_strlen(line);
 		map->map_h++;
@@ -94,8 +93,9 @@ static int check_and_stor(int ac, char **av, t_map *map)
 	printf("fd = %d\n", fd);
 	if (fd == -1)
 		return (0);
-	inspect(fd, map);
-	// store(fd, map);
+	if(!inspect(fd, map))
+		return(ft_print("map error!\n"), 0);
+	store(fd, map);
 	return (1);
 }
 
