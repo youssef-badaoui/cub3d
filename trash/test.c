@@ -1,16 +1,18 @@
 #include "../headers/cub3d.h"
 
-char *f1(int fd)
+int ft_first_occ(char *s, char c)
 {
-    return(gnl(fd));
+	int	i;
+
+	i = 0;
+	while(s[i])
+		if(s[i++] == c)
+			return (i - 1);
+	return (-1);
 }
-char *f2(int fd)
-{
-    return(gnl(fd));
-}
+
 int main()
 {
-    int fd = open("./test.c", O_RDONLY);
-    printf("f1 = %s\n", f1(fd));
-    printf("f2 = %s\n", f2(fd));
+    char s[] = "heeereey\nweeweewew";
+    printf("%d\n", ft_first_occ(s+0, '\n'));
 }

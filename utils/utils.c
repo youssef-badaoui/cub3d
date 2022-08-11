@@ -29,12 +29,14 @@ int	ft_is_alpha(const char c)
 	return (0);
 }
 
-int ft_strlen(char *str)
+int ft_strlen(char *s)
 {
 	int i;
 
 	i = 0;
-	while(str[i])
+	if(!s)
+		return (0);
+	while(s[i])
 		i++;
 	return (i);
 }
@@ -108,6 +110,7 @@ char	**ft_split(char *s, char c)
 	char	**splited;
 	int		row;
 	int		i;
+	int		from;
 
 	i = 0;
 	row = 0;
@@ -116,14 +119,19 @@ char	**ft_split(char *s, char c)
 			row++;
 	if(s[ft_strlen(s) - 1] != c)
 		row++;
-	splited = malloc(sizeof(char) * row);
+	splited = malloc(sizeof(char) * row + 1);
+	splited[row] = 0;
 	i = 0;
+	from = 0;
 	while(i < row)
 	{
-		if(ft_first_occ(s + i, c) != -1)
-			splited[i] = ft_substr(s, i, ft_first_occ(s + i, c));
+		if(ft_first_occ(s + from, c) != -1)
+			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c)+1);
 		else
-			splited[i] = ft_substr(s, i, ft_first_occ(s + i, 0));
+			splited[i] = ft_substr(s, from, 0);
+		// printf("from = %d\n", from);
+		from += ft_first_occ(s + from , c) + 1;
+		// printf("splited line[n] = %s", splited[i]);
 		i++;
 	}
 	return (splited);
@@ -136,6 +144,6 @@ int ft_first_occ(char *s, char c)
 	i = 0;
 	while(s[i])
 		if(s[i++] == c)
-			return (i--);
+			return (i - 1);
 	return (-1);
 }

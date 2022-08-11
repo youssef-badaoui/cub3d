@@ -43,7 +43,7 @@ void	ft_find_player(char *line, t_map *map);
 int		ft_strchr(char c, char *s);
 void	ft_print(char *s);
 char	*ft_strjoin(const char *s1, const char *s2);
-void	ft_map_clean(char *map_string);
+char	*ft_map_clean(char *map_string);
 int		ft_first_occ(char *s, char c);
 char	**ft_split(char *s, char c);
 #endif
