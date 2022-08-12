@@ -1,33 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
+/*   Updated: 2022/08/12 12:21:27 by Ma3ert           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "struct.h"
 # include <mlx.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-
-enum meta_type
-{
-	NO = 0,
-	SO = 1,
-	WE = 2,
-	EA = 3,
-	F = 4,
-	C = 5
-};
-
-typedef struct s_map{
-	char	**map_tab;
-	int		map_h;//map high
-	int		map_w; //map width 
-	int		pn; //player number;
-	int		px; //player x;
-	int		py; //player y;
-	char	*meta_data[6];
-	int		F[3];
-	int		C[3];
-}	t_map;
+# include <math.h>
 
 char	*ft_strdup(char *s);
 int		ft_strlen(char *s);
@@ -47,5 +39,6 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_map_clean(char *map_string);
 int		ft_first_occ(char *s, char c);
 char	**ft_split(char *s, char c);
+
 #endif
 	
