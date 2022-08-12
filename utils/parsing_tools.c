@@ -116,6 +116,7 @@ char	*ft_map_clean(char *map_string)
 	free(map_string);
 	return(new_map_string);
 }
+
 void	ft_find_player(char *line, t_map *map)
 {
 	int			x;
@@ -192,6 +193,38 @@ int	get_colors(t_map *map)
 
 int	ft_check_map(t_map *map)
 {
-	ft_meta_check(map->meta_data);
+	int	row;
+
+	row = 0;
+	if(!ft_meta_check(map->meta_data))
+		return (0);
+	while(map->meta_data[row])
+	{
+		if(!check_line(map->map_tab, map->meta_data[row], row, map->map_h))
+			return (0);
+	}
 	
+}
+
+int	check_line(char **map, char *s, int row, int map_h)
+{
+	int	i;
+
+	i = 0;
+	while(s[i])
+	{
+		if(s[i] == '0')
+		{
+			if(row == 0 || row == map_h || i == 0)
+				return(0,f_print("map not closed\n"));
+			if(!ft_strchr(map[row - 1][i], "01") || 
+			!ft_strchr(map[row + 1][i], "01") || 
+			!ft_strchr(map[row][i+1], "01") || 
+			!ft_strchr(map[row][i-1], "01"))
+				return(0,f_print("map not closed\n"));
+		}
+		else if (!ft_strchr(s[i], "	NSEW1"))
+			return (0, f_print("strange character in map\n"));
+		i++;
+	}
 }
