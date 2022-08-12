@@ -116,3 +116,82 @@ char	*ft_map_clean(char *map_string)
 	free(map_string);
 	return(new_map_string);
 }
+void	ft_find_player(char *line, t_map *map)
+{
+	int			x;
+	static int	y;
+
+	x = 0;
+	while(line[x])
+	{
+		if(ft_strchr(line[x], "NSEW"))
+		{
+			map->px = x;
+			map->py = y;
+			map->pn++;
+		}
+		x++;
+	}
+	y++;
+}
+
+void	ft_get_data(t_map *map)
+{
+	int	i;
+	char	**tab;
+
+	i = 0;
+	tab = map->map_tab;
+	map->map_h = ft_strlen(tab);
+	while(tab[i])
+	{
+		if(ft_strlen(tab[i]) > map->map_w)
+			map->map_w = ft_strlen(tab);
+		ft_find_player(tab[i], map);
+		i++;
+	}
+}
+
+int	ft_meta_check(char *meta)
+{
+	int	i;
+	int	fd;
+
+	i = 0;
+	while(i < 4)
+	{
+		fd = open(meta[i], O_RDONLY);
+		if(fd < 0)
+			return (0,ft_print("Textures path ERROR!!\n"));
+		close(fd);
+		i++;
+	}
+	
+}
+
+int	get_colors(t_map *map)
+{
+	char	**c;
+	char	**f;
+	int		i;
+
+	i = 0;
+	c = ft_split(map->meta_data[4]);
+	f = ft_split(map->meta_data[5]);
+	if(ft_strlen(c) - ft_strlen(f))
+		return (0);
+	while(i < 3)
+	{
+		if(!(map->C[i] = ft_atoi(c[i])) || !(map->F[i] = ft_atoi(f[i])))
+			return (f_tab(c), f_tab(f), 0);
+		i++
+	}
+	f_tab(c);
+	f_tab(f);
+}
+
+int	ft_check_map(t_map *map)
+{
+	ft_meta_check(map->meta_data);
+	
+}

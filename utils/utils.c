@@ -67,7 +67,7 @@ int	ft_strchr(char c, char *s)
 	while(s[i])
 	{
 		if(s[i] == c)
-			return (0);
+			return (1);
 		i++;
 	}
 	return (0);
@@ -129,9 +129,7 @@ char	**ft_split(char *s, char c)
 			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c)+1);
 		else
 			splited[i] = ft_substr(s, from, 0);
-		// printf("from = %d\n", from);
 		from += ft_first_occ(s + from , c) + 1;
-		// printf("splited line[n] = %s", splited[i]);
 		i++;
 	}
 	return (splited);
@@ -146,4 +144,23 @@ int ft_first_occ(char *s, char c)
 		if(s[i++] == c)
 			return (i - 1);
 	return (-1);
+}
+
+int ft_isdigit(char c)
+{
+	if(c <= '9' && c >= 0)
+		return (1);
+	return (0);
+}
+
+void f_tab(void **tab)
+{
+	int i;
+
+	i = 0;
+	if(!tab)
+		return ;
+	while(tab[i])
+		free(tab[i++]);
+	free(tab);
 }

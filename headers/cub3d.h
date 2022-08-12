@@ -24,8 +24,9 @@ typedef struct s_map{
 	int		pn; //player number;
 	int		px; //player x;
 	int		py; //player y;
-	int		error; //this will be changed to 1 if an error occured in the parsing to check it after;
 	char	*meta_data[6];
+	int		F[3];
+	int		C[3];
 }	t_map;
 
 char	*ft_strdup(char *s);

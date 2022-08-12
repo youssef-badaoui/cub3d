@@ -6,15 +6,20 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/11 18:54:36 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/12 09:05:48 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/cub3d.h"
 
-// static int inspect(int fd, t_map *map)
-// {
-// }
+static int inspect(int fd, t_map *map)
+{
+	char	**tab;
+
+	tab = map->map_tab;
+	ft_get_data(map);
+	ft_check_map(map);
+}
 
 static int	get_meta_data(int fd, t_map *map)
 {
@@ -29,7 +34,7 @@ static int	get_meta_data(int fd, t_map *map)
 		line = gnl(fd);
 		if(!line)
 			return (0);
-		if (ft_is_meta(line) >= 0)
+		if (ft_is_meta(line) > -1)
 		{
 			from = ft_is_meta(line);
 			meta_type = ft_get_meta_type(line, from);
@@ -55,6 +60,7 @@ static int	store(int fd, t_map *map)
 	map_string = NULL;
 	if(!get_meta_data(fd, map))
 		return (0);
+	get_colors(map);
 	while(1)
 	{
 		line = gnl(fd);
