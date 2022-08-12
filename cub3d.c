@@ -6,19 +6,25 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/12 09:05:48 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:38:24 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/cub3d.h"
 
-static int inspect(int fd, t_map *map)
+static int inspect(t_map *map)
 {
 	char	**tab;
 
 	tab = map->map_tab;
 	ft_get_data(map);
+	// printf("%d\n", map->map_h);
+	// printf("%d\n", map->map_w);
+	// printf("%d\n", map->pn);
+	// printf("%d\n", map->px);
+	// printf("%d\n", map->py);
 	ft_check_map(map);
+	return (1);
 }
 
 static int	get_meta_data(int fd, t_map *map)
@@ -85,7 +91,7 @@ static int check_and_stor(int ac, char **av, t_map *map)
 	if (fd == -1)
 		return (0);
 	store(fd, map);
-	inspect(fd, map);     
+	inspect(map);     
 	return (1);
 }
 

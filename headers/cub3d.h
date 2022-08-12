@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/12 12:21:27 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/12 15:43:37 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_map_clean(char *map_string);
 int		ft_first_occ(char *s, char c);
 char	**ft_split(char *s, char c);
+void	ft_get_data(t_map *map);
+int		ft_check_map(t_map *map);
+int		get_colors(t_map *map);
+int		ft_tablen(char **tab);
+void	f_tab(char **tab);
+int		ft_atoi(const char *str);
+int		check_line(char **map, char *s, int row, int map_h);
 
 #endif
 	

@@ -61,7 +61,6 @@ int init_map(t_map *map)
 	map->map_w = 0;
 	map->px = 0;
 	map->py = 0;
-	map->error = 0;
 	map->meta_data[0] = NULL;
 	map->meta_data[1] = NULL;
 	map->meta_data[2] = NULL;
@@ -69,25 +68,6 @@ int init_map(t_map *map)
 	map->meta_data[4] = NULL;
 	map->meta_data[5] = NULL;
 	return (1);
-} 
-
-void	ft_find_player(char *line, t_map *map)
-{
-	int			x;
-	static int	y;
-
-	x = 0;
-	while(line[x])
-	{
-		if(ft_strchr(line[x], "NSEW"))
-		{
-			map->px = x;
-			map->py = y;
-			map->pn++;
-		}
-		x++;
-	}
-	y++;
 }
 
 char	*ft_map_clean(char *map_string)
@@ -143,17 +123,17 @@ void	ft_get_data(t_map *map)
 
 	i = 0;
 	tab = map->map_tab;
-	map->map_h = ft_strlen(tab);
 	while(tab[i])
 	{
 		if(ft_strlen(tab[i]) > map->map_w)
-			map->map_w = ft_strlen(tab);
+			map->map_w = ft_strlen(tab[i]);
 		ft_find_player(tab[i], map);
+		map->map_h++;
 		i++;
 	}
 }
 
-int	ft_meta_check(char *meta)
+int	ft_meta_check(char **meta)
 {
 	int	i;
 	int	fd;
@@ -163,11 +143,11 @@ int	ft_meta_check(char *meta)
 	{
 		fd = open(meta[i], O_RDONLY);
 		if(fd < 0)
-			return (0,ft_print("Textures path ERROR!!\n"));
+			return (0);
 		close(fd);
 		i++;
 	}
-	
+	return(1);
 }
 
 int	get_colors(t_map *map)
@@ -177,18 +157,20 @@ int	get_colors(t_map *map)
 	int		i;
 
 	i = 0;
-	c = ft_split(map->meta_data[4]);
-	f = ft_split(map->meta_data[5]);
-	if(ft_strlen(c) - ft_strlen(f))
+	c = ft_split(map->meta_data[4], ',');
+	f = ft_split(map->meta_data[5], ',');
+
+	if(ft_tablen(c) != 3 || ft_tablen(f) != 3)
 		return (0);
 	while(i < 3)
 	{
 		if(!(map->C[i] = ft_atoi(c[i])) || !(map->F[i] = ft_atoi(f[i])))
-			return (f_tab(c), f_tab(f), 0);
-		i++
+			return (0);
+		i++;
 	}
-	f_tab(c);
-	f_tab(f);
+	// f_tab(c);
+	// f_tab(f);
+	return (1);
 }
 
 int	ft_check_map(t_map *map)
@@ -203,7 +185,7 @@ int	ft_check_map(t_map *map)
 		if(!check_line(map->map_tab, map->meta_data[row], row, map->map_h))
 			return (0);
 	}
-	
+	return (1);
 }
 
 int	check_line(char **map, char *s, int row, int map_h)
@@ -216,15 +198,16 @@ int	check_line(char **map, char *s, int row, int map_h)
 		if(s[i] == '0')
 		{
 			if(row == 0 || row == map_h || i == 0)
-				return(0,f_print("map not closed\n"));
+				return(0);
 			if(!ft_strchr(map[row - 1][i], "01") || 
 			!ft_strchr(map[row + 1][i], "01") || 
 			!ft_strchr(map[row][i+1], "01") || 
 			!ft_strchr(map[row][i-1], "01"))
-				return(0,f_print("map not closed\n"));
+				return (0);
 		}
 		else if (!ft_strchr(s[i], "	NSEW1"))
-			return (0, f_print("strange character in map\n"));
+			return (0);
 		i++;
 	}
+	return (1);
 }
