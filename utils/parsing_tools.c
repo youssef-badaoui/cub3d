@@ -164,7 +164,8 @@ int	get_colors(t_map *map)
 		return (0);
 	while(i < 3)
 	{
-		if(!ft_is_rgb(c[i]))
+		if(!check_color(c[i], i) || !check_color(f[i] ,i))
+			return (0);
 		map->C[i] = ft_atoi(c[i]);
 		map->F[i] = ft_atoi(f[i]);
 		i++;
@@ -237,6 +238,26 @@ int	ft_get_path(char *line, int from, int meta_type, t_map *map)
 		if(!ft_is_whitespace(line[from+len]))
 			return (0);
 		len++;
+	}
+	return (1);
+}
+
+int	check_color(char *color, int pos)
+{
+	int i;
+
+	i = 0;
+	while(color[i])
+	{
+		if(color[i] < '0' || color[i] > '9')
+		{
+			if(color[i+1] || color[i] != ',')
+				return (0);
+			else
+				if(pos > 1)
+					return (0);
+		}
+		i++;
 	}
 	return (1);
 }

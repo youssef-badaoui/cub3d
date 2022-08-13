@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/13 15:17:21 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:12:47 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int check_and_stor(int ac, char **av, t_map *map)
 	// int i = 0;
 	// while(map->map_tab[i])
 	// 	printf("%s", map->map_tab[i++]);
-	inspect(map);     
+	inspect(map);
 	return (1);
 }
 
