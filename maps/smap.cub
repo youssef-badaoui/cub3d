@@ -1,15 +1,10 @@
-SO                  so./path_to_the_south_texture    
+SO ./cub3d.c    
         
-WE                we./path_to_the_west_texture
+WE  ./cub3d.c
 
- 
+EA ./cub3d.c
 
-
-EA ea./path_to_the_east_texture  
-
-
-NO no./path_to_the_north_texture
-
+NO ./cub3d.c
 
 F 220,100,0
 
@@ -30,9 +25,7 @@ C 220,100,50
 10000000000000001100000010001
 100000000000000W1101010010001
 1N0000011101010111110111100111
-11110111 1110101 101111010001
+11110111 110101 101111010001
 11111111 1111111 111111111111
 
 
-
-e

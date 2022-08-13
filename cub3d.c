@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/13 21:12:47 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:50:24 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,8 @@ static int inspect(t_map *map)
 
 	tab = map->map_tab;
 	ft_get_data(map);
-	// printf("%d\n", map->map_h);
-	// printf("%d\n", map->map_w);
-	// printf("%d\n", map->pn);
-	// printf("%d\n", map->px);
-	// printf("%d\n", map->py);
-	ft_check_map(map);
+	if(!ft_check_map(map))
+		return (0);
 	return (1);
 }
 
@@ -90,10 +86,8 @@ static int check_and_stor(int ac, char **av, t_map *map)
 		return (0);
 	if(!store(fd, map))
 		return (0);
-	// int i = 0;
-	// while(map->map_tab[i])
-	// 	printf("%s", map->map_tab[i++]);
-	inspect(map);
+	if(!inspect(map))
+		return (0);
 	return (1);
 }
 

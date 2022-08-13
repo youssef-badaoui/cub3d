@@ -182,10 +182,11 @@ int	ft_check_map(t_map *map)
 	row = 0;
 	if(!ft_meta_check(map->meta_data))
 		return (0);
-	while(map->meta_data[row])
+	while(map->map_tab[row])
 	{
-		if(!check_line(map->map_tab, map->meta_data[row], row, map->map_h))
+		if(!check_line(map->map_tab, map->map_tab[row], row, map->map_h))
 			return (0);
+		row++;
 	}
 	return (1);
 }
@@ -201,13 +202,13 @@ int	check_line(char **map, char *s, int row, int map_h)
 		{
 			if(row == 0 || row == map_h || i == 0)
 				return(0);
-			if(!ft_strchr(map[row - 1][i], "01") || 
-			!ft_strchr(map[row + 1][i], "01") || 
-			!ft_strchr(map[row][i+1], "01") || 
-			!ft_strchr(map[row][i-1], "01"))
+			if(!ft_strchr(map[row - 1][i], "NSEW01") || 
+			!ft_strchr(map[row + 1][i], "NSEW01") || 
+			!ft_strchr(map[row][i + 1], "NSEW01") ||
+			!ft_strchr(map[row][i - 1], "NSEW01"))
 				return (0);
 		}
-		else if (!ft_strchr(s[i], "	NSEW1"))
+		else if (!ft_strchr(s[i], "NSEW1") && !ft_is_whitespace(s[i]))
 			return (0);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/13 21:11:21 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:52:22 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_table
 typedef struct s_map
 {
 	char	**map_tab;
+	char
 	int		map_h;	//map high
 	int		map_w; 	//map width 
 	int		pn; 	//player number;
