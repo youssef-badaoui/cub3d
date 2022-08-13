@@ -5,14 +5,15 @@ WE                we./path_to_the_west_texture
  
 
 
-F f220,100,0
 EA ea./path_to_the_east_texture  
 
 
-C c225,30,0
 NO no./path_to_the_north_texture
 
 
+F 220,100,50
+
+C 220,100,50
 
 1111111111111111111111111
 1000000000110000000000001

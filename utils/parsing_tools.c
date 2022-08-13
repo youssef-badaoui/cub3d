@@ -158,8 +158,15 @@ int	get_colors(t_map *map)
 
 	i = 0;
 	c = ft_split(map->meta_data[4], ',');
+	printf("meta 5 %s\n", map->meta_data[5]);
+	printf("meta 4 %s\n", map->meta_data[4]);
 	f = ft_split(map->meta_data[5], ',');
-
+	printf("f%s\n", f[0]);
+	printf("f%s\n", f[1]);
+	printf("f%s\n", f[2]);
+	printf("c%s\n", c[0]);
+	printf("c%s\n", c[1]);
+	printf("c%s\n", c[2]);
 	if(ft_tablen(c) != 3 || ft_tablen(f) != 3)
 		return (0);
 	while(i < 3)

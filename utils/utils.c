@@ -114,24 +114,26 @@ char	**ft_split(char *s, char c)
 
 	i = 0;
 	row = 0;
+	printf("i will split this : %s\n", s);
 	while(s[i])
 		if(s[i++] == c)
 			row++;
 	if(s[ft_strlen(s) - 1] != c)
 		row++;
-	splited = malloc(sizeof(char) * row + 1);
-	splited[row] = 0;
+	splited = malloc(sizeof(char *) * row + 1);
 	i = 0;
 	from = 0;
 	while(i < row)
 	{
 		if(ft_first_occ(s + from, c) != -1)
-			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c)+1);
+			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c));
 		else
 			splited[i] = ft_substr(s, from, 0);
 		from += ft_first_occ(s + from , c) + 1;
+		printf("s pos[0] %s\n", splited[0]);
 		i++;
 	}
+	splited[row] = 0;
 	return (splited);
 }
 

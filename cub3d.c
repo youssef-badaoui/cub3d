@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/13 11:04:12 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:12:24 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ static int	store(int fd, t_map *map)
 	map_string = NULL;
 	if(!get_meta_data(fd, map))
 		return (0);
-	get_colors(map);
+	if(!get_colors(map))
+		return (0);
+	printf("%d\n", map->C[0]);
+	printf("%d\n", map->C[1]);
+	printf("%d\n", map->C[2]);
 	while(1)
 	{
 		line = gnl(fd);
