@@ -61,6 +61,7 @@ int init_map(t_map *map)
 	map->map_w = 0;
 	map->px = 0;
 	map->py = 0;
+	map->pn = 0;
 	map->meta_data[0] = NULL;
 	map->meta_data[1] = NULL;
 	map->meta_data[2] = NULL;
@@ -158,25 +159,18 @@ int	get_colors(t_map *map)
 
 	i = 0;
 	c = ft_split(map->meta_data[4], ',');
-	printf("meta 5 %s\n", map->meta_data[5]);
-	printf("meta 4 %s\n", map->meta_data[4]);
 	f = ft_split(map->meta_data[5], ',');
-	printf("f%s\n", f[0]);
-	printf("f%s\n", f[1]);
-	printf("f%s\n", f[2]);
-	printf("c%s\n", c[0]);
-	printf("c%s\n", c[1]);
-	printf("c%s\n", c[2]);
 	if(ft_tablen(c) != 3 || ft_tablen(f) != 3)
 		return (0);
 	while(i < 3)
 	{
-		if(!(map->C[i] = ft_atoi(c[i])) || !(map->F[i] = ft_atoi(f[i])))
-			return (0);
+		if(!ft_is_rgb(c[i]))
+		map->C[i] = ft_atoi(c[i]);
+		map->F[i] = ft_atoi(f[i]);
 		i++;
 	}
-	// f_tab(c);
-	// f_tab(f);
+	f_tab(c);
+	f_tab(f);
 	return (1);
 }
 

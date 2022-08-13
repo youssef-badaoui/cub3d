@@ -114,7 +114,6 @@ char	**ft_split(char *s, char c)
 
 	i = 0;
 	row = 0;
-	printf("i will split this : %s\n", s);
 	while(s[i])
 		if(s[i++] == c)
 			row++;
@@ -126,11 +125,10 @@ char	**ft_split(char *s, char c)
 	while(i < row)
 	{
 		if(ft_first_occ(s + from, c) != -1)
-			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c));
+			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c) + 1);
 		else
 			splited[i] = ft_substr(s, from, 0);
 		from += ft_first_occ(s + from , c) + 1;
-		printf("s pos[0] %s\n", splited[0]);
 		i++;
 	}
 	splited[row] = 0;

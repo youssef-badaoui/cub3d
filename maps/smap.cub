@@ -11,7 +11,7 @@ EA ea./path_to_the_east_texture
 NO no./path_to_the_north_texture
 
 
-F 220,100,50
+F 220,100,0c
 
 C 220,100,50
 
@@ -33,17 +33,3 @@ C 220,100,50
 
 
 
-
-
-
-      
-
-
-
-
-
-
-
-
-          
-                           
