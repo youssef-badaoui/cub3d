@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/12 16:38:24 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:04:12 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int inspect(t_map *map)
 
 	tab = map->map_tab;
 	ft_get_data(map);
-	// printf("%d\n", map->map_h);
-	// printf("%d\n", map->map_w);
-	// printf("%d\n", map->pn);
-	// printf("%d\n", map->px);
-	// printf("%d\n", map->py);
+	printf("%d\n", map->map_h);
+	printf("%d\n", map->map_w);
+	printf("%d\n", map->pn);
+	printf("%d\n", map->px);
+	printf("%d\n", map->py);
 	ft_check_map(map);
 	return (1);
 }
@@ -44,11 +44,8 @@ static int	get_meta_data(int fd, t_map *map)
 		{
 			from = ft_is_meta(line);
 			meta_type = ft_get_meta_type(line, from);
-			if (meta_type >= NO && meta_type <= EA)
-				from += 3;
-			else
-				from += 2;				
-			map->meta_data[meta_type] = ft_substr(line, from, 0);
+			if(!ft_get_path(line, from, meta_type, map))
+				return (0);
 			i--;
 		}
 		else if (!ft_is_empty(line))
@@ -90,7 +87,8 @@ static int check_and_stor(int ac, char **av, t_map *map)
 	printf("fd = %d\n", fd);
 	if (fd == -1)
 		return (0);
-	store(fd, map);
+	if(!store(fd, map))
+		return (0);
 	inspect(map);     
 	return (1);
 }
@@ -102,6 +100,6 @@ int main(int ac, char **av)
 	map = malloc(sizeof(t_map));
 	init_map(map);
 	if(!check_and_stor(ac, av, map))
-		return (0);
+		return (ft_print("-------->$ ERROR: Error While Parsing\n+++NOTE: check map and try again....\n"), 0);
 	return (1);
 }

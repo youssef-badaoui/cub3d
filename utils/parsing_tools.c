@@ -211,3 +211,31 @@ int	check_line(char **map, char *s, int row, int map_h)
 	}
 	return (1);
 }
+
+int	ft_get_path(char *line, int from, int meta_type, t_map *map)
+{
+	int i;
+	int len;
+	
+	i = 0;
+	len = 0;
+	if(meta_type >= NO && meta_type <= EA)
+		from += 2;
+	else
+		from += 1;
+	if(!ft_is_whitespace(line[from]))
+		return (0);
+	while(ft_is_whitespace(line[from + i]))
+		i++;
+	from += i;
+	while(!ft_is_whitespace(line[from+len]))
+		len++;
+	map->meta_data[meta_type] = ft_substr(line, from, len);
+	while(line[from+len])
+	{
+		if(!ft_is_whitespace(line[from+len]))
+			return (0);
+		len++;
+	}
+	return (1);
+}

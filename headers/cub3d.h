@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/12 15:43:37 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/13 10:23:57 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		ft_tablen(char **tab);
 void	f_tab(char **tab);
 int		ft_atoi(const char *str);
 int		check_line(char **map, char *s, int row, int map_h);
+int	ft_get_path(char *line, int from, int meta_type, t_map *map);
 
 #endif
 	
