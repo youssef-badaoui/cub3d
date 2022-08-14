@@ -55,13 +55,16 @@ int ft_is_meta(const char *line)
 	return (-1);
 }
 
-int init_map(t_map *map)
+int init_map(char **av, int ac, t_map *map)
 {
+	if(ac != 2)
+		return (0);
 	map->map_h = 0;
 	map->map_w = 0;
 	map->px = 0;
 	map->py = 0;
 	map->pn = 0;
+	map->map_name = av[1];
 	map->meta_data[0] = NULL;
 	map->meta_data[1] = NULL;
 	map->meta_data[2] = NULL;
@@ -180,7 +183,9 @@ int	ft_check_map(t_map *map)
 	int	row;
 
 	row = 0;
-	if(!ft_meta_check(map->meta_data))
+	if(!ft_meta_check(map->meta_data) || !check_mapex(map))
+		return (0);
+	if(map->pn != 1)
 		return (0);
 	while(map->map_tab[row])
 	{
@@ -233,6 +238,8 @@ int	ft_get_path(char *line, int from, int meta_type, t_map *map)
 	from += i;
 	while(!ft_is_whitespace(line[from+len]))
 		len++;
+	if(map->meta_data[meta_type])
+		return (0);
 	map->meta_data[meta_type] = ft_substr(line, from, len);
 	while(line[from+len])
 	{
@@ -260,5 +267,17 @@ int	check_color(char *color, int pos)
 		}
 		i++;
 	}
+	return (1);
+}
+
+int	check_mapex(t_map *map)
+{
+	int		len;
+	char	*name;
+
+	len = ft_strlen(map->map_name);
+	name = map->map_name;
+	if(name[len - 1] != 'b' || name[len - 2] != 'u' || name[len - 3] != 'c' || name[len - 4] != '.')
+		return (0);
 	return (1);
 }
