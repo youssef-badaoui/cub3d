@@ -6,16 +6,17 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 13:28:44 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 14:58:25 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define CELL_SIZE = 16
-# define FOV = 60
-# define N_RAY = 1080
+# define CELL_SIZE 16
+# define FOV 60
+# define HALF_FOV 20
+# define N_RAY 1080
 
 enum meta_type
 {
