@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 15:09:00 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 15:23:16 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,12 @@ typedef	struct s_position
 	int		virtual_px;		// x cord of the player in the virtual dimension
 	int		virtual_py;		// y cord of the player in the virtual dimension
 	double	pov;			// the point of view (obviously an angle)
-	double	ang_in;			// angle incrementation
 }				t_position;
 
 typedef struct s_ray
 {
-	double		ray_pov;
-	double		angle;		// angle of the ray
+	double		ray_pov;	// the point of view of the ray
+	int			index;		// the index of angle of the ray
 	int			xi;			// the x cord of the verticatl intersection
 	int			yi;			// the y cord of the horizontal intersection
 	int			xpound;		// the x cord of the horizontal intersection 

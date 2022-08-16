@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 15:03:39 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 15:24:25 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ void	create_trigonometric_tables(int narc, t_table *table)
 	double	*tan_res;
 
 	i = 0;
-	ang_in = 360.0 / (double)narc;
-	ang_in *= M_PI/180.0;
+	ang_in = ANG_IN_D * M_PI/180.0;
 	tan_res = malloc(sizeof(double) * narc);
 	while (i < narc)
 	{
 		angle = i * ang_in;
 		tan_res[i] = tan(angle);
-		printf("tan = %lf\n", tan_res[i]);
 		i++;
 	}
 	table->tan_table = tan_res;
@@ -47,32 +45,17 @@ double	calcul_ray_pov(t_position position, int ray)
 {
 	double	ray_pov;
 
-	if (ray < 540)
-	{
-		ray_pov = position.pov - HALF_FOV;
-		if (ray_pov < 0)
-			ray_pov += 360;
-		ray_pov += ray * (60 / 1080);
-	}
-	else
-	{
-		ray_pov = position.pov + HALF_FOV;
-		if (ray_pov > 360)
-			ray_pov -= 360;
-	}
+	
 }
 
 void	casting_rays(t_table *table, t_ray *rays, t_position position)
 {
 	int	i;
-	double	ang_in;
 
-	ang_in = 360.0 / 6480.0;
-	ang_in *= M_PI / 180.0;
 	i = 0;
 	while (i < N_RAY)
 	{
-		rays[i].angle = i * ang_in;
+		rays[i].index = i;
 		calcul_ray_pov(position, i);
 		calcul_first_inter(table, rays[i], position);
 		send_ray(table, rays[i], position);
