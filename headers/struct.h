@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 15:03:59 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 15:09:00 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # define FOV 60
 # define HALF_FOV 30
 # define N_RAY 1080
+# define ANG_IN_D 0.05555555555
+# define N 0
+# define E 90
+# define S 180
+# define W 270
 
 enum meta_type
 {
