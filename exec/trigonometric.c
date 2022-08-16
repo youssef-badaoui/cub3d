@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trigonometric.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 15:24:25 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 15:36:20 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,13 @@ void	calcul_first_inter(t_table *table, t_ray ray, t_position position)
 double	calcul_ray_pov(t_position position, int ray)
 {
 	double	ray_pov;
+	double	frif;//first ray in fov
 
+	frif = position.pov - 30;
+	ray_pov = frif + ray * ANG_IN_D;
+	if (ray_pov >= 360)
+		ray_pov = ray_pov - 360;
+	return (ray_pov);
 	
 }
 
@@ -56,7 +62,7 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 	while (i < N_RAY)
 	{
 		rays[i].index = i;
-		calcul_ray_pov(position, i);
+		rays[i].ray_pov = calcul_ray_pov(position, i);
 		calcul_first_inter(table, rays[i], position);
 		send_ray(table, rays[i], position);
 		i++;
