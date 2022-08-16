@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/15 15:52:25 by Ma3ert           ###   ########.fr       */
+=======
+/*   Updated: 2022/08/14 09:42:43 by ybadaoui         ###   ########.fr       */
+>>>>>>> 47d250d4bd9568bd83968d49b5d6a039bc462f72
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +63,7 @@ typedef struct s_table
 typedef struct s_map
 {
 	char	**map_tab;
+	char	*map_name;
 	int		map_h;	//map high
 	int		map_w; 	//map width 
 	int		pn; 	//player number;

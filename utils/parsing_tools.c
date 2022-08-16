@@ -55,13 +55,16 @@ int ft_is_meta(const char *line)
 	return (-1);
 }
 
-int init_map(t_map *map)
+int init_map(char **av, int ac, t_map *map)
 {
+	if(ac != 2)
+		return (0);
 	map->map_h = 0;
 	map->map_w = 0;
 	map->px = 0;
 	map->py = 0;
-	map->error = 0;
+	map->pn = 0;
+	map->map_name = av[1];
 	map->meta_data[0] = NULL;
 	map->meta_data[1] = NULL;
 	map->meta_data[2] = NULL;
@@ -69,25 +72,6 @@ int init_map(t_map *map)
 	map->meta_data[4] = NULL;
 	map->meta_data[5] = NULL;
 	return (1);
-} 
-
-void	ft_find_player(char *line, t_map *map)
-{
-	int			x;
-	static int	y;
-
-	x = 0;
-	while(line[x])
-	{
-		if(ft_strchr(line[x], "NSEW"))
-		{
-			map->px = x;
-			map->py = y;
-			map->pn++;
-		}
-		x++;
-	}
-	y++;
 }
 
 char	*ft_map_clean(char *map_string)
@@ -116,6 +100,7 @@ char	*ft_map_clean(char *map_string)
 	free(map_string);
 	return(new_map_string);
 }
+
 void	ft_find_player(char *line, t_map *map)
 {
 	int			x;
@@ -142,17 +127,17 @@ void	ft_get_data(t_map *map)
 
 	i = 0;
 	tab = map->map_tab;
-	map->map_h = ft_strlen(tab);
 	while(tab[i])
 	{
 		if(ft_strlen(tab[i]) > map->map_w)
-			map->map_w = ft_strlen(tab);
+			map->map_w = ft_strlen(tab[i]);
 		ft_find_player(tab[i], map);
+		map->map_h++;
 		i++;
 	}
 }
 
-int	ft_meta_check(char *meta)
+int	ft_meta_check(char **meta)
 {
 	int	i;
 	int	fd;
@@ -162,11 +147,11 @@ int	ft_meta_check(char *meta)
 	{
 		fd = open(meta[i], O_RDONLY);
 		if(fd < 0)
-			return (0,ft_print("Textures path ERROR!!\n"));
+			return (0);
 		close(fd);
 		i++;
 	}
-	
+	return(1);
 }
 
 int	get_colors(t_map *map)
@@ -176,22 +161,123 @@ int	get_colors(t_map *map)
 	int		i;
 
 	i = 0;
-	c = ft_split(map->meta_data[4]);
-	f = ft_split(map->meta_data[5]);
-	if(ft_strlen(c) - ft_strlen(f))
+	c = ft_split(map->meta_data[4], ',');
+	f = ft_split(map->meta_data[5], ',');
+	if(ft_tablen(c) != 3 || ft_tablen(f) != 3)
 		return (0);
 	while(i < 3)
 	{
-		if(!(map->C[i] = ft_atoi(c[i])) || !(map->F[i] = ft_atoi(f[i])))
-			return (f_tab(c), f_tab(f), 0);
-		i++
+		if(!check_color(c[i], i) || !check_color(f[i] ,i))
+			return (0);
+		map->C[i] = ft_atoi(c[i]);
+		map->F[i] = ft_atoi(f[i]);
+		i++;
 	}
 	f_tab(c);
 	f_tab(f);
+	return (1);
 }
 
 int	ft_check_map(t_map *map)
 {
-	ft_meta_check(map->meta_data);
+	int	row;
+
+	row = 0;
+	if(!ft_meta_check(map->meta_data) || !check_mapex(map))
+		return (0);
+	if(map->pn != 1)
+		return (0);
+	while(map->map_tab[row])
+	{
+		if(!check_line(map->map_tab, map->map_tab[row], row, map->map_h))
+			return (0);
+		row++;
+	}
+	return (1);
+}
+
+int	check_line(char **map, char *s, int row, int map_h)
+{
+	int	i;
+
+	i = 0;
+	while(s[i])
+	{
+		if(s[i] == '0')
+		{
+			if(row == 0 || row == map_h || i == 0)
+				return(0);
+			if(!ft_strchr(map[row - 1][i], "NSEW01") || 
+			!ft_strchr(map[row + 1][i], "NSEW01") || 
+			!ft_strchr(map[row][i + 1], "NSEW01") ||
+			!ft_strchr(map[row][i - 1], "NSEW01"))
+				return (0);
+		}
+		else if (!ft_strchr(s[i], "NSEW1") && !ft_is_whitespace(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_get_path(char *line, int from, int meta_type, t_map *map)
+{
+	int i;
+	int len;
 	
+	i = 0;
+	len = 0;
+	if(meta_type >= NO && meta_type <= EA)
+		from += 2;
+	else
+		from += 1;
+	if(!ft_is_whitespace(line[from]))
+		return (0);
+	while(ft_is_whitespace(line[from + i]))
+		i++;
+	from += i;
+	while(!ft_is_whitespace(line[from+len]))
+		len++;
+	if(map->meta_data[meta_type])
+		return (0);
+	map->meta_data[meta_type] = ft_substr(line, from, len);
+	while(line[from+len])
+	{
+		if(!ft_is_whitespace(line[from+len]))
+			return (0);
+		len++;
+	}
+	return (1);
+}
+
+int	check_color(char *color, int pos)
+{
+	int i;
+
+	i = 0;
+	while(color[i])
+	{
+		if(color[i] < '0' || color[i] > '9')
+		{
+			if(color[i+1] || color[i] != ',')
+				return (0);
+			else
+				if(pos > 1)
+					return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	check_mapex(t_map *map)
+{
+	int		len;
+	char	*name;
+
+	len = ft_strlen(map->map_name);
+	name = map->map_name;
+	if(name[len - 1] != 'b' || name[len - 2] != 'u' || name[len - 3] != 'c' || name[len - 4] != '.')
+		return (0);
+	return (1);
 }
