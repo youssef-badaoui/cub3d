@@ -113,6 +113,7 @@ void	ft_find_player(char *line, t_map *map)
 		{
 			map->px = x;
 			map->py = y;
+			map->pv = line[x];
 			map->pn++;
 		}
 		x++;

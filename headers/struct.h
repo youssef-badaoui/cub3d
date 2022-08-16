@@ -6,11 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/15 15:52:25 by Ma3ert           ###   ########.fr       */
-=======
-/*   Updated: 2022/08/14 09:42:43 by ybadaoui         ###   ########.fr       */
->>>>>>> 47d250d4bd9568bd83968d49b5d6a039bc462f72
+/*   Updated: 2022/08/16 13:29:34 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +26,15 @@ enum meta_type
 	F = 4,
 	C = 5
 };
+
+enum player_v
+{
+	N = 0;
+	S = 180;
+	
+};
+
+
 
 typedef	struct s_position
 {
@@ -67,6 +72,7 @@ typedef struct s_map
 	int		map_h;	//map high
 	int		map_w; 	//map width 
 	int		pn; 	//player number;
+	char	pv; 	//player vision;
 	int		px; 	//player x;
 	int		py; 	//player y;
 	char	*meta_data[6];
