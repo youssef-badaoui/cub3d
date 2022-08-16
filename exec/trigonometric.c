@@ -1,52 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Trigonometric.c                                    :+:      :+:    :+:   */
+/*   trigonometric.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/12 13:22:09 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 12:39:54 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-void	creat_trigonometric_tables(int narc, t_table *table)
+void	create_trigonometric_tables(int narc, t_table *table)
 {
 	int		i;
 	double	angle;
 	double	ang_in;
-	double	cos_res[narc];
-	double	sin_res[narc];
+	double	*tan_res;
 
 	i = 0;
 	ang_in = 360.0 / (double)narc;
 	ang_in *= M_PI/180;
+	tan_res = malloc(sizeof(double) * narc);
 	while (i < narc)
 	{
 		angle = i * ang_in;
-		printf("angle[%d]: %lf\n", i, angle);
-		cos_res[i] = cos(angle);
-		sin_res[i] = sin(angle);
+		tan_res[i] = tan(angle);
+		printf("tan = %lf\n", tan_res[i]);
 		i++;
 	}
-	table->cos_table = &cos_res[0];
-	table->sin_table = &sin_res[0];
+	table->tan_table = tan_res;
 }
 
+void	send_ray(t_table *table, t_ray ray, t_position position)
+{
+	
+}
+
+void	calcul_first_inter(t_table *table, t_ray ray, t_position position)
+{
+	if 
+}
+
+void	casting_rays(t_table *table, t_ray *rays, t_position position)
+{
+	int	ray;
+
+	ray = 0;
+	while (ray < N_RAY)
+	{
+		calcul_first_inter(table, rays[ray], position);
+		send_ray(table, rays[ray], position);
+		ray++;
+	}
+	
+}
 
 int	main ()
 {
-	int	i = 0;
-	t_table table;
+	t_table 	table;
+	t_position	position;
+	t_ray		rays[1080];
 
-	creat_trigonometric_tables(1000, &table);
-	printf("cos			sin\n");
-	while (i < 10000)
-	{
-		printf("%d %lf		%lf\n", i, table.cos_table[i], table.sin_table[i]);
-		i++;
-	}
-	// printf("%f\n", cos(1));
+	create_trigonometric_tables(4, &table);
+	init_player_position(&position);
+	casting_rays(&table, &rays[0], position);
 }
