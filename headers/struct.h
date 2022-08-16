@@ -6,17 +6,21 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 13:36:27 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:00:50 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define CELL_SIZE = 16
-# define FOV = 60
-# define N_RAY = 1080
-# define  = (60 / 1080) 
+# define CELL_SIZE 16
+# define FOV 60
+# define N_RAY 1080
+# define ang_in 0.05555555555
+# define N 0
+# define E 90
+# define S 180
+# define W 270
 
 enum meta_type
 {
@@ -27,14 +31,6 @@ enum meta_type
 	F = 4,
 	C = 5
 };
-
-enum player_v
-{
-	N = 0;
-	S = 180;
-	
-};
-
 
 
 typedef	struct s_position
