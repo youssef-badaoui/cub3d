@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 14:59:18 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/16 15:03:39 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 	
 }
 
-int	main ()
+start_exec(t_map *map)
 {
 	t_table 	table;
 	t_position	position;
 	t_ray		rays[1080];
 
 	create_trigonometric_tables(6480, &table);
-	init_player_position(&position);
+	init_player_position(map ,&position);
 	casting_rays(&table, &rays[0], position);
 }
