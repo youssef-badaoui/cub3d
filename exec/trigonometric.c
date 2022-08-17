@@ -6,7 +6,15 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/17 10:38:44 by ybadaoui         ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2022/08/17 10:32:47 by Ma3ert           ###   ########.fr       */
+=======
+/*   Updated: 2022/08/16 15:36:20 by ybadaoui         ###   ########.fr       */
+>>>>>>> 6529c364572fedae92acb14b66e4b0659c4bda62
+>>>>>>> ee4f6c7e9d30c3d10a91bc7b833c141a8540c1dd
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +46,20 @@ void	send_ray(t_table *table, t_ray ray, t_position position)
 
 void	calcul_first_inter(t_table *table, t_ray ray, t_position position)
 {
-	if ()
+	if (ray.ray_pov < 180 && ray.ray_pov >= 0)
+	{
+		ray.xpound = CELL_SIZE * position.x_cell;
+		ray.yi = table->tan_table[ray.index] * (ray.xpound - position.virtual_px) + position.virtual_py;
+	}
+	else
+	{
+		ray.xpound = CELL_SIZE * (position.x_cell - 1);
+		ray.yi = table->tan_table[ray.index] * (position.virtual_px - ray.xpound) + position.virtual_py;
+	}
+	if (ray.ray_pov > 270 || ray.ray_pov <= 90)
+		ray.ypound = (position.y_cell - 1) * CELL_SIZE;
+	else
+		ray.ypound = position.y_cell * CELL_SIZE;
 }
 
 double	calcul_ray_pov(t_position position, int ray)
@@ -58,7 +79,7 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (i < N_RAY)
 	{
 		rays[i].index = i;
@@ -67,7 +88,6 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		send_ray(table, rays[i], position);
 		i++;
 	}
-	
 }
 
 start_exec(t_map *map)
@@ -79,6 +99,7 @@ start_exec(t_map *map)
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map ,&position);
 	casting_rays(&table, &rays[0], position);
+<<<<<<< HEAD
 	mini_map(map, rays);
 }
 
@@ -98,5 +119,7 @@ void mini_map(t_map *map, t_ray *rays)
 }
 void	ft_draw_ray()
 {
+=======
+>>>>>>> ee4f6c7e9d30c3d10a91bc7b833c141a8540c1dd
 	
 }
