@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/17 11:18:33 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:52:49 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# define INTERSECTION_FOUND 1
 # define CELL_SIZE 16
 # define FOV 60
 # define HALF_FOV 30
@@ -33,27 +34,20 @@ enum meta_type
 	C = 5
 };
 
-typedef	struct s_position
-{
-	int		x_cell;			// x cord of the cell 
-	int		y_cell;			// y cord of the cell
-	int		virtual_px;		// x cord of the player in the virtual dimension
-	int		virtual_py;		// y cord of the player in the virtual dimension
-	double	pov;			// the point of view (obviously an angle)
-}				t_position;
-
 typedef struct s_ray
 {
 	double		ray_pov;	// the point of view of the ray
 	int			index;		// the index of angle of the ray
-	int			xi;			// the x cord of the verticatl intersection
-	int			yi;			// the y cord of the horizontal intersection
-	int			xpound;		// the x cord of the horizontal intersection 
-	int			ypound;		// the y cord of the vertical intersection
-	int			x_hit;		// the type of the cell the xray intersect with 
-	int			y_hit;		// the type of the cell the yray intersect with
+	double		xi;			// the x cord of the horizontal intersection
+	double		yi;			// the y cord of the vertical intersection
+	double		xbound;		// the x cord of the vertical intersection 
+	double		ybound;		// the y cord of the horizontal intersection
+	int			v_hit;		// the type of the cell for the vertical intersect
+	int			h_hit;		// the type of the cell for the horizontal intersect
 	int			v_distance;	// the distance between the position of the player
 	int			h_distance;	// and the intesection
+	double		x_step;		// step to get to the next x intersection 
+	double		y_step;		// step to get to the next y intersection
 	t_position	*player;	// info about the position of the player
 }				t_ray;
 
@@ -76,6 +70,17 @@ typedef struct s_map
 	int		F[3];
 	int		C[3];
 }	t_map;
+
+typedef	struct s_position
+{
+	int		x_cell;			// x cord of the cell 
+	int		y_cell;			// y cord of the cell
+	int		virtual_px;		// x cord of the player in the virtual dimension
+	int		virtual_py;		// y cord of the player in the virtual dimension
+	double	pov;			// the point of view (obviously an angle)
+	t_map	*map				// the map
+}				t_position;
+
 
 typedef struct s_mlx
 {

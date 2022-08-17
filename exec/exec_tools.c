@@ -18,6 +18,7 @@ void    init_player_position(t_map *map, t_position *pp)
 		pp->pov = S;
 	else if (v == 'W')
 		pp->pov = W;
+	pp->map = map;
 }
 
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
