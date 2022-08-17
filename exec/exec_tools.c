@@ -28,3 +28,8 @@ void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
 	dst = y * mlx->line_length + x * (mlx->bits_per_pixel / 8);
 	dst = color;
 }
+
+void full_data(t_data *data)
+{
+	data->
+}
