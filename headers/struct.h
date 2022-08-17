@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 15:23:16 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/17 10:38:18 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,21 @@ typedef struct s_map
 	int		F[3];
 	int		C[3];
 }	t_map;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*img;
+	void	*win;
+	void	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+} t_mlx;
+
+typedef struct s_data
+{
+	t_mlx *mlx;
+} t_data;
 
 #endif

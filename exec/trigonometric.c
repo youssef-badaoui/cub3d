@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/16 15:36:20 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/17 10:38:44 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,24 @@ start_exec(t_map *map)
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map ,&position);
 	casting_rays(&table, &rays[0], position);
+	mini_map(map, rays);
+}
+
+void mini_map(t_map *map, t_ray *rays)
+{
+	t_mlx mlx;
+	t_data data;
+	
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 400, 400, "call of duty");
+	mlx.img = mlx_new_image(mlx.mlx, 400, 400);
+	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+	
+	
+
+	
+}
+void	ft_draw_ray()
+{
+	
 }
