@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/17 10:38:18 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:18:33 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,11 @@ typedef struct s_mlx
 
 typedef struct s_data
 {
-	t_mlx *mlx;
+	t_mlx		*mlx;
+	t_map		*map;
+	t_table		*table;
+	t_ray		*ray;
+	t_position	*position;
 } t_data;
 
 #endif

@@ -6,15 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/17 10:38:44 by ybadaoui         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2022/08/17 10:32:47 by Ma3ert           ###   ########.fr       */
-=======
-/*   Updated: 2022/08/16 15:36:20 by ybadaoui         ###   ########.fr       */
->>>>>>> 6529c364572fedae92acb14b66e4b0659c4bda62
->>>>>>> ee4f6c7e9d30c3d10a91bc7b833c141a8540c1dd
+/*   Updated: 2022/08/17 11:22:31 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +91,6 @@ start_exec(t_map *map)
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map ,&position);
 	casting_rays(&table, &rays[0], position);
-<<<<<<< HEAD
 	mini_map(map, rays);
 }
 
@@ -108,18 +99,14 @@ void mini_map(t_map *map, t_ray *rays)
 	t_mlx mlx;
 	t_data data;
 	
+	full_data(&data);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 400, 400, "call of duty");
 	mlx.img = mlx_new_image(mlx.mlx, 400, 400);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
 	
-	
-
-	
 }
-void	ft_draw_ray()
+void	ft_draw_ray(t_data data)
 {
-=======
->>>>>>> ee4f6c7e9d30c3d10a91bc7b833c141a8540c1dd
 	
 }
