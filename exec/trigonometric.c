@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/17 11:22:31 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:56:53 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,20 @@ void mini_map(t_map *map, t_ray *rays)
 	t_mlx mlx;
 	t_data data;
 	
-	full_data(&data);
+	full_data(&data, &mlx, map, rays);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 400, 400, "call of duty");
 	mlx.img = mlx_new_image(mlx.mlx, 400, 400);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+	ft_draw_map();
+	ft_draw_ray();
 	
 }
-void	ft_draw_ray(t_data data)
+void	ft_draw_map()
+{
+	
+}
+void	ft_draw_ray(t_data *data)
 {
 	
 }
