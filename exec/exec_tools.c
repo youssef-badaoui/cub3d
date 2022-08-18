@@ -29,7 +29,47 @@ void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
 	dst = color;
 }
 
-void full_data(t_data *data)
+void full_data(t_data *data, table *table, t_position *position, t_ray *ray)
 {
-	data->
+	data->table = table;
+	data->ray = ray;
+	data->position = position;
+}
+
+void	ft_draw_ray(t_data *data, int i)
+{
+	t_ray	*ray;
+	int x0;
+	int x1;
+	int y0;
+	int y1;
+	int dx;
+	int dy;
+	int sx;
+	int sy;
+	int e2;
+	int err;
+
+	x0 = data->position->virtual_px;
+	y0 = data->position->virtual_py;
+	x1 = data->ray[i].xbound;
+	y1 = data->ray[i].ybound;
+	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
+   	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
+	err = dx + dy;
+	while (1)
+	{
+		ft_mlx_put_px(data->mlx, x0, y0, 0xD3FAD6);
+		e2 = 2 * err;
+		if(e2 >= dx)
+		{
+			if(x0 == x1) break;
+			err += dy; y0 += sy;
+		}
+		if(e2 <= dx)
+		{
+			if(y0 == y1) break;
+			err += dx; y0 += sy;
+		}
+	}
 }

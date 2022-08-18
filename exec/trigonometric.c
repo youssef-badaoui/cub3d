@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/17 18:12:44 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 10:58:07 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,34 +135,51 @@ start_exec(t_map *map)
 	t_table 	table;
 	t_position	position;
 	t_ray		rays[1080];
+	t_data		data;
 
+	full_data(&data, &table, &position, &rays);
+	data.map = map;
 	create_trigonometric_tables(6480, &table);
-	init_player_position(map ,&position);
+	init_player_position(map, &position);
 	casting_rays(&table, &rays[0], position);
-	mini_map(map, rays);
+	drawing(&data);
 }
 
-void mini_map(t_map *map, t_ray *rays)
+void drawing(t_data *data)
 {
 	t_mlx mlx;
-	t_data data;
 	
-	full_data(&data, &mlx, map, rays);
+	data->mlx = &mlx;
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 430, 430, "call of duty");
 	mlx.img = mlx_new_image(mlx.mlx, 16, 16);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
-	ft_draw_map();
-	ft_draw_ray();
-	
+	ft_draw_map(t_data *data);
+	mlx_destroy_image(data->mlx, data->mlx->img);
+	mlx.img = mlx_new_image(data->mlx, 430, 430);
+	while(i < 1080)
+		ft_draw_ray(data, i++);
 }
-void	ft_draw_map(t_mlx *mlx)
+
+void	ft_draw_map(t_data *data)
 {
-	ft_color_image()
-}
-void	ft_draw_ray(t_data *data)
-{
-	
+	int i;
+
+	i = 0;
+	while(i < data->map->map_h)
+	{
+		j = 0;
+		while(data->map->map_tab[i][j])
+		{
+			if(data->map->map_tab[i][j] == '1')
+				ft_color_image(data->mlx,	WHITE);
+			else
+				ft_color_image(data->mlx, RED);
+			mlx_put_image_to_window(data->mlx, data->mlx->win, data->mlx->img, j * CELL_SIZE, i * CELL_SIZE);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	ft_color_image(t_mlx *mlx,  int color)
@@ -184,6 +201,6 @@ void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = y * mlx->line_length + x * (mlx->bits_per_pixel / 8);
+	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
 	dst = color;
 }
