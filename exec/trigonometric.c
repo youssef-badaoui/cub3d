@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 13:39:59 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:09:05 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,27 +129,6 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 	}
 }
 
-void drawing(t_data *data)
-{
-	t_mlx mlx;
-	int i;
-	
-	i = 0;
-	data->mlx = &mlx;
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 430, 430, "call of duty");
-	mlx.img = mlx_new_image(mlx.mlx, 16, 16);
-	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
-	ft_draw_map(data);
-	// mlx_destroy_image(data->mlx, data->mlx->img);
-	mlx.img = mlx_new_image(data->mlx, 430, 430);
-	while(i < 1080)
-	{
-		printf("hoooolaaaaaa2!\n");
-		ft_draw_ray(data, i++);
-	}
-}
-
 void	ft_draw_map(t_data *data)
 {
 	int i;
@@ -163,14 +142,45 @@ void	ft_draw_map(t_data *data)
 		{
 			if(data->map->map_tab[i][j] == '1')
 				ft_color_image(data->mlx, 0xFFFFFFF);
-			else
+			else if	(data->map->map_tab[i][j] == '0')
 				ft_color_image(data->mlx, 0xa32424);
-			mlx_put_image_to_window(data->mlx, data->mlx->win, data->mlx->img, j * CELL_SIZE, i * CELL_SIZE);
+			if(data->map->map_tab[i][j] == '1' || data->map->map_tab[i][j] == '0')
+				mlx_put_image_to_window(data->mlx, data->mlx->win, data->mlx->img, j * CELL_SIZE, i * CELL_SIZE);	
 			j++;
 		}
 		i++;
 	}
 }
+
+void drawing(t_data *data)
+{
+	t_mlx mlx;
+	int i;
+	
+	i = 0;
+	data->mlx = &mlx;
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, (data->map->map_w - 1) * CELL_SIZE, data->map->map_h * CELL_SIZE, "call of duty");
+	mlx.img = mlx_new_image(mlx.mlx, (data->map->map_w - 1) * CELL_SIZE, data->map->map_h * CELL_SIZE);
+	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+	ft_draw_map(data);
+	mlx.img = mlx_new_image(mlx.mlx, 100, 100);
+	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+	// while(i < 1080)
+	// {
+	// 	// printf("hoooolaaaaaa2!\n");
+
+	// 	 printf("xi = %lf  yi == %lf\n", data->ray[i].xi, data->ray[i].yi);
+	// 	 printf("xbound = %lf  ybound == %lf\n", data->ray[i].xbound, data->ray[i].ybound);
+		ft_draw_ray(data, i);
+	// 	i++;
+	// }
+	
+	printf("drawing done!\n");
+	mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, data->mlx->img, 0,0);
+	mlx_loop(data->mlx->mlx);
+}
+
 
 void	ft_color_image(t_mlx *mlx,  int color)
 {
@@ -178,10 +188,10 @@ void	ft_color_image(t_mlx *mlx,  int color)
 	int y;
 
 	x = 0;
-	y = 0;
-	while(x < 16)
+	while(x < CELL_SIZE)
 	{
-		while(y < 16)
+		y = 0;
+		while(y < CELL_SIZE)
 			ft_mlx_put_px(mlx, x, y++, color);
 		x++;
 	}
