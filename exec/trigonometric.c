@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 11:31:31 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:30:00 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,22 +129,6 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 	}
 }
 
-int start_exec(t_map *map)
-{
-	t_table 	table;
-	t_position	position;
-	t_ray		rays[1080];
-	t_data		data;
-
-	full_data(&data, &table, &position, rays);
-	data.map = map;
-	create_trigonometric_tables(6480, &table);
-	init_player_position(map, &position);
-	casting_rays(&table, &rays[0], position);
-	drawing(&data);
-	return (1);
-}
-
 void drawing(t_data *data)
 {
 	t_mlx mlx;
@@ -157,10 +141,13 @@ void drawing(t_data *data)
 	mlx.img = mlx_new_image(mlx.mlx, 16, 16);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
 	ft_draw_map(data);
-	mlx_destroy_image(data->mlx, data->mlx->img);
+	// mlx_destroy_image(data->mlx, data->mlx->img);
 	mlx.img = mlx_new_image(data->mlx, 430, 430);
 	while(i < 1080)
+	{
+		printf("hoooolaaaaaa2!\n");
 		ft_draw_ray(data, i++);
+	}
 }
 
 void	ft_draw_map(t_data *data)
@@ -196,16 +183,8 @@ void	ft_color_image(t_mlx *mlx,  int color)
 	{
 		while(y < 16)
 			ft_mlx_put_px(mlx, x, y++, color);
-		y++;
+		x++;
 	}
-}
-
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
-	dst = color;
 }
 
 int start_exec(t_map *map)
@@ -220,6 +199,7 @@ int start_exec(t_map *map)
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map, &position);
 	casting_rays(&table, &rays[0], position);
+	
 	drawing(&data);
 	return (1);
 }

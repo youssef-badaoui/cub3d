@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 11:29:03 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:35:41 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_map
 	int		pn; 	//player number;
 	int		px; 	//player x;
 	int		py; 	//player y;
+	int		pv;		//player vision;
 	char	*meta_data[6];
 	int		F[3];
 	int		C[3];
