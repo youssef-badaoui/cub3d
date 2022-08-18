@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 11:32:01 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:55:45 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	ft_draw_map(t_data *data);
 void	ft_color_image(t_mlx *mlx,  int color);
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color);
 int		start_exec(t_map *map);
+void	casting_rays(t_table *table, t_ray *rays, t_position position);
 #endif
 	
