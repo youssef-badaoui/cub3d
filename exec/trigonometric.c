@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 10:58:07 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:31:31 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,18 +99,18 @@ void	calcul_next_inter(t_table *table, t_ray *ray, t_position position)
 	ray->ybound += ray->y_step;
 }
 
-void	send_ray(t_table *table, t_ray *ray, t_position position)
-{
-	int	inter;
+// void	send_ray(t_table *table, t_ray *ray, t_position position)
+// {
+// 	int	inter;
 
-	inter = 0;
-	while (inter != INTERSECTION_FOUND)
-	{
-		if (check_cell_type(ray, position))
-			calcul_distance();
-		calcul_next_inter(table, ray, position);
-	}
-}
+// 	inter = 0;
+// 	while (inter != INTERSECTION_FOUND)
+// 	{
+// 		if (check_cell_type(ray, position))
+// 			calcul_distance();
+// 		calcul_next_inter(table, ray, position);
+// 	}
+// }
 
 void	casting_rays(t_table *table, t_ray *rays, t_position position)
 {
@@ -122,39 +122,41 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].index = i;
 		rays[i].ray_pov = calcul_ray_pov(position, i);
 		calcul_first_inter(table, &rays[i], position);
-
 		rays[i].h_hit = 0;
 		rays[i].v_hit = 0;
-		send_ray(table, &rays[i], position);
+		// send_ray(table, &rays[i], position);
 		i++;
 	}
 }
 
-start_exec(t_map *map)
+int start_exec(t_map *map)
 {
 	t_table 	table;
 	t_position	position;
 	t_ray		rays[1080];
 	t_data		data;
 
-	full_data(&data, &table, &position, &rays);
+	full_data(&data, &table, &position, rays);
 	data.map = map;
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map, &position);
 	casting_rays(&table, &rays[0], position);
 	drawing(&data);
+	return (1);
 }
 
 void drawing(t_data *data)
 {
 	t_mlx mlx;
+	int i;
 	
+	i = 0;
 	data->mlx = &mlx;
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 430, 430, "call of duty");
 	mlx.img = mlx_new_image(mlx.mlx, 16, 16);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
-	ft_draw_map(t_data *data);
+	ft_draw_map(data);
 	mlx_destroy_image(data->mlx, data->mlx->img);
 	mlx.img = mlx_new_image(data->mlx, 430, 430);
 	while(i < 1080)
@@ -164,6 +166,7 @@ void drawing(t_data *data)
 void	ft_draw_map(t_data *data)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while(i < data->map->map_h)
@@ -172,9 +175,9 @@ void	ft_draw_map(t_data *data)
 		while(data->map->map_tab[i][j])
 		{
 			if(data->map->map_tab[i][j] == '1')
-				ft_color_image(data->mlx,	WHITE);
+				ft_color_image(data->mlx, 0xFFFFFFF);
 			else
-				ft_color_image(data->mlx, RED);
+				ft_color_image(data->mlx, 0xa32424);
 			mlx_put_image_to_window(data->mlx, data->mlx->win, data->mlx->img, j * CELL_SIZE, i * CELL_SIZE);
 			j++;
 		}
@@ -203,4 +206,20 @@ void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
 
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
 	dst = color;
+}
+
+int start_exec(t_map *map)
+{
+	t_table 	table;
+	t_position	position;
+	t_ray		rays[1080];
+	t_data		data;
+
+	full_data(&data, &table, &position, rays);
+	data.map = map;
+	create_trigonometric_tables(6480, &table);
+	init_player_position(map, &position);
+	casting_rays(&table, &rays[0], position);
+	drawing(&data);
+	return (1);
 }

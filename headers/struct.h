@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 10:42:32 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:29:03 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define E 90
 # define S 180
 # define W 270
-# define WHITE FFFFFFF
-# define RED a32424
+# define WHITE #FFFFFFF
+# define RED #a32424
 
 enum meta_type
 {
@@ -35,6 +35,30 @@ enum meta_type
 	F = 4,
 	C = 5
 };
+
+typedef struct s_map
+{
+	char	**map_tab;
+	char	*map_name;
+	int		map_h;	//map high
+	int		map_w; 	//map width 
+	int		pn; 	//player number;
+	int		px; 	//player x;
+	int		py; 	//player y;
+	char	*meta_data[6];
+	int		F[3];
+	int		C[3];
+}	t_map;
+
+typedef	struct s_position
+{
+	int		x_cell;			// x cord of the cell 
+	int		y_cell;			// y cord of the cell
+	int		virtual_px;		// x cord of the player in the virtual dimension
+	int		virtual_py;		// y cord of the player in the virtual dimension
+	double	pov;			// the point of view (obviously an angle)
+	t_map	*map;				// the map
+}				t_position;
 
 typedef struct s_ray
 {
@@ -58,31 +82,6 @@ typedef struct s_table
 {
 	double	*tan_table;
 }				t_table;
-
-typedef struct s_map
-{
-	char	**map_tab;
-	char	*map_name;
-	int		map_h;	//map high
-	int		map_w; 	//map width 
-	int		pn; 	//player number;
-	int		px; 	//player x;
-	int		py; 	//player y;
-	char	*meta_data[6];
-	int		F[3];
-	int		C[3];
-}	t_map;
-
-typedef	struct s_position
-{
-	int		x_cell;			// x cord of the cell 
-	int		y_cell;			// y cord of the cell
-	int		virtual_px;		// x cord of the player in the virtual dimension
-	int		virtual_py;		// y cord of the player in the virtual dimension
-	double	pov;			// the point of view (obviously an angle)
-	t_map	*map				// the map
-}				t_position;
-
 
 typedef struct s_mlx
 {
