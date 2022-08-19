@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 11:45:40 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:19:54 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	create_trigonometric_tables(int narc, t_table *table)
 	table->sin_table = sin_res;
 }
 
-
 void	ft_draw_map(t_data *data)
 {
 	int i;
@@ -60,7 +59,7 @@ void	ft_draw_map(t_data *data)
 		i++;
 	}
 	printf("%d    %d\n", data->position->virtual_px, data->position->virtual_py);
-	ft_mlx_put_px(&data->mlx->mlx, data->position->virtual_px, data->position->virtual_py, 0x0);
+	// ft_mlx_put_px(&data->mlx->mlx, data->position->virtual_px, data->position->virtual_py, 0x0);
 }
 
 void drawing(t_data *data)
@@ -118,7 +117,6 @@ int start_exec(t_map *map)
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map, &position);
 	casting_rays(&table, &rays[0], position);
-	
 	drawing(&data);
 	return (1);
 }
