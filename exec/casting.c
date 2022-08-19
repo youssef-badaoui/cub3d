@@ -6,11 +6,11 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 17:09:36 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/19 11:19:22 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../headers/cub3d.h"
 
 double	calcul_ray_pov(t_position position, int ray)
 {

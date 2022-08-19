@@ -24,12 +24,11 @@ void    init_player_position(t_map *map, t_position *pp)
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
 {
 	char	*dst;
-
-	dst = y * mlx->line_length + x * (mlx->bits_per_pixel / 8);
-	dst = color;
+	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
-void full_data(t_data *data, table *table, t_position *position, t_ray *ray)
+void full_data(t_data *data, t_table *table, t_position *position, t_ray *ray)
 {
 	data->table = table;
 	data->ray = ray;
@@ -38,7 +37,6 @@ void full_data(t_data *data, table *table, t_position *position, t_ray *ray)
 
 void	ft_draw_ray(t_data *data, int i)
 {
-	t_ray	*ray;
 	int x0;
 	int x1;
 	int y0;
@@ -52,24 +50,28 @@ void	ft_draw_ray(t_data *data, int i)
 
 	x0 = data->position->virtual_px;
 	y0 = data->position->virtual_py;
-	x1 = data->ray[i].xbound;
-	y1 = data->ray[i].ybound;
+	x1 = (int)data->ray[i].xi;
+	y1 = (int)data->ray[i].ybound;
 	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
    	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
 	err = dx + dy;
-	while (1)
+	while (y0 < 100)
 	{
-		ft_mlx_put_px(data->mlx, x0, y0, 0xD3FAD6);
+		
+		ft_mlx_put_px(data->mlx, x0, y0, 0x00000000);
+		// printf("x0 = %d y0 = %d\n", x0, y0);
 		e2 = 2 * err;
 		if(e2 >= dx)
 		{
 			if(x0 == x1) break;
-			err += dy; y0 += sy;
+			err += dy; x0 += sx;
 		}
 		if(e2 <= dx)
 		{
 			if(y0 == y1) break;
 			err += dx; y0 += sy;
 		}
+
 	}
+	printf("drawing ray done\n");
 }
