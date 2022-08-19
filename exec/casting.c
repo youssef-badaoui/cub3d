@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/18 11:51:35 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/18 17:09:36 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ void	calcul_first_inter(t_table *table, t_ray *ray, t_position position)
 		+ position.virtual_px;
 }
 
+void	calcul_distance(t_table *table, t_ray *ray, t_position position)
+{
+	ray->h_distance = ray->xbound / table->sin_table[ray->index];
+	ray->v_distance = ray->ybound / table->cos_table[ray->index];
+}
+
 void	send_ray(t_table *table, t_ray *ray, t_position position)
 {
 	int	inter;
@@ -82,7 +88,7 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 	{
 		inter = check_cell_type(ray, position);
 		if (inter == INTERSECTION_FOUND)
-			calcul_distance();
+			calcul_distance(table, ray, position);
 		ray->xbound += ray->x_step;
 		ray->ybound += ray->y_step;
 		ray->xi = ((ray->ybound - position.virtual_py) * table->tan_table[ray->index]) \
