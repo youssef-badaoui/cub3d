@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 11:19:22 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/19 11:40:17 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_cell_type(t_ray *ray, t_position position)
 	xcell_v = ray->xbound / CELL_SIZE;
 	ycell_v = ray->yi / CELL_SIZE;
 	ycell_h = ray->ybound / CELL_SIZE;
-	ycell_h = ray->xi / CELL_SIZE;
+	xcell_h = ray->xi / CELL_SIZE;
 	if (position.map->map_tab[xcell_h][ycell_h] == '1')
 		ray->h_hit = INTERSECTION_FOUND;
 	if (position.map->map_tab[xcell_v][ycell_v] == '1')
@@ -73,7 +73,7 @@ void	calcul_first_inter(t_table *table, t_ray *ray, t_position position)
 		+ position.virtual_px;
 }
 
-void	calcul_distance(t_table *table, t_ray *ray, t_position position)
+void	calcul_distance(t_table *table, t_ray *ray)
 {
 	ray->h_distance = ray->xbound / table->sin_table[ray->index];
 	ray->v_distance = ray->ybound / table->cos_table[ray->index];
@@ -88,7 +88,7 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 	{
 		inter = check_cell_type(ray, position);
 		if (inter == INTERSECTION_FOUND)
-			calcul_distance(table, ray, position);
+			calcul_distance(table, ray);
 		ray->xbound += ray->x_step;
 		ray->ybound += ray->y_step;
 		ray->xi = ((ray->ybound - position.virtual_py) * table->tan_table[ray->index]) \
