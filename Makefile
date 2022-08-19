@@ -6,7 +6,7 @@
 #    By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 18:27:34 by Ma3ert            #+#    #+#              #
-#    Updated: 2022/08/19 11:36:11 by Ma3ert           ###   ########.fr        #
+#    Updated: 2022/08/19 12:14:16 by Ma3ert           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,5 +38,9 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+hoho: all clean
+	clear
+	./cub3d maps/smap.cub
 
 re: fclean all
