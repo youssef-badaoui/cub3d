@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 11:38:40 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:48:37 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ int start_exec(t_map *map)
 	create_trigonometric_tables(6480, &table);
 	init_player_position(map, &position);
 	casting_rays(&table, &rays[0], position);
-	drawing(&data);
+	// drawing(&data);
 	return (1);
 }

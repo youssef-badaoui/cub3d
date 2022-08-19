@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 11:41:11 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:15:47 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_ray
 	int			h_distance;	// and the intesection
 	double		x_step;		// step to get to the next x intersection 
 	double		y_step;		// step to get to the next y intersection
+	int			quadrant;	// in which quadrant the ray is casted
 	t_position	*player;	// info about the position of the player
 }				t_ray;
 
