@@ -50,15 +50,15 @@ void	ft_draw_ray(t_data *data, int i)
 
 	x0 = data->position->virtual_px;
 	y0 = data->position->virtual_py;
-	x1 = (int)data->ray[i].xi;
-	y1 = (int)data->ray[i].ybound;
+	x1 = data->ray[i].xbound;
+	y1 = data->ray[i].yi;
 	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
    	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
 	err = dx + dy;
 	while (y0 < 100)
 	{
 		
-		ft_mlx_put_px(data->mlx, x0, y0, 0x00000000);
+		ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
 		// printf("x0 = %d y0 = %d\n", x0, y0);
 		e2 = 2 * err;
 		if(e2 >= dx)

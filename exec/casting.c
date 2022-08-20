@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 11:40:17 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:48:06 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ double	calcul_ray_pov(t_position position, int ray)
 	ray_pov = frif + ray * ANG_IN_D;
 	if (ray_pov >= 360)
 		ray_pov = ray_pov - 360;
+	else if (ray_pov < 0)
+		ray_pov = ray_pov + 360;
 	return (ray_pov);
-	
 }
 
 int	check_cell_type(t_ray *ray, t_position position)
@@ -45,32 +46,51 @@ int	check_cell_type(t_ray *ray, t_position position)
 	return (0);
 }
 
-void	calcul_first_inter(t_table *table, t_ray *ray, t_position position)
+void	calcul_first_vertical(t_table *table, t_ray *ray, t_position position)
 {
+	double	diff;
+
+	diff = position.virtual_py;
 	if (ray->ray_pov < 180 && ray->ray_pov >= 0)
 	{
 		ray->xbound = CELL_SIZE * position.x_cell;
 		ray->x_step = CELL_SIZE;
+		ray->yi = ((ray->xbound - position.virtual_px) / table->tan_table[ray->index]);
 	}
 	else
 	{
 		ray->xbound = CELL_SIZE * (position.x_cell - 1);
 		ray->x_step = CELL_SIZE * -1;	
+		ray->yi = ((position.virtual_px - ray->xbound) / table->tan_table[ray->index]);
 	}
-	ray->yi = ((ray->xbound - position.virtual_px) / table->tan_table[ray->index]) \
-	 + position.virtual_py;
+	if (ray->quadrant == 4 || ray->quadrant == 1)
+		ray->yi = diff - ray->yi;
+	else
+		ray->yi = diff + ray->yi;
+}
+
+void	calcul_first_horizontal(t_table *table, t_ray *ray, t_position position)
+{
+	double	diff;
+
+	diff = position.virtual_px;
 	if (ray->ray_pov > 270 || ray->ray_pov <= 90)
 	{
 		ray->y_step = CELL_SIZE * -1;
 		ray->ybound = (position.y_cell - 1) * CELL_SIZE;
+		ray->xi = ((position.virtual_py - ray->ybound) * table->tan_table[ray->index]);
 	}
 	else
 	{
 		ray->y_step = CELL_SIZE;
 		ray->ybound = position.y_cell * CELL_SIZE;
+		ray->xi = ((ray->ybound - position.virtual_py) * table->tan_table[ray->index]);
 	}
-	ray->xi = ((ray->ybound - position.virtual_py) * table->tan_table[ray->index]) \
-		+ position.virtual_px;
+	if (ray->quadrant == 3 || ray->quadrant == 4)
+		ray->xi = diff - ray->xi;
+	else
+		ray->xi = diff + ray->xi;
+	ray->xi += diff;
 }
 
 void	calcul_distance(t_table *table, t_ray *ray)
@@ -98,19 +118,49 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 	}
 }
 
+int	calcul_ray_angle(t_ray *ray, double ray_pov)
+{
+	int		index;
+	double	ray_angle;
+
+	ray_angle = ray_pov;
+	ray->quadrant = 1;
+	if (ray_pov >= 90 && ray_pov < 180)
+	{
+		ray->quadrant = 2;
+		ray_angle = ray_pov - 90.0;
+	}
+	else if (ray_pov >= 180 && ray_pov < 270)
+	{
+		ray->quadrant = 3;
+		ray_angle = ray_pov - 180.0;
+	}
+	else if (ray_pov >= 270 && ray_pov < 360)
+	{
+		ray->quadrant = 4;
+		ray_angle = ray_pov - 270.0;
+	}
+	index = ray_angle / ANG_IN_D;
+	return (index);
+}
+
 void	casting_rays(t_table *table, t_ray *rays, t_position position)
 {
 	int	i;
 
 	i = 1;
+	printf("(%d, %d) --> (%d, %d) <%lf>\n", position.x_cell, position.y_cell, position.virtual_px, position.virtual_py, position.pov);
 	while (i < N_RAY)
 	{
-		rays[i].index = i;
 		rays[i].ray_pov = calcul_ray_pov(position, i);
-		calcul_first_inter(table, &rays[i], position);
-		rays[i].h_hit = 0;
-		rays[i].v_hit = 0;
-		send_ray(table, &rays[i], position);
+		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);
+		calcul_first_vertical(table, &rays[i], position);
+		calcul_first_horizontal(table, &rays[i], position);
+		printf("ray pov: %lf\nxi: %lf\nybound: %lf\ny_step: %lf\nxpound: %lf\nyi: %lf\nx_step: %lf\n", 
+			rays[i].ray_pov, rays[i].xi, rays[i].ybound, rays[i].y_step, rays[i].xbound, rays[i].yi, rays[i].x_step);
+		// rays[i].h_hit = 0;
+		// rays[i].v_hit = 0;
+		// send_ray(table, &rays[i], position);
 		i++;
 	}
 }

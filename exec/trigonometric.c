@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 12:19:54 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/20 08:14:10 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_draw_map(t_data *data)
 		{
 			if(data->map->map_tab[i][j] == '1')
 				ft_color_image(data->mlx, 0xFFFFFFF, i, j);
-			else if	(data->map->map_tab[i][j] == '0'|| data->map->map_tab[i][j] == 'N')
+			else if	(data->map->map_tab[i][j] == '0' || data->map->map_tab[i][j] == 'N')
 				ft_color_image(data->mlx, 0xa32424, i, j);
 			j++;
 		}
@@ -81,7 +81,7 @@ void drawing(t_data *data)
 		 printf("xi = %lf  yi == %lf\n", data->ray[i].xi, data->ray[i].yi);
 		 printf("xbound = %lf  ybound == %lf\n", data->ray[i].xbound, data->ray[i].ybound);
 		ft_draw_ray(data, i);
-		i++;
+		i += 100;
 	}
 	
 	printf("drawing done!\n");
@@ -100,7 +100,13 @@ void	ft_color_image(t_mlx *mlx,  int color, int i , int j)
 	{
 		y = 0;
 		while(y < CELL_SIZE)
-			ft_mlx_put_px(mlx, x + j * CELL_SIZE, i * CELL_SIZE + y++ , color);
+		{
+			if(x == 0 || y == 0)
+				ft_mlx_put_px(mlx, x + j * CELL_SIZE, i * CELL_SIZE + y++ , 0x0);
+			else
+				ft_mlx_put_px(mlx, x + j * CELL_SIZE, i * CELL_SIZE + y++ , color);
+		}
+			
 		x++;
 	}
 }

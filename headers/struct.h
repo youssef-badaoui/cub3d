@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 12:19:47 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/20 08:03:10 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 16
+# define CELL_SIZE 27
 # define FOV 60
 # define HALF_FOV 30
 # define N_RAY 1080
@@ -75,6 +75,7 @@ typedef struct s_ray
 	int			h_distance;	// and the intesection
 	double		x_step;		// step to get to the next x intersection 
 	double		y_step;		// step to get to the next y intersection
+	int			quadrant;	// in which quadrant the ray is casted
 	t_position	*player;	// info about the position of the player
 }				t_ray;
 
