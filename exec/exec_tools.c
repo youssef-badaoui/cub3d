@@ -50,8 +50,8 @@ void	ft_draw_ray(t_data *data, int i)
 
 	x0 = data->position->virtual_px;
 	y0 = data->position->virtual_py;
-	x1 = data->ray[i].xi;
-	y1 = data->ray[i].ybound;
+	x1 = data->ray[i].xbound;
+	y1 = data->ray[i].yi;
 	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
    	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
 	err = dx + dy;
