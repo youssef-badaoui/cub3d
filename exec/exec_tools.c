@@ -59,11 +59,11 @@ void	ft_draw_ray(t_data *data, int i)
 	{
 		if(x0 < CELL_SIZE * data->map->map_w && y0 < CELL_SIZE * data->map->map_h )
 			ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
-		// else
-		// {
-		// 	printf("a = %d      b = %d\n", CELL_SIZE * data->map->map_w , CELL_SIZE * data->map->map_h);
-		// 	printf("x1 = %d      y1 = %d\n", x1 , y1);
-		// }
+		else
+		{
+			printf("a = %d      b = %d\n", CELL_SIZE * data->map->map_w , CELL_SIZE * data->map->map_h);
+			printf("x1 = %d      y1 = %d\n", x1 , y1);
+		}
 		e2 = 2 * err;
 		if(e2 >= dx)
 		{
