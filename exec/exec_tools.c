@@ -21,7 +21,7 @@ void    init_player_position(t_map *map, t_position *pp)
 	pp->map = map;
 }
 
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color)
+void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color)
 {
 	char	*dst;
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
@@ -50,16 +50,20 @@ void	ft_draw_ray(t_data *data, int i)
 
 	x0 = data->position->virtual_px;
 	y0 = data->position->virtual_py;
-	x1 = data->ray[i].xbound;
-	y1 = data->ray[i].yi;
+	x1 = data->ray[i].xi;
+	y1 = data->ray[i].ybound;
 	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
    	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
 	err = dx + dy;
-	while (y0 < 100)
+	while (1)
 	{
-		
-		ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
-		// printf("x0 = %d y0 = %d\n", x0, y0);
+		if(x0 < CELL_SIZE * data->map->map_w && y0 < CELL_SIZE * data->map->map_h )
+			ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
+		// else
+		// {
+		// 	printf("a = %d      b = %d\n", CELL_SIZE * data->map->map_w , CELL_SIZE * data->map->map_h);
+		// 	printf("x1 = %d      y1 = %d\n", x1 , y1);
+		// }
 		e2 = 2 * err;
 		if(e2 >= dx)
 		{
@@ -73,5 +77,4 @@ void	ft_draw_ray(t_data *data, int i)
 		}
 
 	}
-	printf("drawing ray done\n");
 }

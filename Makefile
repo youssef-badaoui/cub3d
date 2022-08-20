@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+         #
+#    By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 18:27:34 by Ma3ert            #+#    #+#              #
-#    Updated: 2022/08/19 19:01:49 by Ma3ert           ###   ########.fr        #
+#    Updated: 2022/08/20 11:39:06 by ybadaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,6 @@ fclean: clean
 	rm -f $(NAME)
 
 hoho: all clean
-	clear && ./$(NAME) maps/smap.cub
+	clear && ./$(NAME) maps/map.cub
 
 re: fclean all

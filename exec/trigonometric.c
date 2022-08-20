@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:00:35 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/20 08:14:10 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:03:35 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,13 @@ void	ft_draw_map(t_data *data)
 		while(data->map->map_tab[i][j])
 		{
 			if(data->map->map_tab[i][j] == '1')
-				ft_color_image(data->mlx, 0xFFFFFFF, i, j);
+				ft_color_image(data->mlx,  0x7b7d7d  , i, j);
 			else if	(data->map->map_tab[i][j] == '0' || data->map->map_tab[i][j] == 'N')
-				ft_color_image(data->mlx, 0xa32424, i, j);
+				ft_color_image(data->mlx,   0x58d68d , i, j);
 			j++;
 		}
 		i++;
 	}
-	printf("%d    %d\n", data->position->virtual_px, data->position->virtual_py);
-	// ft_mlx_put_px(&data->mlx->mlx, data->position->virtual_px, data->position->virtual_py, 0x0);
 }
 
 void drawing(t_data *data)
@@ -73,17 +71,14 @@ void drawing(t_data *data)
 	mlx.win = mlx_new_window(mlx.mlx, (data->map->map_w - 1) * CELL_SIZE, data->map->map_h * CELL_SIZE, "call of duty");
 	mlx.img = mlx_new_image(mlx.mlx, (data->map->map_w - 1) * CELL_SIZE, data->map->map_h * CELL_SIZE);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+	printf("drawing start!\n");
 	ft_draw_map(data);
 	while(i < 1080)
 	{
-		// printf("hoooolaaaaaa2!\n");
-
-		 printf("xi = %lf  yi == %lf\n", data->ray[i].xi, data->ray[i].yi);
-		 printf("xbound = %lf  ybound == %lf\n", data->ray[i].xbound, data->ray[i].ybound);
 		ft_draw_ray(data, i);
-		i += 100;
+		i++;
 	}
-	
+	ft_mlx_put_px(&mlx , data->position->virtual_px, data->position->virtual_py, 0x0);
 	printf("drawing done!\n");
 	mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, data->mlx->img, 0,0);
 	mlx_loop(data->mlx->mlx);

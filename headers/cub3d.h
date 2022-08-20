@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/19 08:01:13 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/20 10:56:00 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,13 @@ int		check_line(char **map, char *s, int row, int map_h);
 int	    ft_get_path(char *line, int from, int meta_type, t_map *map);
 int 	check_color(char *color, int pos);
 int	    check_mapex(t_map *map);
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color);
 void	ft_draw_ray(t_data *data, int i);
 void    full_data(t_data *data, t_table *table, t_position *position, t_ray *ray);
 void    init_player_position(t_map *map, t_position *pp);
 void	drawing(t_data *data);
 void	ft_draw_map(t_data *data);
 void	ft_color_image(t_mlx *mlx,  int color, int i, int j);
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, int color);
+void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color);
 int		start_exec(t_map *map);
 void	casting_rays(t_table *table, t_ray *rays, t_position position);
 #endif
