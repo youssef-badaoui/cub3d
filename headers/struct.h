@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/20 13:14:22 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:43:31 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 32
+# define CELL_SIZE 60
 # define FOV 60
 # define HALF_FOV 30
 # define N_RAY 1080
@@ -40,12 +40,12 @@ typedef struct s_map
 {
 	char	**map_tab;
 	char	*map_name;
-	int		map_h;	//map high
-	int		map_w; 	//map width 
-	int		pn; 	//player number;
-	int		px; 	//player x;
-	int		py; 	//player y;
-	int		pv;		//player vision;
+	int		map_h;			// map high
+	int		map_w;	 		// map width 
+	int		pn; 			// player number;
+	int		px; 			// player x;
+	int		py; 			// player y;
+	int		pv;				// player vision;
 	char	*meta_data[6];
 	int		F[3];
 	int		C[3];
@@ -58,11 +58,15 @@ typedef	struct s_position
 	int		virtual_px;		// x cord of the player in the virtual dimension
 	int		virtual_py;		// y cord of the player in the virtual dimension
 	double	pov;			// the point of view (obviously an angle)
-	t_map	*map;				// the map
+	t_map	*map;			// the map
 }				t_position;
 
 typedef struct s_ray
 {
+	int			v_skip;		// to skip the vertical calculation
+	int			h_skip;		// to skip the horizontal calculation
+	double		x_save;		// the x cord of the intersection with a wall
+	double		y_save;		// the y cord of the intersection with a wall
 	double		ray_pov;	// the point of view of the ray
 	int			index;		// the index of angle of the ray
 	double		xi;			// the x cord of the horizontal intersection
