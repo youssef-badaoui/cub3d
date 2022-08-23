@@ -1,0 +1,2 @@
+printf("ray pov: %lf (%d)[%d]\nxi: %lf ybound: %lf y_step: %lf\n\nxpound: %lf yi: %lf x_step: %lf\n", 
+			ray->ray_pov, ray->quadrant, ray->index, ray->xi, ray->ybound, ray->y_step, ray->xbound, ray->yi, ray->x_step);

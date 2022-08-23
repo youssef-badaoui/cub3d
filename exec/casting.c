@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/22 15:48:53 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:45:49 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	calcul_first_vertical(t_table *table, t_ray *ray, t_position position)
 	double	side;
 
 	diff = position.virtual_py;
+	side = 0.0;
 	if (ray->ray_pov < 180 && ray->ray_pov >= 0)
 	{
 		ray->xbound = CELL_SIZE * (position.x_cell + 1);
@@ -116,20 +117,15 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 	i = 0;
 	while (i < N_RAY)
 	{
-		printf("(%d, %d) --> (%d, %d) <%lf>\n", position.x_cell, position.y_cell, position.virtual_px, position.virtual_py, position.pov);
 		rays[i].ray_pov = calcul_ray_pov(position, i);
 		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);
 		calcul_first_vertical(table, &rays[i], position);
 		calcul_first_horizontal(table, &rays[i], position);
-		// printf("ray pov: %lf (%d)[%d]\nxi: %lf ybound: %lf y_step: %lf\n\nxpound: %lf yi: %lf x_step: %lf\n", 
-		// 	rays[i].ray_pov, rays[i].quadrant, rays[i].index, rays[i].xi, rays[i].ybound, rays[i].y_step, rays[i].xbound, rays[i].yi, rays[i].x_step);
 		rays[i].h_hit = 0;
 		rays[i].v_hit = 0;
 		rays[i].h_skip = 0;
 		rays[i].v_skip = 0;
-		printf("---------------------s--------------------\n");
 		send_ray(table, &rays[i], position);
-		printf("---------------------e-------------------\n");
 		i += 100;
 	}
 }

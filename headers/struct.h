@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/22 15:43:31 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/23 16:03:36 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ typedef struct s_ray
 	double		x_step;		// step to get to the next x intersection 
 	double		y_step;		// step to get to the next y intersection
 	int			quadrant;	// in which quadrant the ray is casted
+	int			xcell_v;	// the x cord of cell for the vertical intersection
+	int			ycell_v;	// the y cord of cell for the vertical intersection 
+	int			xcell_h;	// the x cord of cell for the horizontal interesection
+	int			ycell_h;	// the y cord of cell for the horizontal interesection
 	t_position	*player;	// info about the position of the player
 }				t_ray;
 

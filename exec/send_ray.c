@@ -6,46 +6,74 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:04 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/22 15:48:47 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/23 19:19:17 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+void	check_skip(t_ray *ray, t_position position)
+{
+	if (ray->quadrant == 4)
+	{
+		if (ray->xcell_h > position.x_cell || ray->ycell_h > position.y_cell || ray->xcell_h < 0 || ray->ycell_h < 0)
+			ray->h_skip = 1;
+		if (ray->xcell_v > position.x_cell || ray->ycell_v > position.y_cell || ray->xcell_v < 0 || ray->ycell_v < 0)
+			ray->v_skip = 1;
+	}
+	else if (ray->quadrant == 1)
+	{
+		if (ray->xcell_h < position.x_cell || ray->ycell_h > position.y_cell || ray->xcell_h < 0 || ray->ycell_h < 0)
+			ray->h_skip = 1;
+		if (ray->xcell_v < position.x_cell || ray->ycell_v > position.y_cell || ray->xcell_v < 0 || ray->ycell_v < 0)
+			ray->v_skip = 1;
+	}
+	else if (ray->quadrant == 2)
+	{
+		if (ray->xcell_h < position.x_cell || ray->ycell_h < position.y_cell || ray->xcell_h < 0 || ray->ycell_h < 0)
+			ray->h_skip = 1;
+		if (ray->xcell_v < position.x_cell || ray->ycell_v < position.y_cell || ray->xcell_v < 0 || ray->ycell_v < 0)
+			ray->v_skip = 1;
+	}
+	else if (ray->quadrant == 3)
+	{
+		if (ray->xcell_h > position.x_cell || ray->ycell_h < position.y_cell || ray->xcell_h < 0 || ray->ycell_h < 0)
+			ray->h_skip = 1;
+		if (ray->xcell_v > position.x_cell || ray->ycell_v < position.y_cell || ray->xcell_v < 0 || ray->ycell_v < 0)
+			ray->v_skip = 1;
+	}
+}
+
+void	calcul_cells(t_ray *ray)
+{
+	ray->xcell_v = ray->xbound / CELL_SIZE;
+	ray->ycell_v = ray->yi / CELL_SIZE;
+	ray->ycell_h = ray->ybound / CELL_SIZE;
+	ray->xcell_h = ray->xi / CELL_SIZE;
+	if (ray->ray_pov >= 180 && ray->ray_pov < 360)
+		ray->xcell_v -= 1;
+	if (ray->ray_pov <= 90 && ray->ray_pov > 270)
+		ray->ycell_h -= 1;
+}
 
 int	check_cell_type(t_ray *ray, t_position position)
 {
-	int	xcell_v;
-	int	ycell_v;
-	int	xcell_h;
-	int	ycell_h;
-
-	xcell_v = ray->xbound / CELL_SIZE;
-	ycell_v = ray->yi / CELL_SIZE;
-	ycell_h = ray->ybound / CELL_SIZE;
-	xcell_h = ray->xi / CELL_SIZE;
-	if (xcell_h > position.map->map_w || ycell_h > position.map->map_h)
-		ray->h_skip = 1;
-	if (xcell_v > position.map->map_w || ycell_v > position.map->map_h)
-		ray->v_skip = 1;
-	printf("cv (%d, %d) ch (%d, %d)\n", xcell_v, ycell_v, xcell_h, ycell_h);
-	if (!(ray->h_skip) && position.map->map_tab[ycell_h][xcell_h] == '1')
+	calcul_cells(ray);
+	check_skip(ray, position);
+	if (!(ray->h_skip) && position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1')
 	{
-		printf("horizontal hit\n");
+		printf("ch (%d, %d)", ray->xcell_h, ray->ycell_h);
+		printf("horizontal inter: %c\n", position.map->map_tab[ray->ycell_h][ray->xcell_h]);
 		ray->h_hit = INTERSECTION_FOUND;
 	}
-	if (!(ray->v_skip) && position.map->map_tab[ycell_v][xcell_v] == '1')
-	{
-		printf("vertical hit\n");
+	if (!(ray->v_skip) && position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1')
+	{	
+		printf("cv (%d, %d)", ray->xcell_v, ray->ycell_v);
+		printf("vertical inter: %c\n", position.map->map_tab[ray->ycell_v][ray->xcell_v]);
 		ray->v_hit = INTERSECTION_FOUND;
 	}
-	printf("hoho3\n");
-	if (ray->v_hit || ray->v_hit)
-	{
-		printf("found a hit\n");
+	if (ray->v_hit || ray->h_hit)
 		return (INTERSECTION_FOUND);
-	}
-	printf("//////////////////////////\n");
 	return (0);
 }
 
@@ -53,6 +81,7 @@ void	calcul_distance(t_table *table, t_ray *ray)
 {
 	ray->h_distance = ray->xbound / table->sin_table[ray->index];
 	ray->v_distance = ray->ybound / table->cos_table[ray->index];
+	
 	if (ray->h_distance < ray->v_distance)
 	{
 		ray->x_save = ray->xbound;
@@ -105,7 +134,7 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 	int	inter;
 
 	inter = 0;
-	while (inter != INTERSECTION_FOUND)
+	while (1)
 	{
 		inter = check_cell_type(ray, position);
 		if (inter == INTERSECTION_FOUND)
@@ -113,5 +142,6 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 		ray->xbound += ray->x_step;
 		ray->ybound += ray->y_step;
 		calcul_next_inter(table, ray, position);
+		inter++;
 	}
 }
