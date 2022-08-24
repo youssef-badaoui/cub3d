@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/23 15:45:49 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/24 20:38:41 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,10 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].v_hit = 0;
 		rays[i].h_skip = 0;
 		rays[i].v_skip = 0;
+		printf("ray pov: %lf\n", rays[i].ray_pov);
+		printf("-------------------s----------------\n");
 		send_ray(table, &rays[i], position);
-		i += 100;
+		printf("-------------------e----------------\n");
+		i++;
 	}
 }

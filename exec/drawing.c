@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:32 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/23 15:43:03 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/24 20:38:27 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void drawing(t_data *data)
 	while(i < N_RAY)
 	{
 		ft_draw_ray(data, i);
-		i += 100;
+		i++;
 	}
 	ft_mlx_put_px(&mlx , data->position->virtual_px, data->position->virtual_py, 0x0);
 	printf("drawing done!\n");
