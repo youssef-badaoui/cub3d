@@ -1,0 +1,37 @@
+// printf("ray pov: %lf (%d)[%d]\nxi: %lf ybound: %lf y_step: %lf\n\nxpound: %lf yi: %lf x_step: %lf\n", 
+// 			ray->ray_pov, ray->quadrant, ray->index, ray->xi, ray->ybound, ray->y_step, ray->xbound, ray->yi, ray->x_step);
+
+// 			void	calcul_next_inter(t_table *table, t_ray *ray, t_position position)
+// {
+// 	double	xside;
+// 	double	yside;
+
+// 	xside = 0;
+// 	yside = 0;
+// 	if (ray->ray_pov > 270 || ray->ray_pov <= 90)
+// 		yside = position.virtual_py - ray->ybound;
+// 	else
+// 		yside = ray->ybound - position.virtual_py;
+// 	if (ray->ray_pov <= 180 || ray->ray_pov > 0)
+// 		xside = ray->xbound - position.virtual_px;
+// 	else
+// 		xside = position.virtual_px - ray->xbound;
+// 	if (ray->quadrant == 1 || ray->quadrant == 3)
+// 	{
+// 		ray->xi = calcul_opposite(table->tan_table[ray->index], yside);
+// 		ray->yi = calcul_adjacent(table->tan_table[ray->index], xside);
+// 	}
+// 	else
+// 	{
+// 		ray->xi = calcul_adjacent(table->tan_table[ray->index], yside);
+// 		ray->yi = calcul_opposite(table->tan_table[ray->index], xside);
+// 	}
+// 	if (ray->quadrant == 3 || ray->quadrant == 4)
+// 		ray->xi = position.virtual_px - ray->xi;
+// 	else
+// 		ray->xi = position.virtual_px + ray->xi;
+// 	if (ray->quadrant == 4 || ray->quadrant == 1)
+// 		ray->yi = position.virtual_py - ray->yi;
+// 	else
+// 		ray->yi = position.virtual_py + ray->yi;
+// }

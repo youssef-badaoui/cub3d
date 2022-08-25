@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/20 10:56:00 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:56:59 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,11 @@ void	ft_color_image(t_mlx *mlx,  int color, int i, int j);
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color);
 int		start_exec(t_map *map);
 void	casting_rays(t_table *table, t_ray *rays, t_position position);
+double	calcul_adjacent(double hypotenuse, double opposite);
+double	calcul_opposite(double hypotenus, double adjacent);
+void	create_trigonometric_tables(int narc, t_table *table);
+int 	check_and_stor(int ac, char **av, t_map *map);
+void	send_ray(t_table *table, t_ray *ray, t_position position);
+
 #endif
 	

@@ -52,8 +52,8 @@ void	ft_draw_ray(t_data *data, int i)
 
 	x0 = data->position->virtual_px;
 	y0 = data->position->virtual_py;
-	x1 = data->ray[i].xi;
-	y1 = 0;
+	x1 = data->ray[i].x_save;
+	y1 = data->ray[i].y_save;
 	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
    	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
 	err = dx + dy;
@@ -61,11 +61,11 @@ void	ft_draw_ray(t_data *data, int i)
 	{
 		if(x0 < CELL_SIZE * data->map->map_w && y0 < CELL_SIZE * data->map->map_h )
 			ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
-		else
-		{
-			printf("a = %d      b = %d\n", CELL_SIZE * data->map->map_w , CELL_SIZE * data->map->map_h);
-			printf("x1 = %d      y1 = %d\n", x1 , y1);
-		}
+		// else
+		// {
+		// 	printf("a = %d      b = %d\n", CELL_SIZE * data->map->map_w , CELL_SIZE * data->map->map_h);
+		// 	printf("x1 = %d      y1 = %d\n", x1 , y1);
+		// }
 		e2 = 2 * err;
 		if(e2 >= dx)
 		{
