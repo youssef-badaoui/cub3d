@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:04 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/24 20:41:56 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:42:58 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,9 @@ int	check_cell_type(t_ray *ray, t_position position)
 	return (0);
 }
 
-void	calcul_distance(t_table *table, t_ray *ray)
+void	calcul_distance(t_table *table, t_ray *ray, t_position position)
 {
-	ray->v_distance = ray->xbound / table->sin_table[ray->index];
-	ray->h_distance = ray->ybound / table->cos_table[ray->index];
-	printf("h distance: %lf v distance: %lf \n", ray->h_distance, ray->v_distance);
-	printf("cv (%d, %d) ch (%d, %d) \n", ray->xcell_v, ray->ycell_v, ray->xcell_h, ray->ycell_h);
+	triangle_sides(ray, position, table);
 	if ((ray->h_distance < ray->v_distance || ray->v_skip) && !(ray->h_skip))
 	{
 		printf("we go for the horizontal\n");
@@ -169,7 +166,7 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 		printf("-----------ec--------------\n");
 		if (inter == INTERSECTION_FOUND)
 		{
-			return (calcul_distance(table, ray));
+			return (calcul_distance(table, ray, position));
 		}
 		if (!(ray->v_hit) && !(ray->v_skip))
 		{
@@ -183,5 +180,7 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 			printf("calculing h\n");
 			calcul_next_h_inter(table, ray, position);
 		}
+		printf("ray pov: %lf (%d)[%d]\nxi: %lf ybound: %lf y_step: %lf\n\nxpound: %lf yi: %lf x_step: %lf\n", 
+			ray->ray_pov, ray->quadrant, ray->index, ray->xi, ray->ybound, ray->y_step, ray->xbound, ray->yi, ray->x_step);
 	}
 }
