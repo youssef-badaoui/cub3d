@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/20 13:14:22 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:03:34 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ enum meta_type
 	F = 4,
 	C = 5
 };
+
+map_tab[x][yymap_tab[xy[x]
 
 typedef struct s_map
 {
@@ -65,9 +67,9 @@ typedef struct s_ray
 {
 	double		ray_pov;	// the point of view of the ray
 	int			index;		// the index of angle of the ray
-	double		xi;			// the x cord of the horizontal intersection
-	double		yi;			// the y cord of the vertical intersection
-	double		xbound;		// the x cord of the vertical intersection 
+	double		xi ;			// the x cord of the horizontal intersection
+	double		yi ;			// the y cord of the vertical intersection
+	double		xbound ;		// the x cord of the vertical intersection 
 	double		ybound;		// the y cord of the horizontal intersection
 	int			v_hit;		// the type of the cell for the vertical intersect
 	int			h_hit;		// the type of the cell for the horizontal intersect
