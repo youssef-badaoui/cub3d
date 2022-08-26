@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/25 15:49:51 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/26 13:16:25 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 	int	i;
 
 	i = 0;
-	while (i < N_RAY)
+	while (i < 1)
 	{
 		rays[i].ray_pov = calcul_ray_pov(position, i);
 		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);

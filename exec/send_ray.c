@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:04 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/25 15:42:58 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/26 15:34:02 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	check_skip(t_ray *ray, t_position position)
 		if (ray->xcell_v > position.x_cell || ray->ycell_v < position.y_cell || ray->xcell_v < 0 || ray->ycell_v < 0)
 			ray->v_skip = 1;
 	}
+	if (!(ray->h_skip) && ray->xcell_h > ft_strlen(position.map->map_tab[ray->ycell_h]))
+		ray->h_skip = 1;
+	if (!(ray->v_skip) && ray->xcell_v > ft_strlen(position.map->map_tab[ray->ycell_v]))
+		ray->v_skip = 1;
 }
 
 void	calcul_cells(t_ray *ray)
@@ -67,8 +71,10 @@ int	check_cell_type(t_ray *ray, t_position position)
 {
 	calcul_cells(ray);
 	check_skip(ray, position);
+	printf("quadrant: %d v skip: %d h skip: %d\n",ray->quadrant,  ray->v_skip, ray->h_skip);
 	printf("hoho1\n");
-	// printf("cv (%d, %d) ch (%d, %d) \n", ray->xcell_v, ray->ycell_v, ray->xcell_h, ray->ycell_h);
+	printf("cv (%d, %d) ch (%d, %d) \n", ray->xcell_v, ray->ycell_v, ray->xcell_h, ray->ycell_h);
+	// printf("map width: %d map hight: %d\n", position.map->map_w , position.map->map_h);
 	if (!(ray->h_skip) && position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1')
 	{
 		printf("h hit\n");
@@ -180,7 +186,7 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 			printf("calculing h\n");
 			calcul_next_h_inter(table, ray, position);
 		}
-		printf("ray pov: %lf (%d)[%d]\nxi: %lf ybound: %lf y_step: %lf\n\nxpound: %lf yi: %lf x_step: %lf\n", 
-			ray->ray_pov, ray->quadrant, ray->index, ray->xi, ray->ybound, ray->y_step, ray->xbound, ray->yi, ray->x_step);
+		// printf("ray pov: %lf (%d)[%d]\nxi: %lf ybound: %lf y_step: %lf\n\nxpound: %lf yi: %lf x_step: %lf\n", 
+		// 	ray->ray_pov, ray->quadrant, ray->index, ray->xi, ray->ybound, ray->y_step, ray->xbound, ray->yi, ray->x_step);
 	}
 }

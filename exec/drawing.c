@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:32 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/25 15:49:43 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/26 13:16:31 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void drawing(t_data *data)
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
 	printf("drawing start!\n");
 	ft_draw_map(data);
-	while(i < N_RAY)
+	while(i < 1)
 	{
 		ft_draw_ray(data, i);
 		i++;
