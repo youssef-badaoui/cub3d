@@ -1,12 +1,15 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ybadaoui/Desktop/cub3d'
-gcc -Wall -Wextra -Werror -c cub3d.c -o cub3d.o 
-gcc -Wall -Wextra -Werror -c exec/casting.c -o exec/casting.o 
-gcc -Wall -Wextra -Werror -c exec/trigonometric.c -o exec/trigonometric.o 
-gcc -Wall -Wextra -Werror -c exec/exec_tools.c -o exec/exec_tools.o 
-gcc -Wall -Wextra -Werror -c utils/gnl.c -o utils/gnl.o 
-gcc -Wall -Wextra -Werror -c utils/parsing_tools.c -o utils/parsing_tools.o 
-gcc -Wall -Wextra -Werror -c utils/utils.c -o utils/utils.o 
-gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit cub3d.o exec/casting.o exec/trigonometric.o exec/exec_tools.o utils/gnl.o utils/parsing_tools.o utils/utils.o -o cub3d
+gcc -Wall -Wextra -Werror -c cub3d.c -o cub3d.o
+gcc -Wall -Wextra -Werror -c exec/casting.c -o exec/casting.o
+gcc -Wall -Wextra -Werror -c exec/trigonometric.c -o exec/trigonometric.o
+gcc -Wall -Wextra -Werror -c exec/exec_tools.c -o exec/exec_tools.o
+gcc -Wall -Wextra -Werror -c utils/gnl.c -o utils/gnl.o
+gcc -Wall -Wextra -Werror -c parse/parsing_tools.c -o parse/parsing_tools.o
+gcc -Wall -Wextra -Werror -c parse/parsing.c -o parse/parsing.o
+gcc -Wall -Wextra -Werror -c exec/send_ray.c -o exec/send_ray.o
+gcc -Wall -Wextra -Werror -c exec/drawing.c -o exec/drawing.o
+gcc -Wall -Wextra -Werror -c utils/utils.c -o utils/utils.o
+gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit cub3d.o exec/casting.o exec/trigonometric.o exec/exec_tools.o utils/gnl.o parse/parsing_tools.o parse/parsing.o exec/send_ray.o exec/drawing.o utils/utils.o -o cub3d
 make: Leaving directory `/Users/ybadaoui/Desktop/cub3d'
  

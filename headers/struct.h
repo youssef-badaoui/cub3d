@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/25 09:49:04 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/25 09:50:32 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ enum meta_type
 	C = 5
 };
 
-map_tab[x][yymap_tab[xy[x]
 
 typedef struct s_map
 {
