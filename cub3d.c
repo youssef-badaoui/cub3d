@@ -6,23 +6,30 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 10:17:05 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/28 10:50:12 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/cub3d.h"
 
+void	update_pov(int keycode, t_data *data)
+{
+	if(keycode == 2)
+		data->position->pov = data->position->pov + 3;
+	else if (keycode == 0)
+		data->position->pov = data->position->pov - 3;
+	if	(data->position->pov < 0)
+		data->position->pov += 360;
+	else if(data->position->pov > 360)
+		data->position->pov -= 360;
+}
 int move_handl( int keycode, t_data *data)
 {
-	// int	x;
 
 	(void) keycode;
-	x = 0;
-	update_position();
-	update_pov();
-	
-	// else
-	// 	x = 1;
+	// update_position();
+	update_pov(keycode, data);
+
 	
 	
 	drawing(data);
