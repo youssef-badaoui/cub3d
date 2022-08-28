@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:32 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 09:15:51 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/28 09:28:11 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,9 @@ void	ft_draw_map(t_data *data)
 
 void drawing(t_data *data)
 {
-	t_mlx mlx;
 	int i;
 	
 	i = 0;
-	data->mlx = &mlx;
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, (data->map->map_w - 1) * CELL_SIZE, data->map->map_h * CELL_SIZE, "call of duty");
-	mlx.img = mlx_new_image(mlx.mlx, (data->map->map_w - 1) * CELL_SIZE, data->map->map_h * CELL_SIZE);
-	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
 	casting_rays(data->table, data->ray, *data->position);
 	printf("drawing start!\n");
 	ft_draw_map(data);
@@ -53,10 +47,9 @@ void drawing(t_data *data)
 		ft_draw_ray(data, i);
 		i++;
 	}
-	ft_mlx_put_px(&mlx , data->position->virtual_px, data->position->virtual_py, 0x0);
+	ft_mlx_put_px(data->mlx , data->position->virtual_px, data->position->virtual_py, 0x0);
 	printf("drawing done!\n");
 	mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, data->mlx->img, 0,0);
-	mlx_loop(data->mlx->mlx);
 }
 
 

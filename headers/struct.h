@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/25 09:50:32 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/28 09:20:48 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 60
+# define CELL_SIZE 20
 # define FOV 60
 # define HALF_FOV 30
 # define N_RAY 1080
