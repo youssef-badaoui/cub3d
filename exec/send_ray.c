@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:04 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 09:08:55 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/28 12:52:29 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,13 @@ void	calcul_distance(t_table *table, t_ray *ray, t_position position)
 	{
 		ray->x_save = ray->xi;
 		ray->y_save = ray->ybound;
+		ray->save_distance = ray->h_distance;
 	}
 	else
 	{
 		ray->x_save = ray->xbound;
 		ray->y_save = ray->yi;
+		ray->save_distance = ray->v_distance;
 	}
 }
 

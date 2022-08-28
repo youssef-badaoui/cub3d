@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:51:16 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/22 15:51:18 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/28 12:05:41 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ void	ft_get_data(t_map *map)
 		map->map_h++;
 		i++;
 	}
+	map->map_vh = map->map_h * CELL_SIZE; 
+	map->map_vw = map->map_w * CELL_SIZE; 
 }
 
 int	ft_meta_check(char **meta)

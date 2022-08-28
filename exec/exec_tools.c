@@ -26,6 +26,7 @@ void    init_player_position(t_map *map, t_position *pp)
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color)
 {
 	char	*dst;
+	// printf("%d     %d\n", mlx->line_length,mlx->bits_per_pixel);
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
@@ -59,7 +60,7 @@ void	ft_draw_ray(t_data *data, int i)
 	err = dx + dy;
 	while (1)
 	{
-		if(x0 < CELL_SIZE * data->map->map_w && y0 < CELL_SIZE * data->map->map_h )
+		if(x0 < CELL_SIZE * data->map->map_w && y0 < CELL_SIZE * data->map->map_h)
 			ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
 		// else
 		// {
@@ -80,3 +81,54 @@ void	ft_draw_ray(t_data *data, int i)
 
 	}
 }
+void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
+{
+	int dx;
+	int dy;
+	int sx;
+	int sy;
+	int e2;
+	int err;
+
+	dx =  abs(x1-x0), sx = x0<x1 ? 1 : -1; 
+   	dy = -abs(y1-y0), sy = y0<y1 ? 1 : -1;
+	err = dx + dy;
+	while (1)
+	{
+		ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
+		e2 = 2 * err;
+		if(e2 >= dx)
+		{
+			if(x0 == x1) break;
+			err += dy; x0 += sx;
+		}
+		if(e2 <= dx)
+		{
+			if(y0 == y1) break;
+			err += dx; y0 += sy;
+		}
+	}
+}
+
+void	draw_3d(int i, t_data *data)
+{
+	int	t;
+	int x0;
+	int y0;
+	int x1;
+	int y1;
+
+	t = 0;
+	// printf("ray_w = %d      ray_h = %d", data->ray_w,data->ray[i].ray_h);
+	x0 = data->ray_w * i;
+	y0 = (WIN_H - data->ray[i].ray_h) / 2;
+	x1 = x0;
+	y1 = y0 + data->ray[i].ray_h;
+	// printf("hollllllaaaaaaa in ray %d x0 = %d y0 = %d  x1 = %d y1 = %d\n", i, x0, y0, x1, y1);
+	while(t < data->ray_w)
+	{
+		draw_line(data, x0, y0, x1, y1);
+		t++;
+	}
+}
+

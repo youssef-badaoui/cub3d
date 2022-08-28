@@ -6,7 +6,7 @@
 #    By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 18:27:34 by Ma3ert            #+#    #+#              #
-#    Updated: 2022/08/28 09:19:53 by ybadaoui         ###   ########.fr        #
+#    Updated: 2022/08/28 15:09:41 by ybadaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 NAME = cub3d
 
-HEADERS = ./headers/cub3d.h
+HEADERS = ./headers/cub3d.h ./headers/struct.h
 
 CC = gcc
 
