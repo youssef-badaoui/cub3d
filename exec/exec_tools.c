@@ -13,13 +13,25 @@ void    init_player_position(t_map *map, t_position *pp)
 	pp->virtual_px = pp->x_cell * CELL_SIZE + CELL_SIZE / 2;
 	pp->virtual_py = pp->y_cell * CELL_SIZE + CELL_SIZE / 2;
 	if (v == 'N')
+	{
 		pp->pov = N;
+		pp->quadrant = 1;
+	}
 	else if (v == 'E')
+	{
 		pp->pov = E;
+		pp->quadrant = 2;
+	}
 	else if (v == 'S')
+	{
 		pp->pov = S;
+		pp->quadrant = 3;
+	}
 	else if (v == 'W')
+	{
 		pp->pov = W;
+		pp->quadrant = 4;
+	}
 	pp->map = map;
 }
 

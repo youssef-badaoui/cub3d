@@ -35,3 +35,24 @@
 // 	else
 // 		ray->yi = position.virtual_py + ray->yi;
 // }
+
+	// if (data->position->quadrant == 1)
+	// {
+	// 	x_translate = data->ray[data->position->pov_index].x_save - data->position->virtual_px;
+	// 	y_translate = data->position->virtual_py - data->ray[data->position->pov_index].y_save;
+	// }
+	// else if (data->position->quadrant == 2)
+	// {
+	// 	x_translate = data->ray[data->position->pov_index].x_save - data->position->virtual_px;
+	// 	y_translate = data->ray[data->position->pov_index].y_save - data->position->virtual_py;
+	// }
+	// else if (data->position->quadrant == 3)
+	// {
+	// 	x_translate = data->position->virtual_px - data->ray[data->position->pov_index].x_save;
+	// 	y_translate = data->ray[data->position->pov_index].y_save - data->position->virtual_py;
+	// }
+	// else if (data->position->quadrant == 4)
+	// {
+	// 	x_translate = data->position->virtual_px - data->ray[data->position->pov_index].x_save;
+	// 	y_translate = data->position->virtual_px - data->ray[data->position->pov_index].y_save;
+	// }

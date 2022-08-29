@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 10:50:12 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/29 09:44:11 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,86 @@ void	update_pov(int keycode, t_data *data)
 	else if(data->position->pov > 360)
 		data->position->pov -= 360;
 }
+
+void	ft_line_formula(int	keycode, t_position *position)
+{
+	position->x_translate = position->virtual_px;
+	position->y_translate = position->virtual_py;
+	if (keycode == 13)
+	{
+		position->x_translate += 2 * position->line_key;
+		position->y_translate = position->x_translate * position->line_key;
+	}
+	else if (keycode == 1)
+	{
+		position->x_translate -= 2 * position->line_key;
+		position->y_translate = position->x_translate * position->line_key;
+	}
+	else if (keycode == 0)
+		position->y_translate = position->line_key * position->x_translate + 2;
+	else if (keycode == 2)
+		position->x_translate = position->y_translate / position->line_key + 2;
+	position->x_translate -= position->virtual_px;
+	position->y_translate -= position->virtual_py;
+}
+
+void	get_pov_index(t_data *data)
+{
+	int		index;
+	double	ray_angle;
+
+	ray_angle = data->position->pov;
+	data->position->quadrant = 1;
+	if (ray_pov >= 90 && ray_pov < 180)
+	{
+		data->position->quadrant = 2;
+		ray_angle = ray_pov - 90.0;
+	}
+	else if (ray_pov >= 180 && ray_pov < 270)
+	{
+		data->position->quadrant = 3;
+		ray_angle = ray_pov - 180.0;
+	}
+	else if (ray_pov >= 270 && ray_pov < 360)
+	{
+		data->position->quadrant = 4;
+		ray_angle = ray_pov - 270.0;
+	}
+	data->position->pov_index = ray_angle / ANG_IN_D;
+}
+
+void	update_position(int keycode, t_data *data)
+{
+	get_pov_index(data);
+	ft_line_formula(keycode, data->position);
+	if (data->position->quadrant == 1)
+	{
+		data->position->virtual_px += data->position->x_translate;
+		data->position->virtual_py -= data->position->y_translate;
+	}
+	else if (data->position->quadrant == 2)
+	{
+		data->position->virtual_px += data->position->x_translate;
+		data->position->virtual_py += data->position->y_translate;
+	}
+	else if (data->position->quadrant == 3)
+	{
+		data->position->virtual_px -= data->position->x_translate;
+		data->position->virtual_py += data->position->y_translate;
+	}
+	else if (data->position->quadrant == 4)
+	{
+		data->position->virtual_px -= data->position->x_translate;
+		data->position->virtual_py -= data->position->y_translate;
+	}
+}
+
 int move_handl( int keycode, t_data *data)
 {
 
 	(void) keycode;
 	// update_position();
 	update_pov(keycode, data);
-
-	
-	
 	drawing(data);
 	return 0;
 }

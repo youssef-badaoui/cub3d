@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:32 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 09:28:11 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/28 13:32:00 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void drawing(t_data *data)
 	int i;
 	
 	i = 0;
-	casting_rays(data->table, data->ray, *data->position);
+	casting_rays(data->table, data->ray, data->position);
 	printf("drawing start!\n");
 	ft_draw_map(data);
 	while(i < N_RAY)

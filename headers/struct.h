@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 09:20:48 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/28 13:19:39 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ typedef	struct s_position
 	int		virtual_px;		// x cord of the player in the virtual dimension
 	int		virtual_py;		// y cord of the player in the virtual dimension
 	double	pov;			// the point of view (obviously an angle)
+	int		pov_index;		// the index of the pov angle on the tri-table
+	int		quadrant;		// the quadrant of the pov
+	double	line_key;		// the key for the line formula
+	double	x_translate;	// x & y translation but also the cord of the
+	double	y_translate;	// a point to get line key value
 	t_map	*map;			// the map
 }				t_position;
 
@@ -70,9 +75,9 @@ typedef struct s_ray
 	double		y_save;		// the y cord of the intersection with a wall
 	double		ray_pov;	// the point of view of the ray
 	int			index;		// the index of angle of the ray
-	double		xi ;			// the x cord of the horizontal intersection
-	double		yi ;			// the y cord of the vertical intersection
-	double		xbound ;		// the x cord of the vertical intersection 
+	double		xi ;		// the x cord of the horizontal intersection
+	double		yi ;		// the y cord of the vertical intersection
+	double		xbound ;	// the x cord of the vertical intersection 
 	double		ybound;		// the y cord of the horizontal intersection
 	int			v_hit;		// the type of the cell for the vertical intersect
 	int			h_hit;		// the type of the cell for the horizontal intersect

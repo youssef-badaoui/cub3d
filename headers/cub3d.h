@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/25 15:49:20 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/28 13:35:15 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	create_trigonometric_tables(int narc, t_table *table);
 int 	check_and_stor(int ac, char **av, t_map *map);
 void	send_ray(t_table *table, t_ray *ray, t_position position);
 void	triangle_sides(t_ray *ray, t_position position, t_table *table);
+void	ft_line_formula(double x, double y, t_position *position);
 
 #endif
 	
