@@ -95,7 +95,7 @@ void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
 	err = dx + dy;
 	while (1)
 	{
-		ft_mlx_put_px(data->mlx, x0, y0, 0x00b9ff);
+		ft_mlx_put_px(data->mlx, x0, y0, 0x873600);
 		e2 = 2 * err;
 		if(e2 >= dx)
 		{
