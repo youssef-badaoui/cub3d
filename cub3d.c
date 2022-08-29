@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/29 09:44:11 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/29 09:45:41 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	update_pov(int keycode, t_data *data)
 {
 	if(keycode == 2)
-		data->position->pov = data->position->pov + 3;
+		data->position->pov = data->position->pov + 5;
 	else if (keycode == 0)
-		data->position->pov = data->position->pov - 3;
+		data->position->pov = data->position->pov - 5;
 	if	(data->position->pov < 0)
 		data->position->pov += 360;
 	else if(data->position->pov > 360)
@@ -121,8 +121,8 @@ int start_exec(t_map *map)
 	init_player_position(map, &position);
 	data.mlx = &mlx;
 	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, (data.map->map_w - 1) * CELL_SIZE, data.map->map_h * CELL_SIZE, "call of duty");
-	mlx.img = mlx_new_image(mlx.mlx, (data.map->map_w - 1) * CELL_SIZE, data.map->map_h * CELL_SIZE);
+	mlx.win = mlx_new_window(mlx.mlx, WIN_W, WIN_H, "call of duty");
+	mlx.img = mlx_new_image(mlx.mlx, WIN_W, WIN_H);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
 	drawing(&data);
 	mlx_hook(mlx.win, 02, 00, &move_handl, &data);

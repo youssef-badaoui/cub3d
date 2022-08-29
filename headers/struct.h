@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 13:19:39 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/29 09:45:32 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 20
+# define CELL_SIZE 30
 # define FOV 60
 # define HALF_FOV 30
-# define N_RAY 1080
 # define ANG_IN_D 0.05555555555
 # define N 0
 # define E 90
 # define S 180
 # define W 270
-# define WHITE #FFFFFFF
-# define RED #a32424
+# define WIN_W 1080
+# define WIN_H 520
+# define N_RAY WIN_W
 
 enum meta_type
 {
@@ -43,6 +43,8 @@ typedef struct s_map
 	char	*map_name;
 	int		map_h;			// map high
 	int		map_w;	 		// map width 
+	int		map_vh;			// map virtual high
+	int		map_vw;	 		// map virtual width 
 	int		pn; 			// player number;
 	int		px; 			// player x;
 	int		py; 			// player y;
@@ -90,6 +92,8 @@ typedef struct s_ray
 	int			ycell_v;	// the y cord of cell for the vertical intersection 
 	int			xcell_h;	// the x cord of cell for the horizontal interesection
 	int			ycell_h;	// the y cord of cell for the horizontal interesection
+	double		save_distance;
+	double		ray_h;
 	t_position	*player;	// info about the position of the player
 }				t_ray;
 
@@ -118,6 +122,7 @@ typedef struct s_data
 	t_table		*table;
 	t_ray		*ray;
 	t_position	*position;
+	int			ray_w;
 } t_data;
 
 #endif

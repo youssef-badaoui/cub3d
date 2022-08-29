@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:51:03 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/22 15:56:26 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/08/28 11:29:03 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int inspect(t_map *map)
 	ft_get_data(map);
 	if(!ft_check_map(map))
 		return (0);
+	
 	return (1);
 }
 
