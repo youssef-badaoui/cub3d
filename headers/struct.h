@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/30 12:02:25 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/30 12:40:32 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ typedef	struct s_position
 	int		virtual_px;		// x cord of the player in the virtual dimension
 	int		virtual_py;		// y cord of the player in the virtual dimension
 	double	pov;			// the point of view (obviously an angle)
+	int		pov_index;		// the index of the pov angle on the tri-table
+	int		quadrant;		// the quadrant of the pov
+	double	line_key;		// the key for the line formula
+	double	x_translate;	// x & y translation but also the cord of the
+	double	y_translate;	// a point to get line key value
 	t_map	*map;			// the map
 }				t_position;
 

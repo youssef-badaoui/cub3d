@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   casting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:49:07 by Ma3ert            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/29 12:56:27 by ybadaoui         ###   ########.fr       */
+=======
+/*   Updated: 2022/08/28 13:49:41 by Ma3ert           ###   ########.fr       */
+>>>>>>> 908a00cb3ea6877132c44c244fc4668b5379cef7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +30,31 @@ double	calcul_ray_pov(t_position position, int ray)
 	return (ray_pov);
 }
 
-void	calcul_first_vertical(t_table *table, t_ray *ray, t_position position)
+void	calcul_first_vertical(t_table *table, t_ray *ray, t_position *position)
 {
 	double	diff;
 	double	side;
 
-	diff = position.virtual_py;
+	diff = position->virtual_py;
 	side = 0.0;
 	if (ray->ray_pov < 180 && ray->ray_pov >= 0)
 	{
-		ray->xbound = CELL_SIZE * (position.x_cell + 1);
+		ray->xbound = CELL_SIZE * (position->x_cell + 1);
 		ray->x_step = CELL_SIZE;
-		side = ray->xbound - position.virtual_px;
+		side = ray->xbound - position->virtual_px;
 	}
 	else
 	{
-		ray->xbound = CELL_SIZE * position.x_cell;
+		ray->xbound = CELL_SIZE * position->x_cell;
 		ray->x_step = CELL_SIZE * (-1.0);
-		side = position.virtual_px - ray->xbound;
+		side = position->virtual_px - ray->xbound;
 	}
 	if (ray->quadrant == 1 || ray->quadrant == 3)
 		ray->yi = calcul_adjacent(table->tan_table[ray->index], side);
 	else
 		ray->yi = calcul_opposite(table->tan_table[ray->index], side);
+	if (ray->index == position->pov_index)
+		position->line_key = ray->yi / side;
 	if (ray->quadrant == 4 || ray->quadrant == 1)
 		ray->yi = diff - ray->yi;
 	else
@@ -110,23 +116,27 @@ int	calcul_ray_angle(t_ray *ray, double ray_pov)
 	return (index);
 }
 
-void	casting_rays(t_table *table, t_ray *rays, t_position position)
+void	casting_rays(t_table *table, t_ray *rays, t_position *position)
 {
 	int	i;
 
 	i = 0;
 	while (i < N_RAY)
 	{
-		rays[i].ray_pov = calcul_ray_pov(position, i);
+		rays[i].ray_pov = calcul_ray_pov(*position, i);
 		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);
 		calcul_first_vertical(table, &rays[i], position);
-		calcul_first_horizontal(table, &rays[i], position);
+		calcul_first_horizontal(table, &rays[i], *position);
 		rays[i].h_hit = 0;
 		rays[i].v_hit = 0;
 		rays[i].h_skip = 0;
 		rays[i].v_skip = 0;
+<<<<<<< HEAD
 		rays[i].first = 0;
 		send_ray(table, &rays[i], position);
+=======
+		send_ray(table, &rays[i], *position);
+>>>>>>> 908a00cb3ea6877132c44c244fc4668b5379cef7
 		i++;
 	}
 }
