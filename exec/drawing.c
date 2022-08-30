@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:47:32 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/29 09:29:11 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:50:28 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	ft_3d(t_data *data)
 		data->ray_w = 1;
 	while(i < N_RAY)
 	{
-		data->ray[i].save_distance = data->ray[i].save_distance *  data->table->cos_table[abs(1080/2 - i)];
+		data->ray[i].save_distance = data->ray[i].save_distance *  data->table->cos_table[abs(N_RAY/2 - i)];
 		if(data->ray[i].save_distance/CELL_SIZE)
 			data->ray[i].ray_h = WIN_H / (data->ray[i].save_distance/CELL_SIZE);
 		if (data->ray[i].ray_h >= WIN_H)
 			data->ray[i].ray_h = WIN_H - 1;
-		// printf("wall_h = %d\n", data->ray[i].ray_h);
-		draw_3d(i, data);
+		// draw_3d(i, data);
+		ft_ray_handl(data, i);
 		i++;
 	}
 }
@@ -104,9 +104,15 @@ void	ft_color_win(t_mlx *mlx,  int color)
 		while(y < WIN_H)
 		{
 			if(y > WIN_H/2)
-				ft_mlx_put_px(mlx, x, y++, 0x298e5f);
+			{
+				ft_mlx_put_px(mlx, x, y, 0x298e5f);
+				y++;
+			}
 			else
-				ft_mlx_put_px(mlx, x, y++, 0x4384d7);
+			{
+				ft_mlx_put_px(mlx, x, y, 0x4384d7-y/2);
+				y++;
+			}
 				
 		}
 		x++;

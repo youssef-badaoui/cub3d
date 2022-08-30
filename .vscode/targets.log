@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Fri Aug 26 14:36:55 2022
+# Make data base, printed on Mon Aug 29 09:28:15 2022
 
 # Variables
 
@@ -40,7 +41,7 @@ MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000ccj0003348/T/vscode-ipc-87928603-2239-4f1e-a7df-fcdbe93f7f60.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000ccj0003348/T/vscode-ipc-80bcb7b7-ef4e-4b7d-9593-53413879b0eb.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -48,7 +49,7 @@ PATH = /Users/ybadaoui/goinfre/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sb
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-LaunchInstanceID = 1255A07E-8153-4387-B83C-0DFA20FAC456
+LaunchInstanceID = D595C0A3-E89E-4A49-83C8-7CF9DF1A4F70
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -56,7 +57,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.97Tmy6xBJZ/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.5I5yDCgaZU/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -78,7 +79,7 @@ LOGNAME = ybadaoui
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from `Makefile', line 21)
-HEADERS = ./headers/cub3d.h
+HEADERS = ./headers/cub3d.h ./headers/struct.h
 # environment
 ZSH = /Users/ybadaoui/.oh-my-zsh
 # environment
@@ -138,7 +139,6 @@ MAKEFILES :=
 # automatic
 <F = $(notdir $<)
 # makefile (from `Makefile', line 25)
- 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 # environment
 PAGER = less
@@ -159,9 +159,10 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 811
+VSCODE_PID = 27602
 # variable set hash-table stats:
 # Load=74/1024=7%, Rehash=0, Collisions=3/108=3%
+ 
 
 # Pattern-specific Variable Values
 
@@ -176,7 +177,7 @@ VSCODE_PID = 811
 
 # Implicit Rules
 
-%.o: %.c ./headers/cub3d.h
+%.o: %.c ./headers/cub3d.h ./headers/struct.h
 #  commands to execute (from `Makefile', line 35):
 	$(CC) $(FLAGS) -c $< -o $@
 	
@@ -194,9 +195,9 @@ all: cub3d
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
-cub3d: cub3d.o exec/casting.o exec/trigonometric.o exec/exec_tools.o utils/gnl.o parse/parsing_tools.o parse/parsing.o exec/send_ray.o exec/drawing.o utils/utils.o headers/cub3d.h
+cub3d: cub3d.o exec/casting.o exec/trigonometric.o exec/exec_tools.o utils/gnl.o parse/parsing_tools.o parse/parsing.o exec/send_ray.o exec/drawing.o utils/utils.o headers/cub3d.h headers/struct.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-25 10:05:03
+#  Last modified 2022-08-29 09:27:54
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -205,7 +206,7 @@ cub3d: cub3d.o exec/casting.o exec/trigonometric.o exec/exec_tools.o utils/gnl.o
 	$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJ) -o $(NAME)
 	
 
-cub3d.o: cub3d.c headers/cub3d.h
+cub3d.o: cub3d.c headers/cub3d.h headers/struct.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `cub3d'
 #  File does not exist.
@@ -218,15 +219,15 @@ cub3d.o: cub3d.c headers/cub3d.h
 # automatic
 # * := cub3d
 # automatic
-# + := cub3d.c headers/cub3d.h
+# + := cub3d.c headers/cub3d.h headers/struct.h
 # automatic
 # | := 
 # automatic
 # < := cub3d.c
 # automatic
-# ^ := cub3d.c headers/cub3d.h
+# ^ := cub3d.c headers/cub3d.h headers/struct.h
 # automatic
-# ? := cub3d.c headers/cub3d.h
+# ? := cub3d.c headers/cub3d.h headers/struct.h
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  commands to execute (from `Makefile', line 35):
@@ -242,7 +243,7 @@ cub3d.o: cub3d.c headers/cub3d.h
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 09:47:25
+#  Last modified 2022-08-29 09:27:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -257,7 +258,7 @@ parse/parsing_tools.o:
 # Not a target:
 headers/cub3d.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 09:47:25
+#  Last modified 2022-08-28 13:36:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -286,7 +287,7 @@ exec/exec_tools.o:
 # Not a target:
 cub3d.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 09:47:25
+#  Last modified 2022-08-28 15:38:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -297,6 +298,15 @@ cub3d.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+headers/struct.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-28 15:44:26
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 exec/drawing.o:
@@ -356,7 +366,7 @@ parse/parsing.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=21/1024=2%, Rehash=0, Collisions=0/56=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/60=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -368,6 +378,6 @@ parse/parsing.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Aug 26 14:36:55 2022
+# Finished Make data base on Mon Aug 29 09:28:15 2022
 
  

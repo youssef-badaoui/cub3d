@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:15 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 15:38:28 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/30 09:59:47 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	update_pov(int keycode, t_data *data)
 {
-	if(keycode == 2)
+	if(keycode == 124)
 		data->position->pov = data->position->pov + 5;
-	else if (keycode == 0)
+	else if (keycode == 123)
 		data->position->pov = data->position->pov - 5;
 	if	(data->position->pov < 0)
 		data->position->pov += 360;
@@ -50,6 +50,7 @@ int start_exec(t_map *map)
 	mlx.win = mlx_new_window(mlx.mlx, WIN_W, WIN_H, "call of duty");
 	mlx.img = mlx_new_image(mlx.mlx, WIN_W, WIN_H);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+	get_texters(&data);
 	drawing(&data);
 	mlx_hook(mlx.win, 02, 00, &move_handl, &data);
 	mlx_loop(data.mlx->mlx);

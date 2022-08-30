@@ -1,6 +1,7 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/ybadaoui/Desktop/cub3d'
 gcc -Wall -Wextra -Werror -c cub3d.c -o cub3d.o
+ 
 gcc -Wall -Wextra -Werror -c exec/casting.c -o exec/casting.o
 gcc -Wall -Wextra -Werror -c exec/trigonometric.c -o exec/trigonometric.o
 gcc -Wall -Wextra -Werror -c exec/exec_tools.c -o exec/exec_tools.o

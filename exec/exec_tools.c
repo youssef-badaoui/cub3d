@@ -26,9 +26,16 @@ void    init_player_position(t_map *map, t_position *pp)
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color)
 {
 	char	*dst;
-	// printf("%d     %d\n", mlx->line_length,mlx->bits_per_pixel);
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+int ft_mlx_get_px(t_texter *img, int x, int y)
+{
+	int color;
+
+	color = img->addr[y*img->x + x];
+	return (color);
 }
 
 void full_data(t_data *data, t_table *table, t_position *position, t_ray *ray)
@@ -119,12 +126,10 @@ void	draw_3d(int i, t_data *data)
 	int y1;
 
 	t = 0;
-	// printf("ray_w = %d      ray_h = %d", data->ray_w,data->ray[i].ray_h);
 	x0 = data->ray_w * i;
 	y0 = (WIN_H - data->ray[i].ray_h) / 2;
 	x1 = x0;
 	y1 = y0 + data->ray[i].ray_h;
-	// printf("hollllllaaaaaaa in ray %d x0 = %d y0 = %d  x1 = %d y1 = %d\n", i, x0, y0, x1, y1);
 	while(t < data->ray_w)
 	{
 		draw_line(data, x0, y0, x1, y1);
@@ -132,3 +137,38 @@ void	draw_3d(int i, t_data *data)
 	}
 }
 
+void	get_texters(t_data *data)
+{
+	data->mlx->texters.N_img.img = mlx_xpm_file_to_image(data->mlx->mlx,data->map->meta_data[0], &data->mlx->texters.N_img.x, &data->mlx->texters.N_img.y);
+	data->mlx->texters.N_img.addr = (int *)mlx_get_data_addr(data->mlx->texters.N_img.img, &data->mlx->texters.N_img.bits_per_pixel, &data->mlx->texters.N_img.line_length, &data->mlx->texters.N_img.endian);
+	data->mlx->texters.S_img.img = mlx_xpm_file_to_image(data->mlx->mlx,data->map->meta_data[1], &data->mlx->texters.S_img.x, &data->mlx->texters.S_img.y);
+	data->mlx->texters.S_img.addr = (int *)mlx_get_data_addr(data->mlx->texters.S_img.img, &data->mlx->texters.S_img.bits_per_pixel, &data->mlx->texters.S_img.line_length, &data->mlx->texters.S_img.endian);
+	data->mlx->texters.W_img.img = mlx_xpm_file_to_image(data->mlx->mlx,data->map->meta_data[2], &data->mlx->texters.W_img.x, &data->mlx->texters.W_img.y);
+	data->mlx->texters.W_img.addr = (int *)mlx_get_data_addr(data->mlx->texters.W_img.img, &data->mlx->texters.W_img.bits_per_pixel, &data->mlx->texters.W_img.line_length, &data->mlx->texters.W_img.endian);
+	data->mlx->texters.E_img.img = mlx_xpm_file_to_image(data->mlx->mlx,data->map->meta_data[3], &data->mlx->texters.E_img.x, &data->mlx->texters.E_img.y);
+	data->mlx->texters.E_img.addr = (int *)mlx_get_data_addr(data->mlx->texters.E_img.img, &data->mlx->texters.E_img.bits_per_pixel, &data->mlx->texters.E_img.line_length, &data->mlx->texters.E_img.endian);
+	printf("img_x = %d     img_x = %d\n", data->mlx->texters.N_img.x, data->mlx->texters.N_img.y);
+}
+
+
+void	ft_ray_handl(t_data *data, int i)
+{
+	int j;
+	int	x;
+	int wall_h;
+	int x_img;
+	double img_pls_y;
+	if(data->ray[i].first == 'h')
+		x = (int)data->ray[i].x_save % CELL_SIZE;
+	else
+		x = (int)data->ray[i].y_save % CELL_SIZE;
+	wall_h = data->ray[i].ray_h;
+	x_img = x * (data->mlx->texters.N_img.x / CELL_SIZE);
+	img_pls_y = (double)data->mlx->texters.N_img.y / (double)wall_h;
+	j = 0;
+	while(j < wall_h)
+	{
+		ft_mlx_put_px(data->mlx, i, j + (WIN_H/2 - wall_h/2), ft_mlx_get_px(&data->mlx->texters.N_img, x_img, j * img_pls_y));
+		j++;
+	}
+}

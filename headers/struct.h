@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/08/28 15:44:26 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/08/30 12:02:25 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 30
+# define CELL_SIZE 600
 # define FOV 60
 # define HALF_FOV 30
 # define ANG_IN_D 0.05555555555
@@ -22,7 +22,7 @@
 # define E 90
 # define S 180
 # define W 270
-# define WIN_W 1080
+# define WIN_W 800
 # define WIN_H 520
 # define N_RAY WIN_W
 
@@ -66,15 +66,16 @@ typedef	struct s_position
 
 typedef struct s_ray
 {
+	int			first;		// which intersection is the first
 	int			v_skip;		// to skip the vertical calculation
 	int			h_skip;		// to skip the horizontal calculation
 	double		x_save;		// the x cord of the intersection with a wall
 	double		y_save;		// the y cord of the intersection with a wall
 	double		ray_pov;	// the point of view of the ray
 	int			index;		// the index of angle of the ray
-	double		xi ;			// the x cord of the horizontal intersection
-	double		yi ;			// the y cord of the vertical intersection
-	double		xbound ;		// the x cord of the vertical intersection 
+	double		xi ;		// the x cord of the horizontal intersection
+	double		yi ;		// the y cord of the vertical intersection
+	double		xbound ;	// the x cord of the vertical intersection 
 	double		ybound;		// the y cord of the horizontal intersection
 	int			v_hit;		// the type of the cell for the vertical intersect
 	int			h_hit;		// the type of the cell for the horizontal intersect
@@ -98,6 +99,24 @@ typedef struct s_table
 	double	*cos_table;
 	double	*sin_table;
 }				t_table;
+typedef struct s_texter
+{
+	void	*img;
+	int 	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		x;
+	int		y;
+} t_texter;
+
+typedef struct s_texters
+{
+	t_texter 	N_img;
+	t_texter	S_img;
+	t_texter	E_img;
+	t_texter	W_img;
+} t_texters;
 
 typedef struct s_mlx
 {
@@ -108,6 +127,7 @@ typedef struct s_mlx
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	t_texters texters;
 } t_mlx;
 
 typedef struct s_data
@@ -119,5 +139,6 @@ typedef struct s_data
 	t_position	*position;
 	int			ray_w;
 } t_data;
+
 
 #endif
