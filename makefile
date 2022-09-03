@@ -17,17 +17,20 @@ HEADERS = ./headers/cub3d.h ./headers/struct.h
 
 CC = gcc
 
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -framework OpenGL -framework AppKit
 
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADERS)
-	$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ) $(HEADERS) $(MLX)
+	$(CC) $(FLAGS) $(MLX_FLAGS) minilibx/libmlx.a $(OBJ) -o $(NAME)
 
 %.o : %.c $(HEADERS)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+
+$(MLX):
+		make -C minilibx/
 
 clean:
 	rm -f $(OBJ)
