@@ -1,0 +1,5 @@
+for i in *.xpm
+do
+    mv "$i" "${i/frame_/}"
+done
+
