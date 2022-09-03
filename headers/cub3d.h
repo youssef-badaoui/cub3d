@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/02 18:22:44 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/03 11:38:07 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,10 @@ double	calcul_adjacent(double hypotenuse, double opposite);
 double	calcul_opposite(double hypotenus, double adjacent);
 void	update_pov(t_data *data);
 void	update_position(t_data *data);
-int button_press(t_data *data);
-int	set_pov(t_data *data, double *pov);
-int	wall_detect(t_data *data, int index);
+int     button_press(t_data *data);
+int 	set_pov(t_data *data, double *pov);
+int	    wall_detect(t_data *data, int index);
+int     get_x(t_data *data, int i);
+t_texter *get_texter(t_data *data, int i);
 #endif
 	

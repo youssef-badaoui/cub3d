@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/02 09:00:41 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/03 11:53:12 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 600
+# define CELL_SIZE 100
 # define FOV 60
 # define HALF_FOV 30
 # define ANG_IN_D 0.05555555555
@@ -149,7 +149,7 @@ typedef struct s_data
 	t_ray		*ray;
 	t_position	*position;
 	t_keystate	keystate;
-	char		*gun[26];
+	char		*gun[25];
 	int			gun_x;
 	int			gun_y;
 	int			ray_w;

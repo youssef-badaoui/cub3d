@@ -1,5 +1,5 @@
 SRC = ./src/main_cub3d.c  ./src/parsing/inspect.c ./src/parsing/start_parsing.c ./src/parsing/store.c \
-	./src/f_tools/drawing_tools.c ./src/f_tools/gnl.c \
+	./src/f_tools/drawing_tools_1.c ./src/f_tools/drawing_tools_2.c ./src/f_tools/gnl.c \
 	./src/f_tools/general_tools_1.c ./src/f_tools/general_tools_2.c ./src/f_tools/general_tools_3.c \
 	./src/f_tools/parsing_tools_1.c ./src/f_tools/parsing_tools_2.c \
 	./src/f_tools/exec_tools_1.c \
