@@ -36,6 +36,6 @@ fclean: clean
 	rm -f $(NAME)
 
 hoho: all clean
-	clear && ./$(NAME) maps/map1.cub
+	clear && ./$(NAME) ./maps/map1.cub
 
 re: fclean all

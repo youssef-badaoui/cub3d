@@ -75,9 +75,6 @@ int	wall_detect(t_data *data, int index)
 	if(next_y >= data->map->map_h || next_x >= data->map->map_w)
 		return (1);
 	if (!ft_strchr(data->map->map_tab[next_y][next_x] , "0N"))
-	{
-		printf("next cell is %c\n",data->map->map_tab[next_y][next_x] );
 		return (1);
-	}
 	return (0);
 }

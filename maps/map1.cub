@@ -1,8 +1,8 @@
-SO ./wall_texters/S.xpm
+SO ./wall_texters/N.xpm
         
-WE  ./wall_texters/W.xpm
+WE  ./wall_texters/N.xpm
 
-EA ./wall_texters/E.xpm
+EA ./wall_texters/N.xpm
 
 NO ./wall_texters/N.xpm
 
