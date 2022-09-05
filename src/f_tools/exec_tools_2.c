@@ -54,9 +54,9 @@ void	calcul_cells(t_ray *ray)
 
 void	check_skip(t_ray *ray, t_position position)
 {
-	if (ray->xcell_h > position.map->map_w || ray->ycell_h > position.map->map_h)
+	if (ray->xcell_h >= position.map->map_w || ray->ycell_h >= position.map->map_h)
 		ray->h_skip = 1;
-	if (ray->xcell_v > position.map->map_w || ray->ycell_v > position.map->map_h)
+	if (ray->xcell_v >= position.map->map_w || ray->ycell_v >= position.map->map_h)
 		ray->v_skip = 1;
 	if (ray->quadrant == 4)
 	{
@@ -90,9 +90,9 @@ void	check_skip(t_ray *ray, t_position position)
 		if (ray->xcell_v > position.x_cell || ray->ycell_v < position.y_cell || ray->xcell_v < 0 || ray->ycell_v < 0)
 			ray->v_skip = 1;
 	}
-	if (!(ray->h_skip) && ray->xcell_h > ft_strlen(position.map->map_tab[ray->ycell_h]))
+	if (!(ray->h_skip) && ray->xcell_h >= ft_strlen(position.map->map_tab[ray->ycell_h]))
 		ray->h_skip = 1;
-	if (!(ray->v_skip) && ray->xcell_v > ft_strlen(position.map->map_tab[ray->ycell_v]))
+	if (!(ray->v_skip) && ray->xcell_v >= ft_strlen(position.map->map_tab[ray->ycell_v]))
 		ray->v_skip = 1;
 }
 
