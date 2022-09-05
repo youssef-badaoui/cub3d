@@ -109,6 +109,8 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);
 		calcul_first_vertical(table, &rays[i], position);
 		calcul_first_horizontal(table, &rays[i], position);
+		rays[i].h_door = 0;
+		rays[i].v_door = 0;
 		rays[i].h_hit = 0;
 		rays[i].v_hit = 0;
 		rays[i].h_skip = 0;
