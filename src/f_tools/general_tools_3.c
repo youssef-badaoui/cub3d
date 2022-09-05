@@ -31,6 +31,19 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
+int ft_min(int a, int b)
+{
+	if(a > b)
+		return (b);
+	return (a);
+}
+
+int ft_max(int a, int b)
+{
+	if(a > b)
+		return (a);
+	return (b);
+}
 
 
 

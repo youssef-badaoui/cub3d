@@ -21,7 +21,7 @@ void	ft_ray_handl(t_data *data, int ray_index)
 	j = 0;
 	while(j < wall_h)
 	{
-		ft_mlx_put_px(data->mlx, ray_index, j + (WIN_H/2 - wall_h/2), ft_mlx_get_px(texter, x_img, j * img_pls_y));
+		ft_mlx_put_px(data->mlx, ray_index,data->ray_h + j + (WIN_H/2 - wall_h/2), ft_mlx_get_px(texter, x_img, j * img_pls_y));
 		j++;
 	}
 }

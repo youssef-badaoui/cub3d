@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/03 11:53:12 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:37:17 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define STRUCT_H
 
 # define INTERSECTION_FOUND 1
-# define CELL_SIZE 100
+# define CELL_SIZE 50
 # define FOV 60
 # define HALF_FOV 30
 # define ANG_IN_D 0.05555555555
@@ -139,6 +139,8 @@ typedef struct s_keystate
 	int d;
 	int r;
 	int l;
+	int q;
+	int esc;
 } t_keystate;
 
 typedef struct s_data
@@ -153,6 +155,7 @@ typedef struct s_data
 	int			gun_x;
 	int			gun_y;
 	int			ray_w;
+	int			ray_h;
 } t_data;
 
 

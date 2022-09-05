@@ -9,6 +9,7 @@ void init_keystate (t_data *data)
 	data->keystate.l = 0;
 	data->keystate.r = 0;
 	data->keystate.tir = 0;
+	data->keystate.q = 0;
 }
 
 void get_gun(t_data *data)

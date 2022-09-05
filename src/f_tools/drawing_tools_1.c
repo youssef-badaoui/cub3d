@@ -1,39 +1,17 @@
 #include "../../headers/cub3d.h"
 
-void	ft_color_image(t_mlx *mlx,  int color, int i , int j)
+void	ft_color_win(t_mlx *mlx,  int ray_h)
 {
 	int x;
 	int y;
 
-	x = 0;
-	while(x < CELL_SIZE)
-	{
-		y = 0;
-		while(y < CELL_SIZE)
-		{
-			if(x == 0 || y == 0)
-				ft_mlx_put_px(mlx, x + j * CELL_SIZE, i * CELL_SIZE + y++ , 0x0);
-			else
-				ft_mlx_put_px(mlx, x + j * CELL_SIZE, i * CELL_SIZE + y++ , color);
-		}
-			
-		x++;
-	}
-}
-
-void	ft_color_win(t_mlx *mlx,  int color)
-{
-	int x;
-	int y;
-
-	color =0;
 	x = 0;
 	while(x < WIN_W)
 	{
 		y = 0;
 		while(y < WIN_H)
 		{
-			if(y > WIN_H/2)
+			if(y > WIN_H/2 + ray_h)
 			{
 				ft_mlx_put_px(mlx, x, y, 0x22122a);
 				y++;
@@ -43,7 +21,6 @@ void	ft_color_win(t_mlx *mlx,  int color)
 				ft_mlx_put_px(mlx, x, y, 0xa569bd-y/2);
 				y++;
 			}
-				
 		}
 		x++;
 	}

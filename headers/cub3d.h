@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/03 11:38:07 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/05 11:08:35 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,8 @@ int 	set_pov(t_data *data, double *pov);
 int	    wall_detect(t_data *data, int index);
 int     get_x(t_data *data, int i);
 t_texter *get_texter(t_data *data, int i);
+void	mini_map(t_data *data);
+int ft_min(int a, int b);
+int ft_max(int a, int b);
 #endif
 	

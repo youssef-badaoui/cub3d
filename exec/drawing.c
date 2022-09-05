@@ -1,25 +1,5 @@
 #include "../headers/cub3d.h"
 
-void	mini_map(t_data *data)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while(i < data->map->map_h)
-	{
-		j = 0;
-		while(data->map->map_tab[i][j])
-		{
-			if(data->map->map_tab[i][j] == '1')
-				ft_color_image(data->mlx,  0x7b7d7d  , i, j);
-			else if	(data->map->map_tab[i][j] == '0' || ft_strchr(data->map->map_tab[i][j], "NSEW"))
-				ft_color_image(data->mlx,   0x58d68d , i, j);
-			j++;
-		}
-		i++;
-	}
-}
 void	put_gun(t_data *data)
 {
 	static double i;
@@ -38,13 +18,83 @@ void	put_gun(t_data *data)
 	if (i > 11)
 		i = 0;
 }
+
+void	color_sqr(t_data *data, int cell_size, int x, int y, unsigned int color)
+{
+	int	xc;
+	int	yc;
+
+	xc = 0;
+	while (xc <= cell_size)
+	{
+		yc = 0;
+		while( yc <= cell_size)
+		{
+			if(yc == 0 || xc == 0)
+				ft_mlx_put_px(data->mlx, xc + (cell_size * x), yc + (cell_size * y), 0x0);
+			else
+				ft_mlx_put_px(data->mlx, xc + (cell_size * x), yc + (cell_size * y), color);
+			yc++;
+		}
+		xc++;
+	}
+}
+
+void put_rays(t_data *data, double diff)
+{
+	int i;
+	double px;
+	double py;
+
+	i = 0;
+	px = data->position->virtual_px / diff;
+	py = data->position->virtual_py / diff;
+	while(i < N_RAY)
+	{
+		draw_line(data, px, py, data->ray[i].x_save / diff, data->ray[i].y_save / diff);
+		i++;
+	}
+}
+
+void put_map(t_data *data)
+{
+	int cell_size;
+	int x;
+	int y;
+
+	if(data->keystate.q)
+		cell_size = 30;
+	else
+		cell_size = 10;
+	y = 0;
+	while(y < data->map->map_h)
+	{
+		x = 0;
+		while(x < data->map->map_w)
+		{
+			if(data->map->map_tab[y][x] == '1')
+				color_sqr(data, cell_size, x, y, 0x0);
+			else if (!ft_is_whitespace(data->map->map_tab[y][x]))
+				color_sqr(data, cell_size, x, y, 0xd2b4de);
+			x++;
+		}
+		y++;
+	}
+	put_rays(data, CELL_SIZE / cell_size);
+	mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, data->mlx->img, 0,0);
+}
+
 void drawing(t_data *data)
 {
-
+	if(data->keystate.esc)
+	{
+		ft_print("game finished hope you enjoy it ;)\n");
+		exit(0);
+	}
 	casting_rays(data->table, data->ray, *data->position);
-	// mini_map(data);
-	ft_color_win(data->mlx, 0x0);
+	ft_color_win(data->mlx,data->ray_h);
 	ft_3d(data);
-	mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, data->mlx->img, 0,0);
+	put_map(data);
 	put_gun(data);
+
 }

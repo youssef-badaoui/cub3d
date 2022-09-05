@@ -28,6 +28,8 @@ int mouse_move(int  x, int y, t_data *data)
 		data->position->pov += 360;
 	else if(data->position->pov > 360)
 		data->position->pov -= 360;
+	if(data->ray_h - (y - WIN_H / 2) / 5 < 100 && data->ray_h - (y - WIN_H / 2) / 5 > -200)
+		data->ray_h -= (y - WIN_H / 2) / 5;
 	mlx_mouse_move(data->mlx->win, WIN_W / 2, WIN_H / 2);
 	return (0);
 }
@@ -56,6 +58,10 @@ int keypress (int  keycode, t_data *data)
 		data->keystate.l = 1;
 	else if(keycode == 123)
 		data->keystate.r = 1;
+	else if(keycode == 49)
+		data->keystate.q = 1;
+	else if(keycode == 53)
+		data->keystate.esc = 1;
 	return 0;
 }
 
@@ -73,6 +79,8 @@ int keyrelease(int  keycode, t_data *data)
 		data->keystate.l = 0;
 	else if(keycode == 123)
 		data->keystate.r = 0;
+	else if(keycode == 49)
+		data->keystate.q = 0;
 	return 0;
 }
 

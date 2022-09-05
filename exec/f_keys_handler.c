@@ -16,15 +16,22 @@ void walking_sound(void)
 {
 	char *arg[3];
 	int pid;
-	
-	pid = fork();
-	if(pid == 0)
+	static int t;
+
+	if(!t)
 	{
-		arg[1] = "./sounds/walk.wav";
-		arg[0] = "/usr/bin/afplay";
-		arg[2] = NULL;
-		execve(arg[0], arg, NULL);
+		t = 18;
+		pid = fork();
+		if(pid == 0)
+		{
+			arg[1] = "./sounds/walk.mp3";
+			arg[0] = "/usr/bin/afplay";
+			arg[2] = NULL;
+			execve(arg[0], arg, NULL);
+		}
 	}
+	else
+		t--;
 }
 
 void	update_position(t_data *data)
@@ -36,9 +43,9 @@ void	update_position(t_data *data)
 	if(!set_pov(data, &pov))
 		return ;
 	pov_index = pov / ANG_IN_D;
+	walking_sound();
 	if(wall_detect(data, pov_index))
 		return ;
-	walking_sound();
 	data->position->virtual_px += data->table->sin_table[pov_index] * CELL_SIZE / 10; 
 	data->position->virtual_py -= data->table->cos_table[pov_index] * CELL_SIZE / 10;
 	data->position->x_cell = data->position->virtual_px / CELL_SIZE;

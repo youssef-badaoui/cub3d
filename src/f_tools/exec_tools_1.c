@@ -52,6 +52,7 @@ void full_data(t_data *data, t_table *table, t_position *position, t_ray *ray)
 	data->table = table;
 	data->ray = ray;
 	data->position = position;
+	data->ray_h = 0;
 }
 
 void	ft_init_mlx(t_mlx *mlx)
