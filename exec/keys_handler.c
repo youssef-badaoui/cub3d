@@ -20,17 +20,15 @@ int tir_release(int keycode, int x, int y,t_data *data)
 
 int mouse_move(int  x, int y, t_data *data)
 {
-	static int mouse_x;
-	
-	if(x > mouse_x && x < WIN_W && y < WIN_H)
-		data->position->pov = data->position->pov + (x - mouse_x)/2;
-	else if (x < mouse_x && x < WIN_W && y < WIN_H)
-		data->position->pov = data->position->pov + (x - mouse_x)/2;
+	(void) y;
+
+	mlx_mouse_hide();
+	data->position->pov = data->position->pov + (x - WIN_W / 2) / 20;
 	if	(data->position->pov < 0)
 		data->position->pov += 360;
 	else if(data->position->pov > 360)
 		data->position->pov -= 360;
-	mouse_x = x;
+	mlx_mouse_move(data->mlx->win, WIN_W / 2, WIN_H / 2);
 	return (0);
 }
 

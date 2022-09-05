@@ -57,7 +57,7 @@ void	calcul_distance(t_table *table, t_ray *ray, t_position position)
 	}
 }
 
-void	calcul_door_vdistance(t_ray *ray, t_position position, t_table table)
+void	calcul_door_vdistance(t_ray *ray, t_position position, t_table *table)
 {
 	double	opposite;
 	double	adjacent;
@@ -88,7 +88,7 @@ void	calcul_door_vdistance(t_ray *ray, t_position position, t_table table)
 		ray->v_distance = adjacent / table->cos_table[ray->index];
 }
 
-void	calcul_door_hdistance(t_ray *ray, t_position position, t_table table)
+void	calcul_door_hdistance(t_ray *ray, t_position position, t_table *table)
 {
 	double	opposite;
 	double	adjacent;
@@ -119,7 +119,7 @@ void	calcul_door_hdistance(t_ray *ray, t_position position, t_table table)
 		ray->h_distance = opposite / table->sin_table[ray->index];
 }
 
-void	check_door(t_ray *ray, t_position position, t_table table)
+void	check_door(t_ray *ray, t_position position, t_table *table)
 {
 	if (!(ray->h_skip) && !(ray->h_door) && (position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C' ||
 		position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'O'))
@@ -143,14 +143,14 @@ void	check_door(t_ray *ray, t_position position, t_table table)
 	}
 }
 
-int	check_cell_type(t_ray *ray, t_position position, t_table table)
+int	check_cell_type(t_ray *ray, t_position position, t_table *table)
 {
 	calcul_cells(ray);
 	check_skip(ray, position);
 	check_door(ray, position, table);
-	if (!(ray->h_skip) && position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1' || ray->hdoor_state == CLOSE)
+	if ((!(ray->h_skip) && position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1') || ray->hdoor_state == CLOSE)
 		ray->h_hit = INTERSECTION_FOUND;
-	if (!(ray->v_skip) && position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1' || ray->vdoor_state == CLOSE)
+	if ((!(ray->v_skip) && position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1') || ray->vdoor_state == CLOSE)
 		ray->v_hit = INTERSECTION_FOUND;
 	if (ray->v_hit && ray->h_hit)
 		return (INTERSECTION_FOUND);

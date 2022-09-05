@@ -20,27 +20,31 @@ void	mini_map(t_data *data)
 		i++;
 	}
 }
-
-void drawing(t_data *data)
+void	put_gun(t_data *data)
 {
-	void *img;
 	static double i;
 	int x;
 	int y;
+	void *img;
+
+	img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[(int)i],&x, &y);
+	if (!data->keystate.w)
+		img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[0],&x, &y);
+	if (data->keystate.tir == 0)
+		mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, img, WIN_W - x, WIN_H-y);
+		i+= 0.1;
+	if (i > 2 && i < 8)
+		i = 8;
+	if (i > 11)
+		i = 0;
+}
+void drawing(t_data *data)
+{
 
 	casting_rays(data->table, data->ray, *data->position);
 	// mini_map(data);
 	ft_color_win(data->mlx, 0x0);
 	ft_3d(data);
 	mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, data->mlx->img, 0,0);
-	img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[(int)i],&x, &y);
-	if(!data->keystate.w)
-		img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[0],&x, &y);
-	if(data->keystate.tir == 0)
-		mlx_put_image_to_window(data->mlx->mlx,data->mlx->win, img, WIN_W - x, WIN_H-y);
-		i+= 0.1;
-	if(i > 2 && i < 8)
-		i = 8;
-	if(i > 11)
-		i = 0;
+	put_gun(data);
 }

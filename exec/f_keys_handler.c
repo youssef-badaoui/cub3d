@@ -12,6 +12,21 @@ void	update_pov(t_data *data)
 		data->position->pov -= 360;
 }
 
+void walking_sound(void)
+{
+	char *arg[3];
+	int pid;
+	
+	pid = fork();
+	if(pid == 0)
+	{
+		arg[1] = "./sounds/walk.wav";
+		arg[0] = "/usr/bin/afplay";
+		arg[2] = NULL;
+		execve(arg[0], arg, NULL);
+	}
+}
+
 void	update_position(t_data *data)
 {
 	double	pov;
@@ -23,6 +38,7 @@ void	update_position(t_data *data)
 	pov_index = pov / ANG_IN_D;
 	if(wall_detect(data, pov_index))
 		return ;
+	walking_sound();
 	data->position->virtual_px += data->table->sin_table[pov_index] * CELL_SIZE / 10; 
 	data->position->virtual_py -= data->table->cos_table[pov_index] * CELL_SIZE / 10;
 	data->position->x_cell = data->position->virtual_px / CELL_SIZE;
