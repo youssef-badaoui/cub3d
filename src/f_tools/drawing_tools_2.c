@@ -10,6 +10,17 @@ int get_x(t_data *data, int i)
 		x = (int)data->ray[i].y_save % CELL_SIZE;
     return (x);
 }
+int get_dx(t_data *data, int i)
+{
+    int x;
+
+    // printf("xd = %d yd = %d\n",(int)data->ray[i].xd_save,(int)data->ray[i].yd_save);
+    if (data->ray[i].first_d == 'h')
+		x = (int)data->ray[i].xd_save % CELL_SIZE;
+	else
+		x = (int)data->ray[i].yd_save % CELL_SIZE;
+    return (x);
+}
 
 t_texter *get_texter(t_data *data, int i)
 {

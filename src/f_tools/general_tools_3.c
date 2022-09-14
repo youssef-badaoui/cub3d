@@ -33,6 +33,10 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int ft_min(int a, int b)
 {
+	if(a < 0)
+		return (b);
+	if(b < 0)
+		return (a);
 	if(a > b)
 		return (b);
 	return (a);

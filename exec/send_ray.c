@@ -55,6 +55,20 @@ void	calcul_distance(t_table *table, t_ray *ray, t_position position)
 		ray->save_distance = ray->v_distance;
 		ray->first = 'v';
 	}
+	if (ray->h_door == DOOR_FOUND && (ray->h_dd < ray->v_dd || ray->v_door != DOOR_FOUND))
+	{
+		ray->xd_save = ray->xdh;
+		ray->yd_save = ray->ydh;
+		ray->door_dis = ray->h_dd;
+		ray->first_d = 'h';
+	}
+	else if (ray->v_door == DOOR_FOUND)
+	{
+		ray->xd_save = ray->xdv;
+		ray->yd_save = ray->ydv;
+		ray->door_dis = ray->v_dd;
+		ray->first_d = 'v';
+	}
 }
 
 void	calcul_door_vdistance(t_ray *ray, t_position position, t_table *table)
@@ -130,6 +144,8 @@ void	check_door(t_ray *ray, t_position position, t_table *table)
 			ray->hdoor_state = CLOSE;
 		else
 			ray->hdoor_state = OPEN;
+		ray->xdh = ray->xi;
+		ray->ydh = ray->ybound;
 	}
 	if ( !(ray->v_door) && !(ray->v_skip) && (position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C' ||
 		position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'O'))
@@ -140,6 +156,8 @@ void	check_door(t_ray *ray, t_position position, t_table *table)
 			ray->vdoor_state = CLOSE;
 		else
 			ray->vdoor_state = OPEN;
+		ray->xdv = ray->xbound;
+		ray->ydv = ray->yi;
 	}
 }
 

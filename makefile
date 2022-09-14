@@ -11,7 +11,7 @@ SRC = ./src/main_cub3d.c  ./src/parsing/inspect.c ./src/parsing/start_parsing.c 
 
 OBJ = $(SRC:.c=.o)
 
-NAME = cub3d
+NAME = cub3D
 
 HEADERS = ./headers/cub3d.h ./headers/struct.h
 
@@ -39,6 +39,6 @@ fclean: clean
 	rm -f $(NAME)
 
 hoho: all clean
-	clear && ./$(NAME) ./maps/map1.cub
+	clear && ./$(NAME) ./maps/map2.cub
 
 re: fclean all

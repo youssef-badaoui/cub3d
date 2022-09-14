@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/05 11:08:35 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:59:41 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ t_texter *get_texter(t_data *data, int i);
 void	mini_map(t_data *data);
 int ft_min(int a, int b);
 int ft_max(int a, int b);
+int get_dx(t_data *data, int i);
 #endif
 	

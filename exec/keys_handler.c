@@ -44,8 +44,35 @@ int move_handl(t_data *data)
 	return 0;
 }
 
+void open_close(int  keycode, t_data *data)
+{
+	int pov_index;
+	int cell_x;
+	int cell_y;
+
+	if (keycode != 8 && keycode != 31)
+		return ;
+	cell_x = 0;
+	cell_y = 0;
+	pov_index = N_RAY / 2;
+	cell_x = data->ray[pov_index].xd_save / CELL_SIZE;
+	cell_y = data->ray[pov_index].yd_save / CELL_SIZE;
+	if (data->ray[pov_index].ray_pov >= 180 && data->ray[pov_index].first_d == 'v')
+		cell_x -= 1;
+	if ((data->ray[pov_index].ray_pov <= 90 || data->ray[pov_index].ray_pov > 270) && data->ray[pov_index].first_d == 'h')
+		cell_y -= 1;
+	if (data->ray[pov_index].h_door == DOOR_FOUND || data->ray[pov_index].v_door == DOOR_FOUND)
+	{
+		if(keycode == 8  && data->ray[pov_index].door_dis <= data->ray[pov_index].save_distance)
+			data->map->map_tab[cell_y][cell_x] = 'C';
+		else if(keycode == 31  && data->ray[pov_index].door_dis <= data->ray[pov_index].save_distance)
+			data->map->map_tab[cell_y][cell_x] = 'O';
+	}
+}
+
 int keypress (int  keycode, t_data *data)
 {
+	open_close(keycode, data);
 	if(keycode == 13)
 		data->keystate.w = 1;
 	else if(keycode == 0)
@@ -62,6 +89,10 @@ int keypress (int  keycode, t_data *data)
 		data->keystate.q = 1;
 	else if(keycode == 53)
 		data->keystate.esc = 1;
+	else if(keycode == 35)
+		data->keystate.o = 1;
+	else if(keycode == 8)
+		data->keystate.c = 1;
 	return 0;
 }
 
@@ -81,6 +112,10 @@ int keyrelease(int  keycode, t_data *data)
 		data->keystate.r = 0;
 	else if(keycode == 49)
 		data->keystate.q = 0;
+	else if(keycode == 35)
+		data->keystate.o = 0;
+	else if(keycode == 8)
+		data->keystate.c = 0;
 	return 0;
 }
 

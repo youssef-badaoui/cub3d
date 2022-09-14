@@ -109,6 +109,8 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);
 		calcul_first_vertical(table, &rays[i], position);
 		calcul_first_horizontal(table, &rays[i], position);
+		rays[i].hdoor_state = 0;
+		rays[i].vdoor_state = 0;
 		rays[i].h_door = 0;
 		rays[i].v_door = 0;
 		rays[i].h_hit = 0;
@@ -117,6 +119,7 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].v_skip = 0;
 		rays[i].first = 0;
 		send_ray(table, &rays[i], position);
+		// printf("xd = %f yd = %f\n",rays[i].xd_save, rays[i].yd_save);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/05 16:44:33 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/13 19:21:36 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define INTERSECTION_FOUND 1
 # define DOOR_FOUND 2
-# define CELL_SIZE 600
+# define CELL_SIZE 500
 # define FOV 60
 # define HALF_FOV 30
 # define ANG_IN_D 0.05555555555
@@ -24,7 +24,7 @@
 # define S 180
 # define W 270
 # define WIN_W 1080
-# define WIN_H 524
+# define WIN_H 520
 # define N_RAY WIN_W
 # define OPEN 3
 # define CLOSE 4
@@ -73,6 +73,14 @@ typedef struct s_ray
 	int			vdoor_state;	// to check the state of the door in the vertical
 	double		h_dd;			// the distance of the door 
 	double		v_dd;			// vertical and horizontal
+	double		xdv;
+	double		ydv;
+	double		xdh;
+	double		ydh;
+	double		xd_save;
+	double		yd_save;
+	double		door_dis;
+	int			first_d;
 	int			h_door;			// to check if the horizontal ray hit a door 
 	int			v_door;			// to check if the vertical ray hit a door
 	int			first;			// which intersection is the first
@@ -125,6 +133,8 @@ typedef struct s_texters
 	t_texter	S_img;
 	t_texter	E_img;
 	t_texter	W_img;
+	t_texter	O_door;
+	t_texter	C_door;
 } t_texters;
 
 typedef struct s_mlx
@@ -150,6 +160,8 @@ typedef struct s_keystate
 	int l;
 	int q;
 	int esc;
+	int o;
+	int c;
 } t_keystate;
 
 typedef struct s_data
