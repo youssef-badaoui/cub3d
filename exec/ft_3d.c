@@ -32,20 +32,20 @@ void	ft_ray_handl(t_data *data, int ray_index)
 
 void	*get_door_texter(t_data *data, int index)
 {
-		if (data->ray[index].h_door == DOOR_FOUND)
-		{
-			if (data->ray[index].hdoor_state == CLOSE)
-				return (&data->mlx->texters.C_door);
-			else
-				return (&data->mlx->texters.O_door);
-		}
+	if (data->ray[index].h_dd == data->ray[index].door_dis)
+	{
+		if (data->ray[index].hdoor_state == CLOSE)
+			return (&data->mlx->texters.C_door);
 		else
-		{
-			if (data->ray[index].vdoor_state == CLOSE)
-				return (&data->mlx->texters.C_door);
-			else
-				return (&data->mlx->texters.O_door);
-		}
+			return (&data->mlx->texters.O_door);
+	}
+	else
+	{
+		if (data->ray[index].vdoor_state == CLOSE)
+			return (&data->mlx->texters.C_door);
+		else
+			return (&data->mlx->texters.O_door);
+	}
 	return (NULL);
 }
 
@@ -93,6 +93,7 @@ void	ft_3d(t_data *data)
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img, 0 ,0);
 	while (i < N_RAY)
 	{
+
 		if ((data->ray[i].h_door == DOOR_FOUND || data->ray[i].v_door == DOOR_FOUND) && data->ray[i].door_dis <= data->ray[i].save_distance)
 			ft_door_handl(data, i);
 		i++;
