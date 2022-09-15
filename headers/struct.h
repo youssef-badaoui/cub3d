@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/13 19:21:36 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:56:28 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define S 180
 # define W 270
 # define WIN_W 1080
-# define WIN_H 520
+# define WIN_H 720
 # define N_RAY WIN_W
 # define OPEN 3
 # define CLOSE 4
