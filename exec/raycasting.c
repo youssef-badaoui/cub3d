@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/14 15:20:18 by Ma3ert            #+#    #+#             */
+/*   Updated: 2022/09/14 15:20:25 by Ma3ert           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub3d.h"
 
 double	calcul_ray_pov(t_position position, int ray)
@@ -119,7 +131,6 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].v_skip = 0;
 		rays[i].first = 0;
 		send_ray(table, &rays[i], position);
-		// printf("xd = %f yd = %f\n",rays[i].xd_save, rays[i].yd_save);
 		i++;
 	}
 }

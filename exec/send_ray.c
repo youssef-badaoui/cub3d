@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   send_ray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/14 15:20:11 by Ma3ert            #+#    #+#             */
+/*   Updated: 2022/09/14 15:35:32 by Ma3ert           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub3d.h"
 
 void	calcul_next_h_inter(t_table *table, t_ray *ray, t_position position)
@@ -140,10 +152,9 @@ void	check_door(t_ray *ray, t_position position, t_table *table)
 	{
 		ray->h_door = DOOR_FOUND;
 		calcul_door_hdistance(ray, position, table);
+		ray->hdoor_state = OPEN;
 		if (position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C')
 			ray->hdoor_state = CLOSE;
-		else
-			ray->hdoor_state = OPEN;
 		ray->xdh = ray->xi;
 		ray->ydh = ray->ybound;
 	}
@@ -152,10 +163,9 @@ void	check_door(t_ray *ray, t_position position, t_table *table)
 	{
 		ray->v_door = DOOR_FOUND;
 		calcul_door_vdistance(ray, position, table);
+		ray->vdoor_state = OPEN;
 		if (position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')
 			ray->vdoor_state = CLOSE;
-		else
-			ray->vdoor_state = OPEN;
 		ray->xdv = ray->xbound;
 		ray->ydv = ray->yi;
 	}
