@@ -10,7 +10,7 @@ void	ft_ray_handl(t_data *data, int ray_index)
 {
 	int			j;
 	int			wall_h;
-	double			x_img;
+	double		x_img;
 	double		img_pls_y;
 	t_texter	*texter;
 
@@ -18,8 +18,9 @@ void	ft_ray_handl(t_data *data, int ray_index)
 	x_img = get_x(data, ray_index) * ((double)texter->x / CELL_SIZE);
 	if(!x_img)
 		x_img = 1;
-	// printf("x  = %f\n", x_img);
 	wall_h = data->ray[ray_index].ray_h;
+	if(texter == &data->mlx->texters.fog)
+		wall_h = WIN_H;
 	img_pls_y = (double)texter->y / (double)wall_h;
 	j = 0;
 	while (j < wall_h)
@@ -77,6 +78,11 @@ void	ft_3d(t_data *data)
 {
 	int	i;
 	double dis;
+	int x_cell;
+    int y_cell;
+
+    x_cell = data->position->x_cell;
+    y_cell = data->position->y_cell;
 
 	i = 0;
 	dis = data->ray[i].save_distance;
@@ -90,10 +96,11 @@ void	ft_3d(t_data *data)
 		i++;
 	}
 	i = 0;
+    if(data->map->map_tab[y_cell][x_cell] == 'O')
+        return ;
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img, 0 ,0);
 	while (i < N_RAY)
 	{
-
 		if ((data->ray[i].h_door == DOOR_FOUND || data->ray[i].v_door == DOOR_FOUND) && data->ray[i].door_dis <= data->ray[i].save_distance)
 			ft_door_handl(data, i);
 		i++;

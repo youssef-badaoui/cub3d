@@ -46,9 +46,9 @@ void	update_position(t_data *data)
 	if (wall_detect(data, pov_index))
 		return ;
 	data->position->virtual_px += data->table->sin_table[pov_index]
-		* CELL_SIZE / 10;
+		* CELL_SIZE / 13;
 	data->position->virtual_py -= data->table->cos_table[pov_index]
-		* CELL_SIZE / 10;
+		* CELL_SIZE / 13;
 	data->position->x_cell = data->position->virtual_px / CELL_SIZE;
 	data->position->y_cell = data->position->virtual_py / CELL_SIZE;
 }
@@ -94,14 +94,21 @@ int	wall_detect(t_data *data, int index)
 {
 	int	next_x;
 	int	next_y;
+	int	x;
+	int	y;
 
+	x = data->position->x_cell;
+	y = data->position->y_cell;
 	next_x = (data->position->virtual_px + data->table->sin_table[index]
-			* CELL_SIZE / 6) / CELL_SIZE;
+			* CELL_SIZE / 13) / CELL_SIZE;
 	next_y = (data->position->virtual_py - data->table->cos_table[index]
-			* CELL_SIZE / 6) / CELL_SIZE;
+			* CELL_SIZE / 13) / CELL_SIZE;
 	if (next_y >= data->map->map_h || next_x >= data->map->map_w)
+		return (1);
+	if (!ft_strchr(data->map->map_tab[next_y][x], "0NESWO") && !ft_strchr(data->map->map_tab[y][next_x], "0NESWO"))
 		return (1);
 	if (!ft_strchr(data->map->map_tab[next_y][next_x], "0NESWO"))
 		return (1);
 	return (0);
 }
+

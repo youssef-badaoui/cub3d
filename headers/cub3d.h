@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/13 11:59:41 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:55:04 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void    init_player_position(t_map *map, t_position *pp);
 void	drawing(t_data *data);
 void	ft_draw_map(t_data *data);
 void	ft_color_image(t_mlx *mlx,  int color, int i, int j);
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color);
 int		start_exec(t_map *map);
 void	casting_rays(t_table *table, t_ray *rays, t_position position);
 double	calcul_adjacent(double hypotenuse, double opposite);
@@ -65,7 +64,7 @@ int 	check_and_stor(int ac, char **av, t_map *map);
 void	send_ray(t_table *table, t_ray *ray, t_position position);
 void	triangle_sides(t_ray *ray, t_position position, t_table *table);
 void	draw_3d(int i, t_data *data);
-void	ft_color_win(t_mlx *mlx,  int color);
+void	ft_color_win(t_data *data, t_mlx *mlx,  int color);
 void	get_texters(t_data *data);
 void	ft_ray_handl(t_data *data, int i);
 int    keyrelease(int  keycode, t_data *data);
@@ -85,7 +84,7 @@ int     tir_release(int keycode, int x, int y,t_data *data);
 int     mouse_move(int  x, int y, t_data *data);
 int     move_handl(t_data *data);
 void	draw_line(t_data *data, int x0, int y0, int x1, int y1);
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color);
+void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned long color);
 double	calcul_adjacent(double hypotenuse, double opposite);
 double	calcul_opposite(double hypotenus, double adjacent);
 void	update_pov(t_data *data);

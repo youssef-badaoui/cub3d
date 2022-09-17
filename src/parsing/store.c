@@ -54,7 +54,10 @@ static int	get_meta_data(int fd, t_map *map)
 	}
 	return (1);
 }
-
+unsigned long rgbtolong(int *tab)
+{
+	return(tab[0] << 16 | tab[1] << 8 | tab[2]);
+}
 int	get_colors(t_map *map)
 {
 	char	**c;
@@ -62,8 +65,8 @@ int	get_colors(t_map *map)
 	int		i;
 
 	i = 0;
-	c = ft_split(map->meta_data[4], ',');
-	f = ft_split(map->meta_data[5], ',');
+	c = ft_split(map->meta_data[C], ',');
+	f = ft_split(map->meta_data[F], ',');
 	if(ft_tablen(c) != 3 || ft_tablen(f) != 3)
 		return (0);
 	while(i < 3)
@@ -74,6 +77,8 @@ int	get_colors(t_map *map)
 		map->F[i] = ft_atoi(f[i]);
 		i++;
 	}
+	map->int_c = rgbtolong(map->C);
+	map->int_f = rgbtolong(map->F);
 	// f_tab(c);
 	// f_tab(f);
 	return (1);

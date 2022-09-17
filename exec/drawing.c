@@ -48,14 +48,23 @@ void	put_rays(t_data *data, double diff)
 	int		i;
 	double	px;
 	double	py;
+	int		x;
+	int		y;
 
 	i = 0;
 	px = data->position->virtual_px / diff;
 	py = data->position->virtual_py / diff;
 	while (i < N_RAY)
 	{
-		draw_line(data, px, py, data->ray[i].x_save / diff,
-			data->ray[i].y_save / diff);
+		x = data->ray[i].x_save;
+		y = data->ray[i].y_save;
+		if((data->ray[i].h_door == DOOR_FOUND || data->ray[i].v_door == DOOR_FOUND)
+			&& (data->ray[i].hdoor_state == CLOSE || data->ray[i].vdoor_state == CLOSE) && data->ray[i].door_dis < data->ray[i].save_distance)
+		{
+			x = data->ray[i].xd_save;
+			y = data->ray[i].yd_save;
+		}
+		draw_line(data, px, py, x / diff, y / diff);
 		i++;
 	}
 }
@@ -67,7 +76,7 @@ void	put_map(t_data *data)
 	int	y;
 
 	if (data->keystate.q)
-		cell_size = 30;
+		cell_size = WIN_W / data->map->map_w;
 	else
 		cell_size = 10;
 	y = 0;
@@ -78,13 +87,17 @@ void	put_map(t_data *data)
 		{
 			if (data->map->map_tab[y][x] == '1')
 				color_sqr(data, cell_size, x, y, 0x0);
+			else if (data->map->map_tab[y][x] == 'C')
+				color_sqr(data, cell_size, x, y, 0x4a235a);
+			else if (data->map->map_tab[y][x] == 'O')
+				color_sqr(data, cell_size, x, y, 0x7d3c98);
 			else if (!ft_is_whitespace(data->map->map_tab[y][x]))
 				color_sqr(data, cell_size, x, y, 0xd2b4de);
 			x++;
 		}
 		y++;
 	}
-	put_rays(data, CELL_SIZE / cell_size);
+	put_rays(data, (double)CELL_SIZE / cell_size);
 	mlx_put_image_to_window(data->mlx->mlx,
 		data->mlx->win, data->mlx->img, 0, 0);
 }
@@ -97,7 +110,7 @@ void	drawing(t_data *data)
 		exit(0);
 	}
 	casting_rays(data->table, data->ray, *data->position);
-	ft_color_win(data->mlx, data->ray_h);
+	ft_color_win(data, data->mlx, data->ray_h);
 	ft_3d(data);
 	put_map(data);
 	put_gun(data);

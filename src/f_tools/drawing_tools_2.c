@@ -14,7 +14,6 @@ int get_dx(t_data *data, int i)
 {
     int x;
 
-    // printf("xd = %d yd = %d\n",(int)data->ray[i].xd_save,(int)data->ray[i].yd_save);
     if (data->ray[i].first_d == 'h')
 		x = (int)data->ray[i].xd_save % CELL_SIZE;
 	else
@@ -24,6 +23,13 @@ int get_dx(t_data *data, int i)
 
 t_texter *get_texter(t_data *data, int i)
 {
+    int x_cell;
+    int y_cell;
+
+    x_cell = data->position->x_cell;
+    y_cell = data->position->y_cell;
+    if(data->map->map_tab[y_cell][x_cell] == 'O')
+        return (&data->mlx->texters.fog);
     if(data->ray[i].first == 'h')
     {
         if(data->ray[i].y_save >= data->position->virtual_py)

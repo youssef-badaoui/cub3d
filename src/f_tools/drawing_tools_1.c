@@ -1,6 +1,6 @@
 #include "../../headers/cub3d.h"
 
-void	ft_color_win(t_mlx *mlx,  int ray_h)
+void	ft_color_win(t_data *data, t_mlx *mlx,  int ray_h)
 {
 	int x;
 	int y;
@@ -11,14 +11,14 @@ void	ft_color_win(t_mlx *mlx,  int ray_h)
 		y = 0;
 		while(y < WIN_H)
 		{
-			if(y > WIN_H/2 + ray_h)
+			if(y > WIN_H / 2 + ray_h)
 			{
-				ft_mlx_put_px(mlx, x, y, 0x22122a);
+				ft_mlx_put_px(mlx, x, y, data->map->int_f);
 				y++;
 			}
 			else
 			{
-				ft_mlx_put_px(mlx, x, y, 0xa569bd-y/2);
+				ft_mlx_put_px(mlx, x, y, data->map->int_c - (double)y/(2.5));
 				y++;
 			}
 		}
@@ -50,7 +50,7 @@ void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
 	err = dx + dy;
 	while (1)
 	{
-		ft_mlx_put_px(data->mlx, x0, y0, 0xc62300);
+		ft_mlx_put_px(data->mlx, x0, y0, 0x9300ff);
 		e2 = 2 * err;
 		if(e2 >= dx)
 		{
@@ -65,7 +65,7 @@ void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
 	}
 }
 
-void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned int color)
+void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned long color)
 {
 	char	*dst;
 
