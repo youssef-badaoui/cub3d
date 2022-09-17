@@ -3,9 +3,9 @@
 void	update_pov(t_data *data)
 {
 	if (data->keystate.l)
-		data->position->pov = data->position->pov + 3;
+		data->position->pov = data->position->pov + 2;
 	else if (data->keystate.r)
-		data->position->pov = data->position->pov - 3;
+		data->position->pov = data->position->pov - 2;
 	if (data->position->pov < 0)
 		data->position->pov += 360;
 	else if (data->position->pov > 360)
