@@ -11,12 +11,13 @@ void	put_gun(t_data *data)
 	if (!data->keystate.w)
 		img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[0], &x, &y);
 	if (data->keystate.tir == 0)
-		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-			img, WIN_W - x, WIN_H - y);
+		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, img, WIN_W - x, WIN_H - y + 60);
 		i += 0.1;
-	if (i > 2 && i < 8)
-		i = 8;
-	if (i > 11)
+	if (i == 0)
+		i = 2;
+	else if (i == 2)
+		i = 4;
+	else
 		i = 0;
 }
 

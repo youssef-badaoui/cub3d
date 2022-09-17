@@ -64,10 +64,10 @@ int	button_press(t_data *data)
 	{	
 		img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[(int)i], &x, &y);
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-			img, WIN_W - x, WIN_H - y);
+			img, WIN_W - x, WIN_H - y + 60);
 		i += 0.5;
 	}
-	if (i >= 25)
+	if (i >= 5)
 		i = 0;
 	return (0);
 }

@@ -14,31 +14,11 @@ void init_keystate (t_data *data)
 
 void get_gun(t_data *data)
 {
-	data->gun[1] = "./gun/01.xpm";
-	data->gun[2] = "./gun/02.xpm";
-	data->gun[3] = "./gun/03.xpm";
-	data->gun[4] = "./gun/04.xpm";
-	data->gun[5] = "./gun/05.xpm";
-	data->gun[6] = "./gun/06.xpm";
-	data->gun[7] = "./gun/07.xpm";
-	data->gun[8] = "./gun/08.xpm";
-	data->gun[9] = "./gun/09.xpm";
-	data->gun[10] = "./gun/10.xpm";
-	data->gun[11] = "./gun/11.xpm";
-	data->gun[12] = "./gun/12.xpm";
-	data->gun[13] = "./gun/13.xpm";
-	data->gun[14] = "./gun/14.xpm";
-	data->gun[15] = "./gun/15.xpm";
-	data->gun[16] = "./gun/16.xpm";
-	data->gun[17] = "./gun/17.xpm";
-	data->gun[18] = "./gun/18.xpm";
-	data->gun[19] = "./gun/19.xpm";
-	data->gun[20] = "./gun/20.xpm";
-	data->gun[21] = "./gun/21.xpm";
-	data->gun[22] = "./gun/22.xpm";
-	data->gun[23] = "./gun/23.xpm";
-	data->gun[24] = "./gun/24.xpm";
-	data->gun[0] = "./gun/28.xpm";
+	data->gun[0] = "./gun/0.xpm";
+	data->gun[1] = "./gun/1.xpm";
+	data->gun[2] = "./gun/2.xpm";
+	data->gun[3] = "./gun/3.xpm";
+	data->gun[4] = "./gun/4.xpm";
 }
 
 void	calcul_cells(t_ray *ray)
