@@ -12,27 +12,27 @@ void	update_pov(t_data *data)
 		data->position->pov -= 360;
 }
 
-void	walking_sound(void)
-{
-	char		*arg[3];
-	int			pid;
-	static int	t;
+// void	walking_sound(void)
+// {
+// 	char		*arg[3];
+// 	int			pid;
+// 	static int	t;
 
-	if (!t)
-	{
-		t = 18;
-		pid = fork();
-		if (pid == 0)
-		{
-			arg[1] = "./sounds/walk.mp3";
-			arg[0] = "/usr/bin/afplay";
-			arg[2] = NULL;
-			execve(arg[0], arg, NULL);
-		}
-	}
-	else
-		t--;
-}
+// 	if (!t)
+// 	{
+// 		t = 18;
+// 		pid = fork();
+// 		if (pid == 0)
+// 		{
+// 			arg[1] = "./sounds/walk.mp3";
+// 			arg[0] = "/usr/bin/afplay";
+// 			arg[2] = NULL;
+// 			execve(arg[0], arg, NULL);
+// 		}
+// 	}
+// 	else
+// 		t--;
+// }
 
 void	update_position(t_data *data)
 {
@@ -42,7 +42,7 @@ void	update_position(t_data *data)
 	if (!set_pov(data, &pov))
 		return ;
 	pov_index = pov / ANG_IN_D;
-	walking_sound();
+	// walking_sound();
 	if (wall_detect(data, pov_index))
 		return ;
 	data->position->virtual_px += data->table->sin_table[pov_index]
@@ -66,9 +66,13 @@ int	button_press(t_data *data)
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
 			img, WIN_W - x, WIN_H - y + 60);
 		i += 0.5;
+
+		data->ray_h += i - 3;
 	}
 	if (i >= 5)
+	{
 		i = 0;
+	}
 	return (0);
 }
 
