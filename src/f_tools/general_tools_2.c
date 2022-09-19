@@ -46,12 +46,10 @@ char *ft_substr(char *line, int from, size_t len)
 	i = 0;
 	if(!len)
 		len = ft_strlen(line + from);
-	// printf("len = %zu\n÷", len);
 	res = malloc(sizeof(char) * len + 1);
 	while(i < len)
 	{
 		res[i] = line[from + i];
-		// printf("copied = %÷c\n", line[from + i]);
 		i++;
 	}
 	res[i] = '\0';

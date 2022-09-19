@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:20:11 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/14 15:35:32 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/09/19 16:50:56 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,8 @@ void	send_ray(t_table *table, t_ray *ray, t_position position)
 		inter = check_cell_type(ray, position, table);
 		if (inter == INTERSECTION_FOUND)
 			return (calcul_distance(table, ray, position));
+		if (ray->index == 100)
+			printf("hoho\n");
 		if (!(ray->v_hit) && !(ray->v_skip))
 		{
 			ray->xbound += ray->x_step;

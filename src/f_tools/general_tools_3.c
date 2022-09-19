@@ -49,6 +49,17 @@ int ft_max(int a, int b)
 	return (b);
 }
 
+void f_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while(tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
+
 
 
 

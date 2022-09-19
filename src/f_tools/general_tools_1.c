@@ -50,6 +50,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		i++;
 	}
 	p[i] = 0;
+	free((void*)s1);
 	return (p);
 }
 
@@ -67,7 +68,6 @@ char	**ft_split(char *s, char c)
 			row++;
 	if(s[ft_strlen(s) - 1] != c)
 		row++;
-	// printf("row %d\n", row);
 	splited = malloc(sizeof(char *) * row + 1);
 	i = 0;
 	from = 0;
@@ -84,6 +84,7 @@ char	**ft_split(char *s, char c)
 		i++;
 	}
 	splited[row] = 0;
+	free(s);
 	return (splited);
 }
 

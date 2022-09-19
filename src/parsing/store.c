@@ -14,7 +14,7 @@ char	*ft_map_clean(char *map_string)
 			start = i + 1;
 		i++;
 	}
-	end = ft_strlen(map_string)-1;
+	end = ft_strlen(map_string) - 1;
 	i = end;
 	while (i >= 0 && ft_is_whitespace(map_string[i]))
 	{
@@ -79,8 +79,8 @@ int	get_colors(t_map *map)
 	}
 	map->int_c = rgbtolong(map->C);
 	map->int_f = rgbtolong(map->F);
-	// f_tab(c);
-	// f_tab(f);
+	f_tab(c);
+	f_tab(f);
 	return (1);
 }
 
@@ -103,7 +103,7 @@ int	store(int fd, t_map *map)
 		free(line);
 	}
 	map_string = ft_map_clean(map_string);
-		// printf("ms  = %s\n", map_string);
 	map->map_tab = ft_split(map_string, '\n');
+	printf("%p\n", map_string);
 	return (1);
 }

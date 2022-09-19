@@ -33,10 +33,7 @@ int	check_line(char **map, char *s, int row, int map_h)
 				return(0);
 			if(!ft_strchr(map[row - 1][i], "NSEW01CO") || 
 			!ft_strchr(map[row + 1][i], "NSEW01CO") )
-			{
-				// printf("here         %s next_line = %s\n", s, map[row + 1]);
 				return (0);
-			}
 		}
 		else if (s[i] != '1' && !ft_is_whitespace(s[i]))
 			return (0);
