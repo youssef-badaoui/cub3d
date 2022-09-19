@@ -6,6 +6,8 @@ int tir_press(int keycode, int x, int y,t_data *data)
 	(void)y;
 	if (keycode == 1)
 		data->keystate.tir = 1;
+	else if (keycode == 2)
+		data->speed -= 13;
 	return (0);
 }
 
@@ -15,6 +17,8 @@ int tir_release(int keycode, int x, int y,t_data *data)
 	(void)y;
 	if (keycode == 1)
 		data->keystate.tir = 0;
+	else if (keycode == 2)
+		data->speed += 13;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/17 16:23:52 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/17 16:52:26 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define INTERSECTION_FOUND 1
 # define DOOR_FOUND 2
-# define CELL_SIZE 400
+# define CELL_SIZE 500
 # define FOV 60
 # define HALF_FOV 30
 # define ANG_IN_D 0.05555555555
@@ -23,8 +23,8 @@
 # define E 90
 # define S 180
 # define W 270
-# define WIN_W 1250
-# define WIN_H 600
+# define WIN_W 1080
+# define WIN_H 520
 # define N_RAY WIN_W
 # define OPEN 3
 # define CLOSE 4
@@ -165,6 +165,7 @@ typedef struct s_keystate
 	int esc;
 	int o;
 	int c;
+	int run;
 } t_keystate;
 
 typedef struct s_data
@@ -180,6 +181,7 @@ typedef struct s_data
 	int			gun_y;
 	int			ray_w;
 	int			ray_h;
+	int			speed;
 } t_data;
 
 

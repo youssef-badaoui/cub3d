@@ -66,7 +66,6 @@ int	button_press(t_data *data)
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
 			img, WIN_W - x, WIN_H - y + 60);
 		i += 0.5;
-
 		data->ray_h += i - 3;
 	}
 	if (i >= 5)

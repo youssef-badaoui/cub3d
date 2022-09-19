@@ -13,9 +13,9 @@ void	put_gun(t_data *data)
 	if (data->keystate.tir == 0)
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, img, WIN_W - x, WIN_H - y + 60);
 		i += 0.1;
-	if (i == 0)
+	if (i == 1)
 		i = 2;
-	else if (i == 2)
+	else if (i == 3)
 		i = 4;
 	else
 		i = 0;
