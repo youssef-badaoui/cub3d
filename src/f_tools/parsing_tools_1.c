@@ -34,7 +34,7 @@ int	check_line(char **map, char *s, int row, int map_h)
 			if(!ft_strchr(map[row - 1][i], "NSEW01CO") || 
 			!ft_strchr(map[row + 1][i], "NSEW01CO") )
 			{
-				printf("here         %s next_line = %s\n", s, map[row + 1]);
+				// printf("here         %s next_line = %s\n", s, map[row + 1]);
 				return (0);
 			}
 		}

@@ -22,7 +22,7 @@ char	*ft_map_clean(char *map_string)
 			end = i + 1;
 		i--;
 	}
-	new_map_string = ft_substr(map_string, start, end-start);
+	new_map_string = ft_substr(map_string, start, end-start+1);
 	free(map_string);
 	return(new_map_string);
 }
@@ -103,6 +103,7 @@ int	store(int fd, t_map *map)
 		free(line);
 	}
 	map_string = ft_map_clean(map_string);
+		// printf("ms  = %s\n", map_string);
 	map->map_tab = ft_split(map_string, '\n');
 	return (1);
 }

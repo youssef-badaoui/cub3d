@@ -67,7 +67,7 @@ char	**ft_split(char *s, char c)
 			row++;
 	if(s[ft_strlen(s) - 1] != c)
 		row++;
-	printf("row %d\n", row);
+	// printf("row %d\n", row);
 	splited = malloc(sizeof(char *) * row + 1);
 	i = 0;
 	from = 0;
@@ -78,7 +78,7 @@ char	**ft_split(char *s, char c)
 		else
 		{
 			splited[i] = ft_substr(s, from, 0);
-			printf("splited : %s\n", splited[i]);
+			// printf("splited : %s\n", splited[i]);
 		}
 		from += ft_first_occ(s + from , c) + 1;
 		i++;
