@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/17 16:52:26 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:54:42 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ typedef struct s_texters
 	t_texter	O_door;
 	t_texter	C_door;
 	t_texter	fog;
+	t_texter	side;
+	t_texter	nt;
 } t_texters;
 
 typedef struct s_mlx

@@ -1,17 +1,17 @@
-SO ./wall_texters/N.xpm
+SO ./wall_texters/side.xpm
 
-WE  ./wall_texters/N.xpm
+WE  ./wall_texters/side.xpm
 
-EA ./wall_texters/N.xpm
+EA ./wall_texters/side.xpm
 
-NO ./wall_texters/N.xpm
+NO ./wall_texters/side.xpm
 
 C  105,65,192
 
 F  17,17,40
 
 1111111111111111111111111
-1000E10000110000000000001
+1000E00000110000000000001
 10111100001111C111O100001
 1100C00000000000000C0011
 1011111000110000000100001

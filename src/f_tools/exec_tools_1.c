@@ -82,4 +82,8 @@ void	get_texters(t_data *data)
 	t->O_door.addr = (int *)mlx_get_data_addr(t->O_door.img, &t->O_door.bits_per_pixel, &t->O_door.line_length, &t->O_door.endian);
 	t->fog.img = mlx_xpm_file_to_image(data->mlx->mlx,"./wall_texters/fog.xpm", &t->fog.x, &t->fog.y);
 	t->fog.addr = (int *)mlx_get_data_addr(t->fog.img, &t->fog.bits_per_pixel, &t->fog.line_length, &t->fog.endian);
+	t->side.img = mlx_xpm_file_to_image(data->mlx->mlx,"./wall_texters/side.xpm", &t->side.x, &t->side.y);
+	t->side.addr = (int *)mlx_get_data_addr(t->side.img, &t->side.bits_per_pixel, &t->side.line_length, &t->side.endian);
+	t->nt.img = mlx_xpm_file_to_image(data->mlx->mlx,"./wall_texters/nt.xpm", &t->nt.x, &t->nt.y);
+	t->nt.addr = (int *)mlx_get_data_addr(t->nt.img, &t->nt.bits_per_pixel, &t->nt.line_length, &t->nt.endian);
 }

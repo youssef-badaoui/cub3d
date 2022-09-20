@@ -98,7 +98,7 @@ void	ft_3d(t_data *data)
 	i = 0;
     if(data->map->map_tab[y_cell][x_cell] == 'O')
         return ;
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img, 0 ,0);
+	// mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img, 0 ,0);
 	while (i < N_RAY)
 	{
 		if ((data->ray[i].h_door == DOOR_FOUND || data->ray[i].v_door == DOOR_FOUND) && data->ray[i].door_dis <= data->ray[i].save_distance)
