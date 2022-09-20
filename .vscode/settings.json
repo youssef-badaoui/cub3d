@@ -1,19 +1,20 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "cub3d.h": "c",
-        "__config": "c",
-        "atomic": "c",
-        "struct.h": "c",
-        "mlx.h": "c",
-        "array": "c",
-        "iterator": "c",
-        "string": "c",
-        "string_view": "c",
-        "vector": "c",
-        "math.h": "c",
-        "fcntl.h": "c",
-        "stdio.h": "c"
-    },
+		"cub3d.h": "c",
+		"__config": "c",
+		"atomic": "c",
+		"struct.h": "c",
+		"mlx.h": "c",
+		"array": "c",
+		"iterator": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c",
+		"math.h": "c",
+		"fcntl.h": "c",
+		"stdio.h": "c",
+		"__node_handle": "c"
+	},
     "C_Cpp.errorSquiggles": "Disabled"
 }

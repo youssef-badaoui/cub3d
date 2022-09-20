@@ -1,0 +1,19 @@
+SO ./wall_texters/N.xpm
+
+WE  ./wall_texters/N.xpm
+
+EA ./wall_texters/N.xpm
+
+NO ./wall_texters/N.xpm
+
+C  105,65,192
+
+F  17,17,40
+
+1111111111111
+1000000000001
+1011111111101
+101000N000101
+1011111111101
+1000000000001
+1111111111111
