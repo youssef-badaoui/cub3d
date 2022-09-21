@@ -88,8 +88,6 @@ void	ft_3d(t_data *data)
 	while (i < N_RAY)
 	{
 		dis = data->ray[i].save_distance * data->table->cos_table[abs(N_RAY / 2 - i)];
-		if(data->ray[i].door == DOOR_FOUND)
-			dis += 150;
 		if (dis / CELL_SIZE)
 			data->ray[i].ray_h = WIN_H / (dis / CELL_SIZE);
 		ft_ray_handl(data, i);
