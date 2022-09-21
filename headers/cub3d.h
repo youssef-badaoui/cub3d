@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/16 11:55:04 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:53:05 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		start_exec(t_map *map);
 void	casting_rays(t_table *table, t_ray *rays, t_position position);
 double	calcul_adjacent(double hypotenuse, double opposite);
 double	calcul_opposite(double hypotenus, double adjacent);
-void	create_trigonometric_tables(int narc, t_table *table);
+void	create_trigonometric_tables(int narc, t_table *table, int i);
 int 	check_and_stor(int ac, char **av, t_map *map);
 void	send_ray(t_table *table, t_ray *ray, t_position position);
 void	triangle_sides(t_ray *ray, t_position position, t_table *table);

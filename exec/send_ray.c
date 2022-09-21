@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:20:11 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/21 13:25:04 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/09/21 18:36:47 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	calcul_next_h_inter(t_table *table, t_ray *ray, t_position position)
 {
 	double	yside;
-	
+
 	yside = 0;
 	if (ray->ray_pov > 270 || ray->ray_pov <= 90)
 		yside = position.virtual_py - ray->ybound;
@@ -34,7 +34,7 @@ void	calcul_next_h_inter(t_table *table, t_ray *ray, t_position position)
 void	calcul_next_v_inter(t_table *table, t_ray *ray, t_position position)
 {
 	double	xside;
-	
+
 	xside = 0;
 	if (ray->ray_pov <= 180 && ray->ray_pov > 0)
 		xside = ray->xbound - position.virtual_px;
@@ -59,7 +59,7 @@ void	calcul_distance(t_table *table, t_ray *ray, t_position position)
 		ray->y_save = ray->ybound;
 		ray->save_distance = ray->h_distance;
 		ray->first = 'h';
-		if (position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C')	
+		if (position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C')
 			ray->door = DOOR_FOUND;
 	}
 	else
@@ -68,7 +68,7 @@ void	calcul_distance(t_table *table, t_ray *ray, t_position position)
 		ray->y_save = ray->yi;
 		ray->save_distance = ray->v_distance;
 		ray->first = 'v';
-		if (position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')	
+		if (position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')
 			ray->door = DOOR_FOUND;
 	}
 }
@@ -77,11 +77,13 @@ int	check_cell_type(t_ray *ray, t_position position)
 {
 	calcul_cells(ray);
 	check_skip(ray, position);
-	if (!(ray->h_skip) && (position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1' ||
-		 position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C'))
+	if (!(ray->h_skip) \
+			&& (position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1' || \
+			position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C'))
 		ray->h_hit = INTERSECTION_FOUND;
-	if ((!(ray->v_skip) && (position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1' ||
-		position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')) )
+	if ((!(ray->v_skip) && \
+			(position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1' || \
+			position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')))
 		ray->v_hit = INTERSECTION_FOUND;
 	if (ray->v_hit && ray->h_hit)
 		return (INTERSECTION_FOUND);

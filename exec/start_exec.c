@@ -1,7 +1,18 @@
-#include  "../headers/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_exec.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 18:49:03 by Ma3ert            #+#    #+#             */
+/*   Updated: 2022/09/21 18:49:09 by Ma3ert           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../headers/cub3d.h"
 
-void hooking(t_mlx *mlx, t_data *data)
+void	hooking(t_mlx *mlx, t_data *data)
 {
 	mlx_hook(mlx->win, 02, 0L, &keypress, data);
 	mlx_hook(mlx->win, 03, 0L, &keyrelease, data);
@@ -12,16 +23,16 @@ void hooking(t_mlx *mlx, t_data *data)
 	mlx_loop(data->mlx->mlx);
 }
 
-void pre_exec(t_data *data, t_table *table, t_position *position, t_ray *ray)
+void	pre_exec(t_data *data, t_table *table, t_position *position, t_ray *ray)
 {
-    create_trigonometric_tables(6480, table);
+	create_trigonometric_tables(6480, table, 0);
 	init_player_position(data->map, position);
 	full_data(data, table, position, ray);
 }
 
-int start_exec(t_map *map)
+int	start_exec(t_map *map)
 {
-	t_table 	table;
+	t_table		table;
 	t_position	position;
 	t_ray		rays[N_RAY];
 	t_data		data;
@@ -29,7 +40,7 @@ int start_exec(t_map *map)
 
 	data.map = map;
 	data.mlx = &mlx;
-    pre_exec(&data, &table, &position, rays);
+	pre_exec(&data, &table, &position, rays);
 	ft_init_mlx(&mlx);
 	get_texters(&data);
 	init_keystate(&data);

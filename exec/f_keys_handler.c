@@ -114,4 +114,3 @@ int	wall_detect(t_data *data, int index)
 		return (1);
 	return (0);
 }
-

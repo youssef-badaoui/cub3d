@@ -1,32 +1,5 @@
 #include "../../headers/cub3d.h"
 
-void	create_trigonometric_tables(int narc, t_table *table)
-{
-	int		i;
-	double	angle;
-	double	ang_in;
-	double	*tan_res;
-	double	*sin_res;
-	double	*cos_res;
-
-	i = 0;
-	ang_in = ANG_IN_D * M_PI/180.0;
-	tan_res = malloc(sizeof(double) * narc);
-	sin_res = malloc(sizeof(double) * narc);
-	cos_res = malloc(sizeof(double) * narc);
-	while (i < narc)
-	{
-		angle = i * ang_in;
-		tan_res[i] = tan(angle);
-		cos_res[i] = cos(angle);
-		sin_res[i] = sin(angle);
-		i++;
-	}
-	table->tan_table = tan_res;
-	table->cos_table = cos_res;
-	table->sin_table = sin_res;
-}
-
 void    init_player_position(t_map *map, t_position *pp)
 {
 	int v;

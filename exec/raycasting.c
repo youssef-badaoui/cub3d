@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:20:18 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/21 12:38:40 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:35:33 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 double	calcul_ray_pov(t_position position, int ray)
 {
 	double	ray_pov;
-	double	frif;	//first ray in fov
+	double	frif;
 
 	frif = position.pov - 30;
 	ray_pov = frif + ray * ANG_IN_D;
