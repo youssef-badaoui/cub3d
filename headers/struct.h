@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/20 13:18:10 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/09/21 12:30:37 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,7 @@ typedef	struct s_position
 
 typedef struct s_ray
 {
-	int			hdoor_state;	// to check the state of the door in the horizontal
-	int			vdoor_state;	// to check the state of the door in the vertical
-	int			h_door;			// to check if the horizontal ray hit a door 
-	int			v_door;			// to check if the vertical ray hit a door
+	int			door;			// to check if the ray hit a door
 	int			first;			// which intersection is the first
 	int			v_skip;			// to skip the vertical calculation
 	int			h_skip;			// to skip the horizontal calculation

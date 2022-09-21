@@ -10,6 +10,7 @@ int get_x(t_data *data, int i)
 		x = (int)data->ray[i].y_save % CELL_SIZE;
     return (x);
 }
+
 int get_dx(t_data *data, int i)
 {
     int x;

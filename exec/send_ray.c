@@ -6,7 +6,7 @@
 /*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:20:11 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/20 13:15:26 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/09/21 12:30:04 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,14 @@ int	check_cell_type(t_ray *ray, t_position position, t_table *table)
 		 position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C'))
 	{
 		if (position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C')
-			ray->h_door = DOOR_FOUND;		 
+			ray->door = DOOR_FOUND;		 
 		ray->h_hit = INTERSECTION_FOUND;
 	}
 	if ((!(ray->v_skip) && position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1' || \ 
 		position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C') )
 	{
 		if (position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')	
-			ray->v_door = DOOR_FOUND;
+			ray->door = DOOR_FOUND;
 		ray->v_hit = INTERSECTION_FOUND;
 	}
 	if (ray->v_hit && ray->h_hit)
