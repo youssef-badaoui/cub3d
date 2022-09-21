@@ -28,10 +28,8 @@ t_texter *get_texter(t_data *data, int i)
 
     x_cell = data->position->x_cell;
     y_cell = data->position->y_cell;
-    if(data->ray[i].v_door == DOOR_FOUND || data->ray[i].h_door == DOOR_FOUND)
+    if(data->ray[i].door == DOOR_FOUND)
         return (&data->mlx->texters.C_door);
-    // if(is_side(data, x_cell, y_cell))
-    //     return (&data->mlx->texters.side);
     if(data->ray[i].first == 'h')
     {
         if(data->ray[i].y_save >= data->position->virtual_py)

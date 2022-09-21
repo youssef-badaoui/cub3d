@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:20:18 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/19 19:18:23 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/09/21 12:38:40 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,7 @@ void	casting_rays(t_table *table, t_ray *rays, t_position position)
 		rays[i].index = calcul_ray_angle(&rays[i], rays[i].ray_pov);
 		calcul_first_vertical(table, &rays[i], position);
 		calcul_first_horizontal(table, &rays[i], position);
-		rays[i].hdoor_state = 0;
-		rays[i].vdoor_state = 0;
-		rays[i].h_door = 0;
-		rays[i].v_door = 0;
+		rays[i].door = 0;
 		rays[i].h_hit = 0;
 		rays[i].v_hit = 0;
 		rays[i].h_skip = 0;
