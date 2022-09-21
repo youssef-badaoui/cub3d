@@ -49,19 +49,23 @@ int move_handl(t_data *data)
 
 void open_close(int  keycode, t_data *data)
 {
-	int pov_index;
+	int pov;
 	int cell_x;
 	int cell_y;
 
 	if (keycode != 14)
 		return ;
-	pov_index = N_RAY / 2;
-	cell_x = data->ray[pov_index].x_save / CELL_SIZE;
-	cell_y = data->ray[pov_index].y_save / CELL_SIZE;
-	if (data->ray[pov_index].ray_pov >= 180 && data->ray[pov_index].first == 'v')
-		cell_x -= 1;
-	if ((data->ray[pov_index].ray_pov <= 90 || data->ray[pov_index].ray_pov > 270) && data->ray[pov_index].first == 'h')
-		cell_y -= 1;
+	cell_x = data->position->x_cell;
+	cell_y = data->position->y_cell;
+	pov = data->position->pov;
+	if(pov <= 45 || pov >= 315)
+		cell_y--;
+	else if (pov > 45 && pov < 135)
+		cell_x++;
+	else if (pov > 135 && pov < 225)
+		cell_y++;
+	else if (pov > 225 && pov < 315)
+		cell_x--;
 	if (data->map->map_tab[cell_y][cell_x] == 'C')
 		data->map->map_tab[cell_y][cell_x] = 'O';
 	else if (data->map->map_tab[cell_y][cell_x] == 'O')
