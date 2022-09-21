@@ -47,36 +47,34 @@ int move_handl(t_data *data)
 	return 0;
 }
 
-// void open_close(int  keycode, t_data *data)
-// {
-// 	int pov_index;
-// 	int cell_x;
-// 	int cell_y;
+void open_close(int  keycode, t_data *data)
+{
+	int pov;
+	int cell_x;
+	int cell_y;
 
-// 	if (keycode != 14)
-// 		return ;
-// 	pov_index = N_RAY / 2;
-// 	cell_x = data->ray[pov_index].xd_save / CELL_SIZE;
-// 	cell_y = data->ray[pov_index].yd_save / CELL_SIZE;
-// 	if (data->ray[pov_index].ray_pov >= 180 && data->ray[pov_index].first_d == 'v')
-// 		cell_x -= 1;
-// 	if ((data->ray[pov_index].ray_pov <= 90 || data->ray[pov_index].ray_pov > 270) && data->ray[pov_index].first_d == 'h')
-// 		cell_y -= 1;
-// 	if (data->ray[pov_index].h_door == DOOR_FOUND || data->ray[pov_index].v_door == DOOR_FOUND)
-// 	{
-// 		if (data->ray[pov_index].door_dis <= data->ray[pov_index].save_distance)
-// 		{
-// 			if (data->map->map_tab[cell_y][cell_x] == 'C')
-// 				data->map->map_tab[cell_y][cell_x] = 'O';
-// 			else if (data->map->map_tab[cell_y][cell_x] == 'O')
-// 				data->map->map_tab[cell_y][cell_x] = 'C';
-// 		}
-// 	}
-// }
+	if (keycode != 14)
+		return ;
+	cell_x = data->position->x_cell;
+	cell_y = data->position->y_cell;
+	pov = data->position->pov;
+	if(pov <= 45 || pov >= 315)
+		cell_y--;
+	else if (pov > 45 && pov < 135)
+		cell_x++;
+	else if (pov > 135 && pov < 225)
+		cell_y++;
+	else if (pov > 225 && pov < 315)
+		cell_x--;
+	if (data->map->map_tab[cell_y][cell_x] == 'C')
+		data->map->map_tab[cell_y][cell_x] = 'O';
+	else if (data->map->map_tab[cell_y][cell_x] == 'O')
+		data->map->map_tab[cell_y][cell_x] = 'C';
+}
 
 int keypress (int  keycode, t_data *data)
 {
-	// open_close(keycode, data);
+	open_close(keycode, data);
 	if(keycode == 13)
 		data->keystate.w = 1;
 	else if(keycode == 0)

@@ -1,10 +1,10 @@
-SO ./wall_texters/side.xpm
+SO ./wall_texters/N.xpm
 
-WE  ./wall_texters/side.xpm
+WE  ./wall_texters/N.xpm
 
-EA ./wall_texters/side.xpm
+EA ./wall_texters/N.xpm
 
-NO ./wall_texters/side.xpm
+NO ./wall_texters/N.xpm
 
 C  105,65,192
 
