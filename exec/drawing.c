@@ -59,12 +59,6 @@ void	put_rays(t_data *data, double diff)
 	{
 		x = data->ray[i].x_save;
 		y = data->ray[i].y_save;
-		if((data->ray[i].h_door == DOOR_FOUND || data->ray[i].v_door == DOOR_FOUND)
-			&& (data->ray[i].hdoor_state == CLOSE || data->ray[i].vdoor_state == CLOSE) && data->ray[i].door_dis < data->ray[i].save_distance)
-		{
-			x = data->ray[i].xd_save;
-			y = data->ray[i].yd_save;
-		}
 		draw_line(data, px, py, x / diff, y / diff);
 		i++;
 	}
