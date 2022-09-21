@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:20:11 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/21 13:01:46 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:25:04 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,10 @@ int	check_cell_type(t_ray *ray, t_position position)
 	check_skip(ray, position);
 	if (!(ray->h_skip) && (position.map->map_tab[ray->ycell_h][ray->xcell_h] == '1' ||
 		 position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C'))
-	{
 		ray->h_hit = INTERSECTION_FOUND;
-		if (position.map->map_tab[ray->ycell_h][ray->xcell_h] == 'C')	
-		{
-			ray->xi += CELL_SIZE / 2;
-			ray->ybound += CELL_SIZE / 2;
-		}		 
-	}
 	if ((!(ray->v_skip) && (position.map->map_tab[ray->ycell_v][ray->xcell_v] == '1' ||
 		position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')) )
-	{
 		ray->v_hit = INTERSECTION_FOUND;
-		if (position.map->map_tab[ray->ycell_v][ray->xcell_v] == 'C')	
-		{
-			ray->yi += CELL_SIZE / 2;
-			ray->xbound += CELL_SIZE / 2;
-		}		 
-	}
 	if (ray->v_hit && ray->h_hit)
 		return (INTERSECTION_FOUND);
 	if (ray->h_hit && ray->v_skip)
