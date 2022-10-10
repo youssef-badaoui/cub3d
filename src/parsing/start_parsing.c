@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_parsing.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 16:32:47 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/10 16:32:49 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
-int init_map(char **av, int ac, t_map *map)
+int	init_map(char **av, int ac, t_map *map)
 {
-	if(ac != 2)
+	if (ac != 2)
 		return (0);
 	map->map_h = 0;
 	map->map_w = 0;
@@ -19,7 +31,7 @@ int init_map(char **av, int ac, t_map *map)
 	return (1);
 }
 
-int check_and_stor(int ac, char **av, t_map *map)
+int	check_and_stor(int ac, char **av, t_map *map)
 {
 	int	fd;
 
@@ -28,9 +40,9 @@ int check_and_stor(int ac, char **av, t_map *map)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (0);
-	if(!store(fd, map))
+	if (!store(fd, map))
 		return (0);
-	if(!inspect(map))
+	if (!inspect(map))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/21 12:33:18 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:17:17 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,14 @@ typedef struct s_keystate
 	int run;
 } t_keystate;
 
+typedef struct s_line_param
+{
+	int x0;
+	int y0;
+	int x1;
+	int y1;
+}	t_line_param;
+
 typedef struct s_data
 {
 	t_mlx		*mlx;
@@ -165,13 +173,23 @@ typedef struct s_data
 	t_ray		*ray;
 	t_position	*position;
 	t_keystate	keystate;
+	t_line_param line_param;
 	char		*gun[25];
 	int			gun_x;
 	int			gun_y;
 	int			ray_w;
 	int			ray_h;
 	int			speed;
+	int			cell_size;
+	int			dx;
+	int			dy;
+	int			sx;
+	int			sy;
+	int			e2;
+	int			err;
 } t_data;
+
+
 
 
 

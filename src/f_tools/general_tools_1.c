@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   general_tools_1.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 12:21:41 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/05 12:21:43 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
-int ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(!s)
+	if (!s)
 		return (0);
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -17,9 +29,9 @@ int	ft_strchr(char c, char *s)
 	int	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
-		if(s[i] == c)
+		if (s[i] == c)
 			return (1);
 		i++;
 	}
@@ -50,7 +62,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		i++;
 	}
 	p[i] = 0;
-	free((void*)s1);
+	free ((void *)s1);
 	return (p);
 }
 
@@ -63,29 +75,24 @@ char	**ft_split(char *s, char c)
 
 	i = 0;
 	row = 0;
-	while(s[i])
-		if(s[i++] == c)
+	while (s[i])
+		if (s[i++] == c)
 			row++;
-	if(s[ft_strlen(s) - 1] != c)
+	if (s[ft_strlen(s) - 1] != c)
 		row++;
 	splited = malloc(sizeof(char *) * row + 1);
 	i = 0;
 	from = 0;
-	while(i < row)
+	while (i < row)
 	{
-		if(ft_first_occ(s + from, c) != -1)
-			splited[i] = ft_substr(s, from, ft_first_occ(s + from, c) + 1);
+		if (ft_first_occ(s + from, c) != -1)
+			splited[i++] = ft_substr(s, from, ft_first_occ(s + from, c) + 1);
 		else
-		{
-			splited[i] = ft_substr(s, from, 0);
-			// printf("splited : %s\n", splited[i]);
-		}
-		from += ft_first_occ(s + from , c) + 1;
-		i++;
+			splited[i++] = ft_substr(s, from, 0);
+		from += ft_first_occ(s + from, c) + 1;
 	}
 	splited[row] = 0;
-	free(s);
-	return (splited);
+	return (free(s), splited);
 }
 
 int	ft_atoi(const char *str)

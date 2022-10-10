@@ -1,63 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   drawing_tools_2.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 12:21:12 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/05 12:21:13 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
-int get_x(t_data *data, int i)
+int	get_x(t_data *data, int i)
 {
-    int x;
+	int	x;
 
-    if (data->ray[i].first == 'h')
+	if (data->ray[i].first == 'h')
 		x = (int)data->ray[i].x_save % CELL_SIZE;
 	else
 		x = (int)data->ray[i].y_save % CELL_SIZE;
-    return (x);
+	return (x);
 }
-// int get_dx(t_data *data, int i)
-// {
-//     int x;
 
-//     if (data->ray[i].first_d == 'h')
-// 		x = (int)data->ray[i].xd_save % CELL_SIZE;
-// 	else
-// 		x = (int)data->ray[i].yd_save % CELL_SIZE;
-//     return (x);
-// }
-
-t_texter *get_texter(t_data *data, int i)
+int	keypress(int keycode, t_data *data)
 {
-    int x_cell;
-    int y_cell;
+	open_close(keycode, data);
+	if (keycode == 13)
+		data->keystate.w = 1;
+	else if (keycode == 0)
+		data->keystate.a = 1;
+	else if (keycode == 1)
+		data->keystate.s = 1;
+	else if (keycode == 2)
+		data->keystate.d = 1;
+	else if (keycode == 124)
+		data->keystate.l = 1;
+	else if (keycode == 123)
+		data->keystate.r = 1;
+	else if (keycode == 49)
+		data->keystate.q = 1;
+	else if (keycode == 53)
+		data->keystate.esc = 1;
+	else if (keycode == 35)
+		data->keystate.o = 1;
+	else if (keycode == 8)
+		data->keystate.c = 1;
+	return (0);
+}
 
-    x_cell = data->ray[i].x_save / CELL_SIZE;
-    y_cell = data->ray[i].y_save / CELL_SIZE;
-    if (data->ray[i].ray_pov >= 180 && data->ray[i].first == 'v')
-		x_cell -= 1;
-	if ((data->ray[i].ray_pov <= 90 || data->ray[i].ray_pov > 270) && data->ray[i].first == 'h')
-		y_cell -= 1;
-    if(data->ray[i].door == DOOR_FOUND)
-        return (&data->mlx->texters.C_door);
-    if(data->ray[i].first == 'h')
-    {
-        if(data->ray[i].y_save >= data->position->virtual_py)
-            if(data->map->map_tab[y_cell - 1][x_cell] == 'O')
-                return (&data->mlx->texters.side);
-            else
-                return (&data->mlx->texters.S_img);
-        else 
-            if(data->map->map_tab[y_cell + 1][x_cell] == 'O')
-                return (&data->mlx->texters.side);
-            else
-                return (&data->mlx->texters.N_img);
-    }
-    else   
-    {
-        if(data->ray[i].x_save >= data->position->virtual_px)
-            if(data->map->map_tab[y_cell][x_cell - 1] == 'O')
-                return (&data->mlx->texters.side);
-            else
-                return (&data->mlx->texters.E_img);
-        else
-            if(data->map->map_tab[y_cell][x_cell + 1] == 'O')
-                return (&data->mlx->texters.side);
-            else
-                return (&data->mlx->texters.W_img);
-    }
+int	keyrelease(int keycode, t_data *data)
+{
+	if (keycode == 13)
+		data->keystate.w = 0;
+	else if (keycode == 0)
+		data->keystate.a = 0;
+	else if (keycode == 1)
+		data->keystate.s = 0;
+	else if (keycode == 2)
+		data->keystate.d = 0;
+	else if (keycode == 124)
+		data->keystate.l = 0;
+	else if (keycode == 123)
+		data->keystate.r = 0;
+	else if (keycode == 49)
+		data->keystate.q = 0;
+	else if (keycode == 35)
+		data->keystate.o = 0;
+	else if (keycode == 8)
+		data->keystate.c = 0;
+	return (0);
 }
