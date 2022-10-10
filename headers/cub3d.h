@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/21 18:53:05 by Ma3ert           ###   ########.fr       */
+/*   Updated: 2022/10/10 13:18:09 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	get_texters(t_data *data);
 void	ft_ray_handl(t_data *data, int i);
 int    keyrelease(int  keycode, t_data *data);
 int    keypress (int  keycode, t_data *data);
-void   draw_line(t_data *data, int x0, int y0, int x1, int y1);
 int    store(int fd, t_map *map);
 int     inspect(t_map *map);
 void	ft_3d(t_data *data);
@@ -83,7 +82,7 @@ int     tir_press(int keycode, int x, int y,t_data *data);
 int     tir_release(int keycode, int x, int y,t_data *data);
 int     mouse_move(int  x, int y, t_data *data);
 int     move_handl(t_data *data);
-void	draw_line(t_data *data, int x0, int y0, int x1, int y1);
+void	draw_line(t_data *data);
 void	ft_mlx_put_px(t_mlx *mlx, int x, int y, unsigned long color);
 double	calcul_adjacent(double hypotenuse, double opposite);
 double	calcul_opposite(double hypotenus, double adjacent);
@@ -98,5 +97,7 @@ void	mini_map(t_data *data);
 int ft_min(int a, int b);
 int ft_max(int a, int b);
 int get_dx(t_data *data, int i);
+void	open_close(int keycode, t_data *data);
+t_texter	*get_texter(t_data *data, int i);
 #endif
 	

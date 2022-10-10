@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_tools_1.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 12:22:10 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/05 12:26:14 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
 int	check_color(char *color, int pos)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(color[i])
+	while (color[i])
 	{
-		if(color[i] < '0' || color[i] > '9')
+		if (color[i] < '0' || color[i] > '9')
 		{
-			if(color[i+1] || color[i] != ',')
+			if (color[i + 1] || color[i] != ',')
 				return (0);
 			else
-				if(pos > 1)
+				if (pos > 1)
 					return (0);
 		}
 		i++;
@@ -25,14 +37,14 @@ int	check_line(char **map, char *s, int row, int map_h)
 	int	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
-		if(ft_strchr(s[i], "NSWECO0"))
+		if (ft_strchr(s[i], "NSWECO0"))
 		{
-			if(row == 0 || row == map_h - 1 || i == 0)
-				return(0);
-			if(!ft_strchr(map[row - 1][i], "NSEW01CO") || 
-			!ft_strchr(map[row + 1][i], "NSEW01CO") )
+			if (row == 0 || row == map_h - 1 || i == 0)
+				return (0);
+			if (!ft_strchr(map[row - 1][i], "NSEW01CO")
+				|| !ft_strchr(map[row + 1][i], "NSEW01CO"))
 				return (0);
 		}
 		else if (s[i] != '1' && !ft_is_whitespace(s[i]))
@@ -49,7 +61,8 @@ int	check_mapex(t_map *map)
 
 	len = ft_strlen(map->map_name);
 	name = map->map_name;
-	if(name[len - 1] != 'b' || name[len - 2] != 'u' || name[len - 3] != 'c' || name[len - 4] != '.')
+	if (name[len - 1] != 'b' || name[len - 2] != 'u'
+		|| name[len - 3] != 'c' || name[len - 4] != '.')
 		return (0);
 	return (1);
 }
@@ -74,31 +87,29 @@ int	ft_get_meta_type(char *line, int from)
 
 int	ft_get_path(char *line, int from, int meta_type, t_map *map)
 {
-	int i;
-	int len;
-	
+	int	i;
+	int	len;
+
 	i = 0;
 	len = 0;
-	if(meta_type >= NO && meta_type <= EA)
+	if (meta_type >= NO && meta_type <= EA)
 		from += 2;
 	else
 		from += 1;
-	if(!ft_is_whitespace(line[from]))
+	if (!ft_is_whitespace(line[from]))
 		return (0);
-	while(ft_is_whitespace(line[from + i]))
+	while (ft_is_whitespace(line[from + i]))
 		i++;
 	from += i;
-	while(!ft_is_whitespace(line[from+len]))
+	while (!ft_is_whitespace(line[from + len]))
 		len++;
-	if(map->meta_data[meta_type])
+	if (map->meta_data[meta_type])
 		return (0);
 	map->meta_data[meta_type] = ft_substr(line, from, len);
-	while(line[from+len])
+	while (line[from + len])
 	{
-		if(!ft_is_whitespace(line[from+len]))
+		if (!ft_is_whitespace(line[from + len++]))
 			return (0);
-		len++;
 	}
 	return (1);
 }
-

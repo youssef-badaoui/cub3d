@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   f_keys_handler.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 10:13:27 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/05 10:13:29 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub3d.h"
 
 void	update_pov(t_data *data)
@@ -12,28 +24,6 @@ void	update_pov(t_data *data)
 		data->position->pov -= 360;
 }
 
-// void	walking_sound(void)
-// {
-// 	char		*arg[3];
-// 	int			pid;
-// 	static int	t;
-
-// 	if (!t)
-// 	{
-// 		t = 18;
-// 		pid = fork();
-// 		if (pid == 0)
-// 		{
-// 			arg[1] = "./sounds/walk.mp3";
-// 			arg[0] = "/usr/bin/afplay";
-// 			arg[2] = NULL;
-// 			execve(arg[0], arg, NULL);
-// 		}
-// 	}
-// 	else
-// 		t--;
-// }
-
 void	update_position(t_data *data)
 {
 	double	pov;
@@ -42,7 +32,6 @@ void	update_position(t_data *data)
 	if (!set_pov(data, &pov))
 		return ;
 	pov_index = pov / ANG_IN_D;
-	// walking_sound();
 	if (wall_detect(data, pov_index))
 		return ;
 	data->position->virtual_px += data->table->sin_table[pov_index]
@@ -108,7 +97,8 @@ int	wall_detect(t_data *data, int index)
 			* CELL_SIZE / 13) / CELL_SIZE;
 	if (next_y >= data->map->map_h || next_x >= data->map->map_w)
 		return (1);
-	if (!ft_strchr(data->map->map_tab[next_y][x], "0NESWO") && !ft_strchr(data->map->map_tab[y][next_x], "0NESWO"))
+	if (!ft_strchr(data->map->map_tab[next_y][x], "0NESWO")
+		&& !ft_strchr(data->map->map_tab[y][next_x], "0NESWO"))
 		return (1);
 	if (!ft_strchr(data->map->map_tab[next_y][next_x], "0NESWO"))
 		return (1);

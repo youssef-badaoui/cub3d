@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inspect.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 16:32:40 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/10 16:32:43 by ybadaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
 int	ft_meta_check(char **meta)
@@ -6,15 +18,15 @@ int	ft_meta_check(char **meta)
 	int	fd;
 
 	i = 0;
-	while(i < 4)
+	while (i < 4)
 	{
 		fd = open(meta[i], O_RDONLY);
-		if(fd < 0)
+		if (fd < 0)
 			return (0);
 		close(fd);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	ft_check_map(t_map *map)
@@ -22,13 +34,13 @@ int	ft_check_map(t_map *map)
 	int	row;
 
 	row = 0;
-	if(!ft_meta_check(map->meta_data) || !check_mapex(map))
+	if (!ft_meta_check(map->meta_data) || !check_mapex(map))
 		return (0);
-	if(map->pn != 1)
+	if (map->pn != 1)
 		return (0);
-	while(map->map_tab[row])
+	while (map->map_tab[row])
 	{
-		if(!check_line(map->map_tab, map->map_tab[row], row, map->map_h))
+		if (!check_line(map->map_tab, map->map_tab[row], row, map->map_h))
 			return (0);
 		row++;
 	}
@@ -41,9 +53,9 @@ void	ft_find_player(char *line, t_map *map)
 	static int	y;
 
 	x = 0;
-	while(line[x])
+	while (line[x])
 	{
-		if(ft_strchr(line[x], "NSEW"))
+		if (ft_strchr(line[x], "NSEW"))
 		{
 			map->px = x;
 			map->py = y;
@@ -57,30 +69,30 @@ void	ft_find_player(char *line, t_map *map)
 
 void	ft_get_data(t_map *map)
 {
-	int	i;
+	int		i;
 	char	**tab;
 
 	i = 0;
 	tab = map->map_tab;
-	while(tab[i])
+	while (tab[i])
 	{
-		if(ft_strlen(tab[i]) > map->map_w)
+		if (ft_strlen(tab[i]) > map->map_w)
 			map->map_w = ft_strlen(tab[i]);
 		ft_find_player(tab[i], map);
 		map->map_h++;
 		i++;
 	}
-	map->map_vh = map->map_h * CELL_SIZE; 
-	map->map_vw = map->map_w * CELL_SIZE; 
+	map->map_vh = map->map_h * CELL_SIZE;
+	map->map_vw = map->map_w * CELL_SIZE;
 }
 
-int inspect(t_map *map)
+int	inspect(t_map *map)
 {
 	char	**tab;
 
 	tab = map->map_tab;
 	ft_get_data(map);
-	if(!ft_check_map(map))
-		return (0);	
+	if (!ft_check_map(map))
+		return (0);
 	return (1);
 }

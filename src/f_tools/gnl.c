@@ -6,12 +6,11 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:27 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/09/02 11:42:13 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/03 11:32:21 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
-
 
 char	*ft_strdup(char *s)
 {
@@ -35,7 +34,7 @@ char	*ft_strdup(char *s)
 
 char	*gnl(int fd)
 {
-	int 	i;
+	int		i;
 	int		nbyte;
 	char	buf;
 	char	buffer[1000000];
