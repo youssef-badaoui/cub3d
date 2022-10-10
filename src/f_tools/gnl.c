@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:30:27 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/10/03 11:32:21 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:41:29 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ char	*gnl(int fd)
 	i = 0;
 	if (fd < 0)
 		return (NULL);
-	while ((nbyte = read(fd, &buf, 1)) && nbyte > 0)
+	nbyte = read(fd, &buf, 1);
+	while (nbyte > 0)
 	{
 		buffer[i++] = buf;
 		buffer[i] = '\0';
 		if (buf == '\n')
 			return (ft_strdup(buffer));
+		nbyte = read(fd, &buf, 1);
 	}
 	if (buffer[0] == 0)
 		return (NULL);
