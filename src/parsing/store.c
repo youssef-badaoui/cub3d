@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/10 16:32:56 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:11:34 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ int	get_colors(t_map *map)
 	{
 		if (!check_color(c[i], i) || !check_color(f[i], i))
 			return (0);
-		map->C[i] = ft_atoi(c[i]);
-		map->F[i] = ft_atoi(f[i]);
+		map->cl[i] = ft_atoi(c[i]);
+		map->flr[i] = ft_atoi(f[i]);
 		i++;
 	}
-	map->int_c = rgbtolong(map->C);
-	map->int_f = rgbtolong(map->F);
+	map->int_c = rgbtolong(map->cl);
+	map->int_f = rgbtolong(map->flr);
 	f_tab(c);
 	f_tab(f);
 	return (1);

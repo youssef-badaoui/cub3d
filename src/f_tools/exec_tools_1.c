@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tools_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:21:17 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/10 10:57:43 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:09:19 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ void	get_texters_suit(t_data *data)
 	t_texters	*t;
 
 	t = &data->mlx->texters;
-	t->C_door.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			"./wall_texters/code.xpm", &t->C_door.x, &t->C_door.y);
-	t->C_door.addr = (int *)mlx_get_data_addr(t->C_door.img,
-			&t->C_door.bits_per_pixel, &t->C_door.line_length,
-			&t->C_door.endian);
-	t->O_door.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			"./wall_texters/ooo.xpm", &t->O_door.x, &t->O_door.y);
-	t->O_door.addr = (int *)mlx_get_data_addr(t->O_door.img,
-			&t->O_door.bits_per_pixel, &t->O_door.line_length,
-			&t->O_door.endian);
+	t->c_door.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			"./wall_texters/code.xpm", &t->c_door.x, &t->c_door.y);
+	t->c_door.addr = (int *)mlx_get_data_addr(t->c_door.img,
+			&t->c_door.bits_per_pixel, &t->c_door.line_length,
+			&t->c_door.endian);
+	t->o_door.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			"./wall_texters/ooo.xpm", &t->o_door.x, &t->o_door.y);
+	t->o_door.addr = (int *)mlx_get_data_addr(t->o_door.img,
+			&t->o_door.bits_per_pixel, &t->o_door.line_length,
+			&t->o_door.endian);
 	t->fog.img = mlx_xpm_file_to_image(data->mlx->mlx,
 			"./wall_texters/fog.xpm", &t->fog.x, &t->fog.y);
 	t->fog.addr = (int *)mlx_get_data_addr(t->fog.img,
@@ -84,26 +84,26 @@ void	get_texters(t_data *data)
 	t_texters	*t;
 
 	t = &data->mlx->texters;
-	t->N_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			data->map->meta_data[0], &t->N_img.x, &t->N_img.y);
-	t->N_img.addr = (int *)mlx_get_data_addr(t->N_img.img,
-			&t->N_img.bits_per_pixel, &t->N_img.line_length, &t->N_img.endian);
-	t->S_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			data->map->meta_data[1], &t->S_img.x, &t->S_img.y);
-	t->S_img.addr = (int *)mlx_get_data_addr(t->S_img.img,
-			&t->S_img.bits_per_pixel, &t->S_img.line_length, &t->S_img.endian);
-	t->W_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			data->map->meta_data[2], &t->W_img.x, &t->W_img.y);
-	t->W_img.addr = (int *)mlx_get_data_addr(t->W_img.img,
-			&t->W_img.bits_per_pixel, &t->W_img.line_length, &t->W_img.endian);
-	t->E_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			data->map->meta_data[3], &t->E_img.x, &t->E_img.y);
-	t->E_img.addr = (int *)mlx_get_data_addr(t->E_img.img,
-			&t->E_img.bits_per_pixel, &t->E_img.line_length, &t->E_img.endian);
-	t->C_door.img = mlx_xpm_file_to_image(data->mlx->mlx,
-			"./wall_texters/code.xpm", &t->C_door.x, &t->C_door.y);
-	t->C_door.addr = (int *)mlx_get_data_addr(t->C_door.img,
-			&t->C_door.bits_per_pixel, &t->C_door.line_length,
-			&t->C_door.endian);
+	t->n_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			data->map->meta_data[0], &t->n_img.x, &t->n_img.y);
+	t->n_img.addr = (int *)mlx_get_data_addr(t->n_img.img,
+			&t->n_img.bits_per_pixel, &t->n_img.line_length, &t->n_img.endian);
+	t->s_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			data->map->meta_data[1], &t->s_img.x, &t->s_img.y);
+	t->s_img.addr = (int *)mlx_get_data_addr(t->s_img.img,
+			&t->s_img.bits_per_pixel, &t->s_img.line_length, &t->s_img.endian);
+	t->w_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			data->map->meta_data[2], &t->w_img.x, &t->w_img.y);
+	t->w_img.addr = (int *)mlx_get_data_addr(t->w_img.img,
+			&t->w_img.bits_per_pixel, &t->w_img.line_length, &t->w_img.endian);
+	t->e_img.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			data->map->meta_data[3], &t->e_img.x, &t->e_img.y);
+	t->e_img.addr = (int *)mlx_get_data_addr(t->e_img.img,
+			&t->e_img.bits_per_pixel, &t->e_img.line_length, &t->e_img.endian);
+	t->c_door.img = mlx_xpm_file_to_image(data->mlx->mlx,
+			"./wall_texters/code.xpm", &t->c_door.x, &t->c_door.y);
+	t->c_door.addr = (int *)mlx_get_data_addr(t->c_door.img,
+			&t->c_door.bits_per_pixel, &t->c_door.line_length,
+			&t->c_door.endian);
 	get_texters_suit(data);
 }

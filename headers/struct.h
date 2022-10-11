@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/10/11 09:37:01 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:11:38 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_map
 	int				py;
 	int				pv;
 	char			*meta_data[6];
-	int				F[3];
-	int				C[3];
+	int				flr[3];
+	int				cl[3];
 	unsigned long	int_f;
 	unsigned long	int_c;
 }	t_map;
@@ -116,12 +116,12 @@ typedef struct s_texter
 
 typedef struct s_texters
 {
-	t_texter	N_img;
-	t_texter	S_img;
-	t_texter	E_img;
-	t_texter	W_img;
-	t_texter	O_door;
-	t_texter	C_door;
+	t_texter	n_img;
+	t_texter	s_img;
+	t_texter	e_img;
+	t_texter	w_img;
+	t_texter	o_door;
+	t_texter	c_door;
 	t_texter	fog;
 	t_texter	side;
 	t_texter	nt;
@@ -186,4 +186,5 @@ typedef struct s_data
 	int				e2;
 	int				err;
 }	t_data;
+
 #endif

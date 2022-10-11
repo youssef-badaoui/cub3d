@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:21:58 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/05 12:24:55 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:09:19 by Ma3ert           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ t_texter	*is_h(t_data *data, int x_cell, int y_cell, int i)
 		if (data->map->map_tab[y_cell - 1][x_cell] == 'O')
 			return (&data->mlx->texters.side);
 		else
-			return (&data->mlx->texters.S_img);
+			return (&data->mlx->texters.s_img);
 	}
 	else
 	{
 		if (data->map->map_tab[y_cell + 1][x_cell] == 'O')
 			return (&data->mlx->texters.side);
 		else
-			return (&data->mlx->texters.N_img);
+			return (&data->mlx->texters.n_img);
 	}
 }
 
@@ -47,14 +47,14 @@ t_texter	*is_v(t_data *data, int x_cell, int y_cell, int i)
 		if (data->map->map_tab[y_cell][x_cell - 1] == 'O')
 			return (&data->mlx->texters.side);
 		else
-			return (&data->mlx->texters.E_img);
+			return (&data->mlx->texters.e_img);
 	}
 	else
 	{
 		if (data->map->map_tab[y_cell][x_cell + 1] == 'O')
 			return (&data->mlx->texters.side);
 		else
-			return (&data->mlx->texters.W_img);
+			return (&data->mlx->texters.w_img);
 	}
 }
 
@@ -71,7 +71,7 @@ t_texter	*get_texter(t_data *data, int i)
 		&& data->ray[i].first == 'h')
 		y_cell -= 1;
 	if (data->ray[i].door == DOOR_FOUND)
-		return (&data->mlx->texters.C_door);
+		return (&data->mlx->texters.c_door);
 	if (data->ray[i].first == 'h')
 		return (is_h(data, x_cell, y_cell, i));
 	else
