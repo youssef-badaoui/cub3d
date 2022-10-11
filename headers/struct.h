@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:30 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/10/10 13:17:17 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/11 09:37:01 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define OPEN 3
 # define CLOSE 4
 
-enum meta_type
+enum e_meta_type
 {
 	NO = 0,
 	SO = 1,
@@ -39,66 +39,64 @@ enum meta_type
 	C = 5
 };
 
-
 typedef struct s_map
 {
-	char	**map_tab;
-	char	*map_name;
-	int		map_h;			// map high
-	int		map_w;	 		// map width 
-	int		map_vh;			// map virtual high
-	int		map_vw;	 		// map virtual width 
-	int		pn; 			// player number;
-	int		px; 			// player x;
-	int		py; 			// player y;
-	int		pv;				// player vision;
-	char	*meta_data[6];
-	int		F[3];
-	int		C[3];
-	unsigned long 	int_f;
-	unsigned long 	int_c;
+	char			**map_tab;
+	char			*map_name;
+	int				map_h;
+	int				map_w;
+	int				map_vh;
+	int				map_vw;
+	int				pn;
+	int				px;
+	int				py;
+	int				pv;
+	char			*meta_data[6];
+	int				F[3];
+	int				C[3];
+	unsigned long	int_f;
+	unsigned long	int_c;
 }	t_map;
 
-typedef	struct s_position
+typedef struct s_position
 {
-	int		x_cell;			// x cord of the cell 
-	int		y_cell;			// y cord of the cell
-	double	virtual_px;		// x cord of the player in the virtual dimension
-	double	virtual_py;		// y cord of the player in the virtual dimension
-	double	pov;			// the point of view (obviously an angle)
-	t_map	*map;			// the map
-}				t_position;
+	int		x_cell;
+	int		y_cell;
+	double	virtual_px;
+	double	virtual_py;
+	double	pov;
+	t_map	*map;
+}	t_position;
 
 typedef struct s_ray
 {
-	int			door;			// to check if the ray hit a door
-	int			first;			// which intersection is the first
-	int			v_skip;			// to skip the vertical calculation
-	int			h_skip;			// to skip the horizontal calculation
-	double		x_save;			// the x cord of the intersection with a wall
-	double		y_save;			// the y cord of the intersection with a wall
-	double		ray_pov;		// the point of view of the ray
-	int			index;			// the index of angle of the ray
-	double		xi ;			// the x cord of the horizontal intersection
-	double		yi ;			// the y cord of the vertical intersection
-	double		xbound ;		// the x cord of the vertical intersection 
-	double		ybound;			// the y cord of the horizontal intersection
-	int			v_hit;			// the type of the cell for the vertical intersect
-	int			h_hit;			// the type of the cell for the horizontal intersect
-	double		v_distance;		// the distance between the position of the player
-	double		h_distance;		// and the intesection
-	double		x_step;			// step to get to the next x intersection 
-	double		y_step;			// step to get to the next y intersection
-	int			quadrant;		// in which quadrant the ray is casted
-	int			xcell_v;		// the x cord of cell for the vertical intersection
-	int			ycell_v;		// the y cord of cell for the vertical intersection 
-	int			xcell_h;		// the x cord of cell for the horizontal interesection
-	int			ycell_h;		// the y cord of cell for the horizontal interesection
-	double		save_distance;	// the distance of the ray after making the interesection
-	double		ray_h;			//
-	t_position	*player;		// info about the position of the player
+	int			door;
+	int			first;
+	int			v_skip;
+	int			h_skip;
+	double		x_save;
+	double		y_save;
+	double		ray_pov;
+	int			index;
+	double		xi ;
+	double		yi ;
+	double		xbound ;
+	double		ybound;
+	int			v_hit;
+	int			h_hit;
+	double		v_distance;
+	double		h_distance;
+	double		x_step;
+	double		y_step;
+	int			quadrant;
+	int			xcell_v;
+	int			ycell_v;
+	int			xcell_h;
+	int			ycell_h;
+	double		save_distance;
+	double		ray_h;
+	t_position	*player;
 }				t_ray;
-
 typedef struct s_table
 {
 	double	*tan_table;
@@ -108,17 +106,17 @@ typedef struct s_table
 typedef struct s_texter
 {
 	void	*img;
-	int 	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 	int		x;
 	int		y;
-} t_texter;
+}	t_texter;
 
 typedef struct s_texters
 {
-	t_texter 	N_img;
+	t_texter	N_img;
 	t_texter	S_img;
 	t_texter	E_img;
 	t_texter	W_img;
@@ -127,70 +125,65 @@ typedef struct s_texters
 	t_texter	fog;
 	t_texter	side;
 	t_texter	nt;
-} t_texters;
+}	t_texters;
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*img;
-	void	*win;
-	void	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	t_texters texters;
-} t_mlx;
+	void		*mlx;
+	void		*img;
+	void		*win;
+	void		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	t_texters	texters;
+}	t_mlx;
 
 typedef struct s_keystate
 {
-	int tir;
-	int w;
-	int a;
-	int s;
-	int d;
-	int r;
-	int l;
-	int q;
-	int esc;
-	int o;
-	int c;
-	int run;
-} t_keystate;
+	int	tir;
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	r;
+	int	l;
+	int	q;
+	int	esc;
+	int	o;
+	int	c;
+	int	run;
+}	t_keystate;
 
 typedef struct s_line_param
 {
-	int x0;
-	int y0;
-	int x1;
-	int y1;
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
 }	t_line_param;
 
 typedef struct s_data
 {
-	t_mlx		*mlx;
-	t_map		*map;
-	t_table		*table;
-	t_ray		*ray;
-	t_position	*position;
-	t_keystate	keystate;
-	t_line_param line_param;
-	char		*gun[25];
-	int			gun_x;
-	int			gun_y;
-	int			ray_w;
-	int			ray_h;
-	int			speed;
-	int			cell_size;
-	int			dx;
-	int			dy;
-	int			sx;
-	int			sy;
-	int			e2;
-	int			err;
-} t_data;
-
-
-
-
-
+	t_mlx			*mlx;
+	t_map			*map;
+	t_table			*table;
+	t_ray			*ray;
+	t_position		*position;
+	t_keystate		keystate;
+	t_line_param	line_param;
+	char			*gun[25];
+	int				gun_x;
+	int				gun_y;
+	int				ray_w;
+	int				ray_h;
+	int				speed;
+	int				cell_size;
+	int				dx;
+	int				dy;
+	int				sx;
+	int				sy;
+	int				e2;
+	int				err;
+}	t_data;
 #endif
