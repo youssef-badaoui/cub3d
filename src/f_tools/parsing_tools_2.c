@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_tools_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:22:15 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/05 12:22:16 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:26:49 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_is_meta(const char *line)
 			else
 				return (-1);
 		}
+		else if (!ft_is_whitespace(line[i]))
+			return (-1);
 		i++;
 	}
 	return (-1);

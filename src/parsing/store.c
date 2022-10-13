@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/13 14:24:53 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:35:17 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,9 @@ int	store(int fd, t_map *map)
 		map_string = ft_strjoin(map_string, line);
 		free(line);
 	}
+	if(!map_string)
+		return (0);
 	map_string = ft_map_clean(map_string);
 	map->map_tab = ft_split(map_string, '\n');
-	printf("%p\n", map_string);
 	return (1);
 }

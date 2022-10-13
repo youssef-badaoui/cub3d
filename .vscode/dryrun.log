@@ -1,56 +1,29 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ybadaoui/Desktop/cub3d'
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/main_cub3d.c -o mandatory/src/main_cub3d.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/parsing/inspect.c -o mandatory/src/parsing/inspect.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/parsing/start_parsing.c -o mandatory/src/parsing/start_parsing.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/parsing/store.c -o mandatory/src/parsing/store.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/drawing_tools_1.c -o mandatory/src/f_tools/drawing_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/drawing_tools_2.c -o mandatory/src/f_tools/drawing_tools_2.o
- 
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/gnl.c -o mandatory/src/f_tools/gnl.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/general_tools_1.c -o mandatory/src/f_tools/general_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/general_tools_2.c -o mandatory/src/f_tools/general_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/general_tools_3.c -o mandatory/src/f_tools/general_tools_3.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/parsing_tools_1.c -o mandatory/src/f_tools/parsing_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/parsing_tools_2.c -o mandatory/src/f_tools/parsing_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/exec_tools_1.c -o mandatory/src/f_tools/exec_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/exec_tools_2.c -o mandatory/src/f_tools/exec_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/raycasting_tools.c -o mandatory/src/f_tools/raycasting_tools.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/drawing.c -o mandatory/exec/drawing.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/ft_3d.c -o mandatory/exec/ft_3d.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/raycasting.c -o mandatory/exec/raycasting.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/send_ray.c -o mandatory/exec/send_ray.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/start_exec.c -o mandatory/exec/start_exec.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/keys_handler.c -o mandatory/exec/keys_handler.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/f_keys_handler.c -o mandatory/exec/f_keys_handler.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/exec/cells.c -o mandatory/exec/cells.o
-gcc -Wall -Wextra -Werror -Iminilibx -c mandatory/src/f_tools/get_texter.c -o mandatory/src/f_tools/get_texter.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/main_cub3d.c -o bonus/src/main_cub3d.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/parsing/inspect.c -o bonus/src/parsing/inspect.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/parsing/start_parsing.c -o bonus/src/parsing/start_parsing.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/parsing/store.c -o bonus/src/parsing/store.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/drawing_tools_1.c -o bonus/src/f_tools/drawing_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/drawing_tools_2.c -o bonus/src/f_tools/drawing_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/gnl.c -o bonus/src/f_tools/gnl.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/general_tools_1.c -o bonus/src/f_tools/general_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/general_tools_2.c -o bonus/src/f_tools/general_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/general_tools_3.c -o bonus/src/f_tools/general_tools_3.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/parsing_tools_1.c -o bonus/src/f_tools/parsing_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/parsing_tools_2.c -o bonus/src/f_tools/parsing_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/exec_tools_1.c -o bonus/src/f_tools/exec_tools_1.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/exec_tools_2.c -o bonus/src/f_tools/exec_tools_2.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/raycasting_tools.c -o bonus/src/f_tools/raycasting_tools.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/drawing.c -o bonus/exec/drawing.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/ft_3d.c -o bonus/exec/ft_3d.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/raycasting.c -o bonus/exec/raycasting.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/send_ray.c -o bonus/exec/send_ray.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/start_exec.c -o bonus/exec/start_exec.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/keys_handler.c -o bonus/exec/keys_handler.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/f_keys_handler.c -o bonus/exec/f_keys_handler.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/exec/cells.c -o bonus/exec/cells.o
-gcc -Wall -Wextra -Werror -Iminilibx -c bonus/src/f_tools/get_texter.c -o bonus/src/f_tools/get_texter.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/main_cub3d.c -o src/main_cub3d.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/parsing/inspect.c -o src/parsing/inspect.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/parsing/start_parsing.c -o src/parsing/start_parsing.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/parsing/store.c -o src/parsing/store.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/drawing_tools_1.c -o src/f_tools/drawing_tools_1.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/drawing_tools_2.c -o src/f_tools/drawing_tools_2.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/gnl.c -o src/f_tools/gnl.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/general_tools_1.c -o src/f_tools/general_tools_1.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/general_tools_2.c -o src/f_tools/general_tools_2.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/general_tools_3.c -o src/f_tools/general_tools_3.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/parsing_tools_1.c -o src/f_tools/parsing_tools_1.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/parsing_tools_2.c -o src/f_tools/parsing_tools_2.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/exec_tools_1.c -o src/f_tools/exec_tools_1.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/exec_tools_2.c -o src/f_tools/exec_tools_2.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/raycasting_tools.c -o src/f_tools/raycasting_tools.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/drawing.c -o exec/drawing.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/ft_3d.c -o exec/ft_3d.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/raycasting.c -o exec/raycasting.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/send_ray.c -o exec/send_ray.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/start_exec.c -o exec/start_exec.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/keys_handler.c -o exec/keys_handler.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/f_keys_handler.c -o exec/f_keys_handler.o
+gcc -Wall -Wextra -Werror -Iminilibx -c exec/cells.c -o exec/cells.o
+gcc -Wall -Wextra -Werror -Iminilibx -c src/f_tools/get_texter.c -o src/f_tools/get_texter.o
+gcc -Wall -Wextra -Werror -framework OpenGL -framework AppKit minilibx/libmlx.a ./src/main_cub3d.o ./src/parsing/inspect.o ./src/parsing/start_parsing.o ./src/parsing/store.o ./src/f_tools/drawing_tools_1.o ./src/f_tools/drawing_tools_2.o ./src/f_tools/gnl.o ./src/f_tools/general_tools_1.o ./src/f_tools/general_tools_2.o ./src/f_tools/general_tools_3.o ./src/f_tools/parsing_tools_1.o ./src/f_tools/parsing_tools_2.o ./src/f_tools/exec_tools_1.o ./src/f_tools/exec_tools_2.o ./src/f_tools/raycasting_tools.o ./exec/drawing.o ./exec/ft_3d.o ./exec/raycasting.o ./exec/send_ray.o ./exec/start_exec.o ./exec/keys_handler.o ./exec/f_keys_handler.o ./exec/cells.o ./src/f_tools/get_texter.o -o cub3D
 make: Leaving directory `/Users/ybadaoui/Desktop/cub3d'
  
-make: *** No rule to make target `SRC_BONUS', needed by `cub3D'.
-make: *** No rule to make target `=', needed by `cub3D'.
-

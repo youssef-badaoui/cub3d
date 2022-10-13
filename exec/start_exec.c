@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 18:49:03 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/10/12 22:29:34 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:04:56 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	out(void)
 
 void	hooking(t_mlx *mlx, t_data *data)
 {
-	mlx_hook(mlx->win, 02, 0L, &keypress, data);
+	mlx_hook(mlx->win, 02, 00, &keypress, data);
 	mlx_hook(mlx->win, 03, 0L, &keyrelease, data);
 	mlx_hook(mlx->win, 04, 0L, &tir_press, data);
 	mlx_hook(mlx->win, 05, 0L, &tir_release, data);
