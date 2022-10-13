@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/10 16:32:56 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:30:01 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ int	get_colors(t_map *map)
 			return (0);
 		map->C[i] = ft_atoi(c[i]);
 		map->F[i] = ft_atoi(f[i]);
+		if (map->C[i] < 0 || map->C[i] > 255
+			|| map->F[i] < 0 || map->F[i] > 255)
+			return (0);
 		i++;
 	}
 	map->int_c = rgbtolong(map->C);

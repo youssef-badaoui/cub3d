@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:16:23 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/10/10 13:18:09 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/12 21:14:36 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdlib.h>
+# include <stdlib.h> 
 # include <math.h>
 
 char	*ft_strdup(char *s);

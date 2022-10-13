@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   start_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 18:49:03 by Ma3ert            #+#    #+#             */
-/*   Updated: 2022/10/05 10:14:10 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:29:34 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
+
+int	out(void)
+{
+	exit(1);
+}
 
 void	hooking(t_mlx *mlx, t_data *data)
 {
@@ -19,6 +24,7 @@ void	hooking(t_mlx *mlx, t_data *data)
 	mlx_hook(mlx->win, 04, 0L, &tir_press, data);
 	mlx_hook(mlx->win, 05, 0L, &tir_release, data);
 	mlx_hook(mlx->win, 06, 0L, &mouse_move, data);
+	mlx_hook(mlx->win, 17, 00, &out, data);
 	mlx_loop_hook(mlx->mlx, &move_handl, data);
 	mlx_loop(data->mlx->mlx);
 }

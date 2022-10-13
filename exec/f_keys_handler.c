@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_keys_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybadaoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:13:27 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/05 10:13:29 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:27:27 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,11 @@ int	wall_detect(t_data *data, int index)
 	x = data->position->x_cell;
 	y = data->position->y_cell;
 	next_x = (data->position->virtual_px + data->table->sin_table[index]
-			* CELL_SIZE / 13) / CELL_SIZE;
+			* CELL_SIZE / 7) / CELL_SIZE;
 	next_y = (data->position->virtual_py - data->table->cos_table[index]
-			* CELL_SIZE / 13) / CELL_SIZE;
-	if (next_y >= data->map->map_h || next_x >= data->map->map_w)
+			* CELL_SIZE / 7) / CELL_SIZE;
+	if (next_y >= data->map->map_h || next_x \
+		>= data->map->map_w || (next_y < 0 || next_x < 0))
 		return (1);
 	if (!ft_strchr(data->map->map_tab[next_y][x], "0NESWO")
 		&& !ft_strchr(data->map->map_tab[y][next_x], "0NESWO"))

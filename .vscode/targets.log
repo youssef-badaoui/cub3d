@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Tue Oct 11 09:27:07 2022
+# Make data base, printed on Thu Oct 13 13:07:39 2022
 
 # Variables
 
@@ -16,10 +15,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `makefile', line 13)
+# makefile (from `makefile', line 24)
 OBJ = $(SRC:.c=.o)
 # makefile (from `makefile', line 1)
-SRC = ./src/main_cub3d.c  ./src/parsing/inspect.c ./src/parsing/start_parsing.c ./src/parsing/store.c ./src/f_tools/drawing_tools_1.c ./src/f_tools/drawing_tools_2.c ./src/f_tools/gnl.c ./src/f_tools/general_tools_1.c ./src/f_tools/general_tools_2.c ./src/f_tools/general_tools_3.c ./src/f_tools/parsing_tools_1.c ./src/f_tools/parsing_tools_2.c ./src/f_tools/exec_tools_1.c ./src/f_tools/exec_tools_2.c ./src/f_tools/raycasting_tools.c ./exec/drawing.c ./exec/ft_3d.c ./exec/raycasting.c ./exec/send_ray.c ./exec/start_exec.c ./exec/keys_handler.c ./exec/f_keys_handler.c ./exec/cells.c ./src/f_tools/get_texter.c 
+SRC = ./mandatory/src/main_cub3d.c  ./mandatory/src/parsing/inspect.c ./mandatory/src/parsing/start_parsing.c ./mandatory/src/parsing/store.c ./mandatory/src/f_tools/drawing_tools_1.c ./mandatory/src/f_tools/drawing_tools_2.c ./mandatory/src/f_tools/gnl.c ./mandatory/src/f_tools/general_tools_1.c ./mandatory/src/f_tools/general_tools_2.c ./mandatory/src/f_tools/general_tools_3.c ./mandatory/src/f_tools/parsing_tools_1.c ./mandatory/src/f_tools/parsing_tools_2.c ./mandatory/src/f_tools/exec_tools_1.c ./mandatory/src/f_tools/exec_tools_2.c ./mandatory/src/f_tools/raycasting_tools.c ./mandatory/exec/drawing.c ./mandatory/exec/ft_3d.c ./mandatory/exec/raycasting.c ./mandatory/exec/send_ray.c ./mandatory/exec/start_exec.c ./mandatory/exec/keys_handler.c ./mandatory/exec/f_keys_handler.c ./mandatory/exec/cells.c ./mandatory/src/f_tools/get_texter.c SRC_BONUS = ./bonus/src/main_cub3d.c  ./bonus/src/parsing/inspect.c ./bonus/src/parsing/start_parsing.c ./bonus/src/parsing/store.c ./bonus/src/f_tools/drawing_tools_1.c ./bonus/src/f_tools/drawing_tools_2.c ./bonus/src/f_tools/gnl.c ./bonus/src/f_tools/general_tools_1.c ./bonus/src/f_tools/general_tools_2.c ./bonus/src/f_tools/general_tools_3.c ./bonus/src/f_tools/parsing_tools_1.c ./bonus/src/f_tools/parsing_tools_2.c ./bonus/src/f_tools/exec_tools_1.c ./bonus/src/f_tools/exec_tools_2.c ./bonus/src/f_tools/raycasting_tools.c ./bonus/exec/drawing.c ./bonus/exec/ft_3d.c ./bonus/exec/raycasting.c ./bonus/exec/send_ray.c ./bonus/exec/start_exec.c ./bonus/exec/keys_handler.c ./bonus/exec/f_keys_handler.c ./bonus/exec/cells.c ./bonus/src/f_tools/get_texter.c 
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -39,7 +38,7 @@ MAKEFILE_LIST :=  makefile
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.diX39TQInA/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.HYR9LYRPQx/Render
 # environment
 PATH = /Users/ybadaoui/goinfre/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -49,7 +48,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.mGeI2H6PVk/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.3SFfvGNae7/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -68,8 +67,8 @@ VSCODE_CODE_CACHE_PATH = /Users/ybadaoui/Library/Application Support/Code/Cached
 LOGNAME = ybadaoui
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# makefile (from `makefile', line 17)
-HEADERS = ./headers/cub3d.h ./headers/struct.h
+# makefile (from `makefile', line 28)
+HEADERS = ./mandatory/headers/cub3d.h ./mandatory/headers/struct.h
 # environment
 ZSH = /Users/ybadaoui/.oh-my-zsh
 # environment
@@ -84,7 +83,7 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# makefile (from `makefile', line 19)
+# makefile (from `makefile', line 31)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -92,7 +91,7 @@ MAKE_VERSION := 3.81
 USER = ybadaoui
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from `makefile', line 15)
+# makefile (from `makefile', line 26)
 NAME = cub3D
 # environment
 LESS = -R
@@ -117,28 +116,32 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2588
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18C88:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# makefile (from `makefile', line 21)
+# makefile (from `makefile', line 33)
 MLX_FLAGS = -framework OpenGL -framework AppKit
 # environment
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# makefile (from `makefile', line 23)
+# makefile (from `makefile', line 35)
 FLAGS = -Wall -Wextra -Werror
 # default
 .INCLUDE_DIRS = /usr/local/include
@@ -147,9 +150,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 32587
+VSCODE_PID = 1937
+# makefile (from `makefile', line 29)
+HEADERS_BONUS = ./bonus/headers/cub3d.h ./bonus/headers/struct.h
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=3/104=3%
+# Load=71/1024=7%, Rehash=0, Collisions=3/107=3%
 
 # Pattern-specific Variable Values
 
@@ -157,16 +162,19 @@ VSCODE_PID = 32587
 
 # Directories
 
-# . (device 16777227, inode 2735178): 16 files, no impossibilities.
-# src (device 16777227, inode 2735333): 4 files, no impossibilities so far.
-# headers (device 16777227, inode 2735302): No files, no impossibilities so far.
+# . (device 16777227, inode 2735178): 8 files, no impossibilities.
+# mandatory/headers (device 16777227, inode 2925954): No files, no impossibilities so far.
+# mandatory/src (device 16777227, inode 2925994): 4 files, no impossibilities so far.
+# mandatory/src/f_tools (device 16777227, inode 2925995): 24 files, no impossibilities so far.
+# mandatory/src/parsing (device 16777227, inode 2926009): 7 files, no impossibilities so far.
+# mandatory/exec (device 16777227, inode 2925902): 14 files, no impossibilities so far.
 
-# 20 files, no impossibilities in 3 directories.
+# 57 files, no impossibilities in 6 directories.
 
 # Implicit Rules
 
-%.o: %.c ./headers/cub3d.h ./headers/struct.h
-#  commands to execute (from `makefile', line 31):
+%.o: %.c ./mandatory/headers/cub3d.h ./mandatory/headers/struct.h
+#  commands to execute (from `makefile', line 43):
 	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
 	
 
@@ -174,45 +182,96 @@ VSCODE_PID = 32587
 
 # Files
 
-# Not a target:
-src/f_tools/parsing_tools_1.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-src/main_cub3d.o: src/main_cub3d.c headers/cub3d.h headers/struct.h
+mandatory/src/f_tools/general_tools_2.o: mandatory/src/f_tools/general_tools_2.c mandatory/headers/cub3d.h mandatory/headers/struct.h
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `src/main_cub3d'
-#  File does not exist.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/general_tools_2'
+#  Last modified 2022-10-12 21:27:13
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := src/main_cub3d.o
-# automatic
-# % := 
-# automatic
-# * := src/main_cub3d
-# automatic
-# + := src/main_cub3d.c headers/cub3d.h headers/struct.h
-# automatic
-# | := 
-# automatic
-# < := src/main_cub3d.c
-# automatic
-# ^ := src/main_cub3d.c headers/cub3d.h headers/struct.h
-# automatic
-# ? := src/main_cub3d.c headers/cub3d.h headers/struct.h
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `makefile', line 31):
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
 	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
 	
 
 # Not a target:
-exec/f_keys_handler.o:
+mandatory/exec/keys_handler.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/exec/cells.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+bonus/exec/start_exec.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+mandatory/src/f_tools/gnl.o: mandatory/src/f_tools/gnl.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/gnl'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+mandatory/src/parsing/start_parsing.o: mandatory/src/parsing/start_parsing.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+ 
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/parsing/start_parsing'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+=:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/exec/raycasting.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mandatory/src/f_tools/get_texter.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/f_tools/general_tools_1.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mandatory/exec/start_exec.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:56:22
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: cub3D
 #  Command-line target.
@@ -224,48 +283,108 @@ all: cub3D
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 # Not a target:
-exec/keys_handler.o:
+bonus/src/f_tools/raycasting_tools.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/f_tools/drawing_tools_2.o:
+bonus/src/parsing/store.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3D: src/main_cub3d.o src/parsing/inspect.o src/parsing/start_parsing.o src/parsing/store.o src/f_tools/drawing_tools_1.o src/f_tools/drawing_tools_2.o src/f_tools/gnl.o src/f_tools/general_tools_1.o src/f_tools/general_tools_2.o src/f_tools/general_tools_3.o src/f_tools/parsing_tools_1.o src/f_tools/parsing_tools_2.o src/f_tools/exec_tools_1.o src/f_tools/exec_tools_2.o src/f_tools/raycasting_tools.o exec/drawing.o exec/ft_3d.o exec/raycasting.o exec/send_ray.o exec/start_exec.o exec/keys_handler.o exec/f_keys_handler.o exec/cells.o src/f_tools/get_texter.o headers/cub3d.h headers/struct.h
+mandatory/src/f_tools/exec_tools_2.o: mandatory/src/f_tools/exec_tools_2.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/exec_tools_2'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/exec/raycasting.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+mandatory/exec/drawing.o: mandatory/exec/drawing.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/exec/drawing'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/src/f_tools/general_tools_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+cub3D: mandatory/src/main_cub3d.o mandatory/src/parsing/inspect.o mandatory/src/parsing/start_parsing.o mandatory/src/parsing/store.o mandatory/src/f_tools/drawing_tools_1.o mandatory/src/f_tools/drawing_tools_2.o mandatory/src/f_tools/gnl.o mandatory/src/f_tools/general_tools_1.o mandatory/src/f_tools/general_tools_2.o mandatory/src/f_tools/general_tools_3.o mandatory/src/f_tools/parsing_tools_1.o mandatory/src/f_tools/parsing_tools_2.o mandatory/src/f_tools/exec_tools_1.o mandatory/src/f_tools/exec_tools_2.o mandatory/src/f_tools/raycasting_tools.o mandatory/exec/drawing.o mandatory/exec/ft_3d.o mandatory/exec/raycasting.o mandatory/exec/send_ray.o mandatory/exec/start_exec.o mandatory/exec/keys_handler.o mandatory/exec/f_keys_handler.o mandatory/exec/cells.o mandatory/src/f_tools/get_texter.o SRC_BONUS = bonus/src/main_cub3d.o bonus/src/parsing/inspect.o bonus/src/parsing/start_parsing.o bonus/src/parsing/store.o bonus/src/f_tools/drawing_tools_1.o bonus/src/f_tools/drawing_tools_2.o bonus/src/f_tools/gnl.o bonus/src/f_tools/general_tools_1.o bonus/src/f_tools/general_tools_2.o bonus/src/f_tools/general_tools_3.o bonus/src/f_tools/parsing_tools_1.o bonus/src/f_tools/parsing_tools_2.o bonus/src/f_tools/exec_tools_1.o bonus/src/f_tools/exec_tools_2.o bonus/src/f_tools/raycasting_tools.o bonus/exec/drawing.o bonus/exec/ft_3d.o bonus/exec/raycasting.o bonus/exec/send_ray.o bonus/exec/start_exec.o bonus/exec/keys_handler.o bonus/exec/f_keys_handler.o bonus/exec/cells.o bonus/src/f_tools/get_texter.o mandatory/headers/cub3d.h mandatory/headers/struct.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-10-10 17:22:45
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  commands to execute (from `makefile', line 28):
+#  commands to execute (from `makefile', line 40):
 	$(CC) $(FLAGS) $(MLX_FLAGS) minilibx/libmlx.a $(OBJ) -o $(NAME)
 	
 
 # Not a target:
-src/f_tools/parsing_tools_2.o:
+mandatory/src/f_tools/raycasting_tools.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+mandatory/src/parsing/store.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/f_tools/exec_tools_1.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-exec/cells.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+mandatory/exec/send_ray.o: mandatory/exec/send_ray.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/exec/send_ray'
+#  Last modified 2022-10-12 21:27:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
 
 # Not a target:
-exec/start_exec.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-exec/raycasting.o:
+bonus/src/parsing/inspect.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -277,52 +396,166 @@ exec/raycasting.o:
 #  File has not been updated.
 
 # Not a target:
+mandatory/src/f_tools/exec_tools_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/f_tools/general_tools_2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mandatory/headers/cub3d.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/f_tools/gnl.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mandatory/src/parsing/inspect.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/parsing/start_parsing.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-10-05 11:45:46
+#  Last modified 2022-10-12 21:13:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+mandatory/src/f_tools/general_tools_2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
  
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-src/main_cub3d.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-10-10 17:22:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-src/f_tools/general_tools_1.o:
+bonus/src/f_tools/get_texter.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-exec/send_ray.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-src/f_tools/raycasting_tools.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-src/parsing/store.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-headers/cub3d.h:
+mandatory/src/f_tools/general_tools_3.o: mandatory/src/f_tools/general_tools_3.c mandatory/headers/cub3d.h mandatory/headers/struct.h
 #  Implicit rule search has been done.
-#  Last modified 2022-10-10 13:18:09
+#  Implicit/static pattern stem: `mandatory/src/f_tools/general_tools_3'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/src/f_tools/gnl.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/f_tools/exec_tools_2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+mandatory/src/f_tools/drawing_tools_1.o: mandatory/src/f_tools/drawing_tools_1.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/drawing_tools_1'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/src/parsing/start_parsing.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/exec/drawing.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mandatory/headers/struct.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+mandatory/src/f_tools/parsing_tools_1.o: mandatory/src/f_tools/parsing_tools_1.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/parsing_tools_1'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+mandatory/src/main_cub3d.o: mandatory/src/main_cub3d.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/main_cub3d'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/src/f_tools/exec_tools_2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -332,33 +565,54 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `makefile', line 40):
+#  commands to execute (from `makefile', line 51):
 	rm -f $(NAME)
 	
 
 # Not a target:
-src/f_tools/exec_tools_1.o:
+bonus/exec/send_ray.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+mandatory/exec/ft_3d.o: mandatory/exec/ft_3d.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/exec/ft_3d'
+#  Last modified 2022-10-12 21:27:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+SRC_BONUS:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/parsing/inspect.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+mandatory/exec/send_ray.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-src/f_tools/general_tools_2.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-src/f_tools/gnl.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+mandatory/src/f_tools/drawing_tools_2.o: mandatory/src/f_tools/drawing_tools_2.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/drawing_tools_2'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
 
 # Not a target:
 .DEFAULT:
@@ -367,28 +621,25 @@ src/f_tools/gnl.o:
 #  File has not been updated.
 
 # Not a target:
-src/parsing/start_parsing.o:
+mandatory/exec/f_keys_handler.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-headers/struct.h:
+mandatory/src/f_tools/parsing_tools_2.o: mandatory/src/f_tools/parsing_tools_2.c mandatory/headers/cub3d.h mandatory/headers/struct.h
 #  Implicit rule search has been done.
-#  Last modified 2022-10-10 13:17:17
+#  Implicit/static pattern stem: `mandatory/src/f_tools/parsing_tools_2'
+#  Last modified 2022-10-12 21:27:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
 
 # Not a target:
-exec/drawing.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-src/f_tools/get_texter.o:
+bonus/src/f_tools/general_tools_3.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -399,47 +650,262 @@ re: fclean all
 #  File has not been updated.
 
 # Not a target:
-src/f_tools/exec_tools_2.o:
+bonus/src/f_tools/drawing_tools_1.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+mandatory/exec/keys_handler.o: mandatory/exec/keys_handler.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/exec/keys_handler'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := mandatory/exec/keys_handler.o
+# automatic
+# % := 
+# automatic
+# * := mandatory/exec/keys_handler
+# automatic
+# + := mandatory/exec/keys_handler.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+# automatic
+# | := 
+# automatic
+# < := mandatory/exec/keys_handler.c
+# automatic
+# ^ := mandatory/exec/keys_handler.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+# automatic
+# ? := mandatory/exec/keys_handler.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `makefile', line 37):
+#  commands to execute (from `makefile', line 48):
 	rm -f $(OBJ)
 	
+
+# Not a target:
+mandatory/src/f_tools/general_tools_3.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/f_tools/parsing_tools_1.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/main_cub3d.o:
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mandatory/src/f_tools/drawing_tools_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 18:11:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+mandatory/exec/cells.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+mandatory/exec/start_exec.o: mandatory/exec/start_exec.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/exec/start_exec'
+#  Last modified 2022-10-12 21:27:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+bonus/exec/ft_3d.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+mandatory/exec/raycasting.o: mandatory/exec/raycasting.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/exec/raycasting'
+#  Last modified 2022-10-12 21:27:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/src/f_tools/parsing_tools_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 18:09:06
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+mandatory/src/main_cub3d.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+mandatory/src/f_tools/general_tools_1.o: mandatory/src/f_tools/general_tools_1.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/general_tools_1'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+mandatory/src/f_tools/raycasting_tools.o: mandatory/src/f_tools/raycasting_tools.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/raycasting_tools'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+mandatory/src/parsing/store.o: mandatory/src/parsing/store.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/parsing/store'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+bonus/src/f_tools/drawing_tools_2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 hoho: all clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `makefile', line 43):
+#  commands to execute (from `makefile', line 54):
 	clear && ./$(NAME) ./maps/map2.cub
 	
 
 # Not a target:
-src/f_tools/general_tools_3.o:
+mandatory/exec/ft_3d.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 21:07:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/exec/f_keys_handler.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/f_tools/drawing_tools_1.o:
+mandatory/exec/drawing.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:58:26
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bonus/src/f_tools/parsing_tools_2.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-exec/ft_3d.o:
+mandatory/src/f_tools/drawing_tools_2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+mandatory/src/f_tools/exec_tools_1.o: mandatory/src/f_tools/exec_tools_1.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/f_tools/exec_tools_1'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+bonus/exec/keys_handler.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+mandatory/src/parsing/inspect.o: mandatory/src/parsing/inspect.c mandatory/headers/cub3d.h mandatory/headers/struct.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mandatory/src/parsing/inspect'
+#  Last modified 2022-10-12 21:27:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `makefile', line 43):
+	$(CC) $(FLAGS) -Iminilibx -c $< -o $@
+	
+
+# Not a target:
+mandatory/src/f_tools/parsing_tools_2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-12 17:54:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=36/1024=4%, Rehash=0, Collisions=2/88=2%
+# Load=82/1024=8%, Rehash=0, Collisions=3/300=1%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -451,6 +917,6 @@ exec/ft_3d.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Oct 11 09:27:07 2022
+# Finished Make data base on Thu Oct 13 13:07:39 2022
 
  

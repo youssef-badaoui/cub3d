@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:13:46 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/10 16:35:32 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:29:00 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ void	ft_ray_handl(t_data *data, int ray_index)
 		wall_h = WIN_H;
 	img_pls_y = (double)texter->y / (double)wall_h;
 	j = 0;
+	if (data->ray_h + j + (WIN_H / 2 - wall_h / 2) < 0)
+		j = -1 * data->ray_h - (WIN_H / 2 - wall_h / 2);
 	while (j < wall_h)
 	{
-		ft_mlx_put_px(data->mlx, ray_index, data->ray_h + j
-			+ (WIN_H / 2 - wall_h
-				/ 2), ft_mlx_get_px(texter, (int)x_img, j * img_pls_y));
+		if (data->ray_h + j + (WIN_H / 2 - wall_h / 2) > WIN_H)
+			break ;
+		ft_mlx_put_px(data->mlx, ray_index, data->ray_h + j + (WIN_H / 2 \
+			- wall_h / 2), ft_mlx_get_px(texter, (int)x_img, j * img_pls_y));
 		j++;
 	}
 }

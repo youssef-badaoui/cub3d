@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:21:01 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/10 16:28:53 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/12 21:30:26 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_color_win(t_data *data, t_mlx *mlx, int ray_h)
 			}
 			else
 			{
-				ft_mlx_put_px(mlx, x, y, data->map->int_c - (double)y / (2.5));
+				ft_mlx_put_px(mlx, x, y, data->map->int_c);
 				y++;
 			}
 		}
