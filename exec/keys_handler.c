@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:13:54 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/05 10:30:58 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:20:49 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	tir_press(int keycode, int x, int y, t_data *data)
 	(void)y;
 	if (keycode == 1)
 		data->keystate.tir = 1;
-	else if (keycode == 2)
-		data->speed -= 13;
 	return (0);
 }
 
@@ -29,8 +27,6 @@ int	tir_release(int keycode, int x, int y, t_data *data)
 	(void)y;
 	if (keycode == 1)
 		data->keystate.tir = 0;
-	else if (keycode == 2)
-		data->speed += 13;
 	return (0);
 }
 

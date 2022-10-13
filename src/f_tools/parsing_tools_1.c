@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:22:10 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/13 15:21:51 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:09:10 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	check_line(char **map, char *s, int row, int map_h)
 		{
 			if (row == 0 || row == map_h - 1 || i == 0)
 				return (0);
-			if (!ft_strchr(map[row - 1][i], "NSEW01CO") || !ft_strchr(map[row + 1][i], "NSEW01CO")
-				|| !ft_strchr(map[row][i - 1], "NSEW01CO") || !ft_strchr(map[row][i + 1], "NSEW01CO"))
+			if (!ft_strchr(map[row - 1][i], "NSEW01CO") || !ft_strchr(map[row
+				+ 1][i], "NSEW01CO") || !ft_strchr(map[row][i - 1]
+				, "NSEW01CO") || !ft_strchr(map[row][i + 1], "NSEW01CO"))
 				return (0);
 		}
 		else if (s[i] != '1' && !ft_is_whitespace(s[i]))

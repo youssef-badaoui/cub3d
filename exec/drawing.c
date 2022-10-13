@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:13:17 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/13 14:33:02 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:20:00 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,16 @@
 
 void	put_gun(t_data *data)
 {
-	static double	i;
 	int				x;
 	int				y;
 	void			*img;
 
-	img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[(int)i], &x, &y);
+	img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[0], &x, &y);
 	if (!data->keystate.w)
 		img = mlx_xpm_file_to_image(data->mlx->mlx, data->gun[0], &x, &y);
 	if (data->keystate.tir == 0)
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
 			img, WIN_W - x, WIN_H - y + 60);
-		i += 0.1;
-	if (i == 1)
-		i = 2;
-	else if (i == 3)
-		i = 4;
-	else
-		i = 0;
 }
 
 void	color_sqr(t_data *data, int x, int y, unsigned int color)

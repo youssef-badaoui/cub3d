@@ -6,7 +6,7 @@
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:13:27 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/12 22:27:27 by ybadaoui         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:22:36 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ int	button_press(t_data *data)
 		data->ray_h += i - 3;
 	}
 	if (i >= 5)
-	{
 		i = 0;
-	}
 	return (0);
 }
 
