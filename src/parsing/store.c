@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/12 22:30:01 by ybadaoui         ###   ########.fr       */
-=======
-/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
-/*   Updated: 2022/10/11 11:11:34 by Ma3ert           ###   ########.fr       */
->>>>>>> a325782b134257a56b14f220a87181f6f8b1bb1e
+/*   Updated: 2022/10/13 14:24:53 by ybadaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +87,9 @@ int	get_colors(t_map *map)
 	{
 		if (!check_color(c[i], i) || !check_color(f[i], i))
 			return (0);
-		map->clr[i] = ft_atoi(c[i]);
+		map->cl[i] = ft_atoi(c[i]);
 		map->flr[i] = ft_atoi(f[i]);
-		if (map->clr[i] < 0 || map->clr[i] > 255
+		if (map->cl[i] < 0 || map->cl[i] > 255
 			|| map->flr[i] < 0 || map->flr[i] > 255)
 			return (0);
 		i++;
