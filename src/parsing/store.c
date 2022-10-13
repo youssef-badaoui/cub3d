@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: ybadaoui <ybadaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
 /*   Updated: 2022/10/12 22:30:01 by ybadaoui         ###   ########.fr       */
+=======
+/*   By: Ma3ert <yait-iaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 16:32:54 by ybadaoui          #+#    #+#             */
+/*   Updated: 2022/10/11 11:11:34 by Ma3ert           ###   ########.fr       */
+>>>>>>> a325782b134257a56b14f220a87181f6f8b1bb1e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +94,15 @@ int	get_colors(t_map *map)
 	{
 		if (!check_color(c[i], i) || !check_color(f[i], i))
 			return (0);
-		map->C[i] = ft_atoi(c[i]);
-		map->F[i] = ft_atoi(f[i]);
-		if (map->C[i] < 0 || map->C[i] > 255
-			|| map->F[i] < 0 || map->F[i] > 255)
+		map->clr[i] = ft_atoi(c[i]);
+		map->flr[i] = ft_atoi(f[i]);
+		if (map->clr[i] < 0 || map->clr[i] > 255
+			|| map->flr[i] < 0 || map->flr[i] > 255)
 			return (0);
 		i++;
 	}
-	map->int_c = rgbtolong(map->C);
-	map->int_f = rgbtolong(map->F);
+	map->int_c = rgbtolong(map->cl);
+	map->int_f = rgbtolong(map->flr);
 	f_tab(c);
 	f_tab(f);
 	return (1);
